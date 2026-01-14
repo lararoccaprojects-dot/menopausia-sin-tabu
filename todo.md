@@ -34,11 +34,20 @@
   - [x] Qué esperar
   - [x] CTA para revisar email
 
-## FASE 2: Herramientas del Producto Principal (VISIBLES - SIN LOGIN)
-- [ ] Simulador de Síntomas
-  - [ ] Interfaz interactiva
-  - [ ] Guardado en base de datos
-  - [ ] Diseño coherente
+## FASE 2: Herramientas del Producto Principal (REQUIERE LOGIN)
+- [x] Simulador de Síntomas
+  - [x] Interfaz interactiva para seleccionar síntomas
+  - [x] Seguimiento de síntomas por usuario
+  - [x] Análisis y reportes personalizados
+  - [x] Visualización de datos con gráficos
+  - [x] Recomendaciones basadas en síntomas
+  - [x] Tests unitarios validados (10/10 pasando)
+- [x] Dashboard de Herramientas
+  - [x] Página de bienvenida personalizada
+  - [x] Grid de herramientas disponibles
+  - [x] Acceso a Simulador de Síntomas
+  - [x] Placeholders para futuras herramientas
+  - [x] Sistema de logout
 - [ ] Guía de Recursos
   - [ ] Interfaz interactiva
   - [ ] Guardado en base de datos

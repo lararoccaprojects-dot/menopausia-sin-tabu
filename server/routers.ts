@@ -2,7 +2,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
-import { getDb } from "./db";
+import { getDb, getAllSymptoms, getUserSymptoms, addUserSymptom, updateUserSymptom, deleteUserSymptom, generateSymptomReport } from "./db";
 import { checkoutLeads } from "../drizzle/schema";
 import { z } from "zod";
 
@@ -41,6 +41,64 @@ export const appRouter = router({
         
         return { success: true };
       }),
+  }),
+
+  symptoms: router({
+    getAll: publicProcedure.query(async () => {
+      return await getAllSymptoms();
+    }),
+
+    getUserSymptoms: protectedProcedure.query(async ({ ctx }) => {
+      return await getUserSymptoms(ctx.user.id);
+    }),
+
+    addSymptom: protectedProcedure
+      .input(z.object({
+        symptomId: z.number(),
+        severity: z.number().min(1).max(10),
+        frequency: z.enum(["diaria", "varias_veces_semana", "semanal", "ocasional"]),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        await addUserSymptom(
+          ctx.user.id,
+          input.symptomId,
+          input.severity,
+          input.frequency,
+          input.notes
+        );
+        return { success: true };
+      }),
+
+    updateSymptom: protectedProcedure
+      .input(z.object({
+        userSymptomId: z.number(),
+        severity: z.number().min(1).max(10),
+        frequency: z.enum(["diaria", "varias_veces_semana", "semanal", "ocasional"]),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        await updateUserSymptom(
+          input.userSymptomId,
+          input.severity,
+          input.frequency,
+          input.notes
+        );
+        return { success: true };
+      }),
+
+    deleteSymptom: protectedProcedure
+      .input(z.object({
+        userSymptomId: z.number(),
+      }))
+      .mutation(async ({ input }) => {
+        await deleteUserSymptom(input.userSymptomId);
+        return { success: true };
+      }),
+
+    generateReport: protectedProcedure.query(async ({ ctx }) => {
+      return await generateSymptomReport(ctx.user.id);
+    }),
   }),
 });
 

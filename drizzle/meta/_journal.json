@@ -15,6 +15,13 @@
       "when": 1768164765989,
       "tag": "0001_absent_vin_gonzales",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1768323876517,
+      "tag": "0002_open_pestilence",
+      "breakpoints": true
     }
   ]
 }

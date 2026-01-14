@@ -120,4 +120,56 @@ export const packPremiumProgress = mysqlTable("packPremiumProgress", {
 export type PackPremiumProgress = typeof packPremiumProgress.$inferSelect;
 export type InsertPackPremiumProgress = typeof packPremiumProgress.$inferInsert;
 
+/**
+ * Tabla para los síntomas disponibles en el simulador
+ */
+export const symptoms = mysqlTable("symptoms", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  description: text("description"),
+  category: varchar("category", { length: 100 }).notNull(), // "hormonal", "emocional", "fisico", "sexual"
+  severity: int("severity").default(1).notNull(), // 1-10 escala de severidad
+  commonality: int("commonality").default(50).notNull(), // % de mujeres que lo experimentan
+  recommendations: text("recommendations"), // JSON con recomendaciones
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Symptom = typeof symptoms.$inferSelect;
+export type InsertSymptom = typeof symptoms.$inferInsert;
+
+/**
+ * Tabla para registrar síntomas del usuario
+ */
+export const userSymptoms = mysqlTable("userSymptoms", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().references(() => users.id),
+  symptomId: int("symptomId").notNull().references(() => symptoms.id),
+  severity: int("severity").notNull(), // 1-10 intensidad reportada por el usuario
+  frequency: varchar("frequency", { length: 50 }).notNull(), // "diaria", "varias_veces_semana", "semanal", "ocasional"
+  notes: text("notes"), // Notas adicionales del usuario
+  recordedAt: timestamp("recordedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type UserSymptom = typeof userSymptoms.$inferSelect;
+export type InsertUserSymptom = typeof userSymptoms.$inferInsert;
+
+/**
+ * Tabla para análisis y reportes de síntomas
+ */
+export const symptomReports = mysqlTable("symptomReports", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().references(() => users.id),
+  reportDate: timestamp("reportDate").defaultNow().notNull(),
+  totalSymptoms: int("totalSymptoms").notNull(),
+  averageSeverity: int("averageSeverity").notNull(), // Promedio 1-10
+  mostCommonCategory: varchar("mostCommonCategory", { length: 100 }),
+  recommendations: text("recommendations"), // JSON con recomendaciones personalizadas
+  trend: varchar("trend", { length: 50 }), // "mejorando", "empeorando", "estable"
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type SymptomReport = typeof symptomReports.$inferSelect;
+export type InsertSymptomReport = typeof symptomReports.$inferInsert;
+
 // TODO: Add your tables here
