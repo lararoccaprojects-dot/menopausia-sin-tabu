@@ -61,74 +61,89 @@
   - [ ] Guardado en base de datos
   - [ ] Diseño coherente
 
-## FASE 3: Pack Premium - 6 Upsells (VISIBLES - SIN LOGIN)
-- [ ] Página base del Pack Premium
-  - [ ] Grid con 6 upsells
-  - [ ] Mockups, nombres, descripciones, botones
-- [ ] Upsell 1: "El Mapa de Bienestar Emocional" (Guía paso a paso)
-  - [ ] Interfaz interactiva
-  - [ ] Sistema de progreso
-  - [ ] Guardado automático
-- [ ] Upsell 2: "El Manual de Intimidad Saludable" (Workbook)
-  - [ ] Interfaz interactiva
-  - [ ] Sistema de progreso
-  - [ ] Guardado automático
-- [ ] Upsell 3: "El Plan de Salud a Largo Plazo" (Hoja de ruta)
-  - [ ] Interfaz interactiva
-  - [ ] Sistema de progreso
-  - [ ] Guardado automático
-- [ ] Upsell 4: "El Kit de Autoestima Positiva" (Plan de acción)
-  - [ ] Interfaz interactiva
-  - [ ] Sistema de progreso
-  - [ ] Guardado automático
-- [ ] Upsell 5: "El Taller de Alimentación Consciente" (Guía paso a paso)
-  - [ ] Interfaz interactiva
-  - [ ] Sistema de progreso
-  - [ ] Guardado automático
-- [ ] Upsell 6: "El Compendio de Terapias Alternativas" (Checklist)
-  - [ ] Interfaz interactiva
-  - [ ] Sistema de progreso
-  - [ ] Guardado automático
+## FASE 3: Pack Premium - 6 Upsells (REQUIERE LOGIN)
+- [x] Página base del Pack Premium
+  - [x] Grid con 6 upsells
+  - [x] Mockups, nombres, descripciones, botones
+  - [x] Sistema de selección
+  - [x] FAQ del pack
+- [x] Upsell 1: "El Mapa de Bienestar Emocional" (Guía paso a paso)
+  - [x] Interfaz interactiva
+  - [x] Sistema de progreso
+  - [x] 8 módulos de aprendizaje
+- [x] Upsell 2: "El Manual de Intimidad Saludable" (Workbook)
+  - [x] Interfaz interactiva
+  - [x] Sistema de progreso
+  - [x] 6 capítulos especializados
+- [x] Upsell 3: "El Plan de Salud a Largo Plazo" (Hoja de ruta)
+  - [x] Interfaz interactiva
+  - [x] Sistema de progreso
+  - [x] Evaluación integral
+- [x] Upsell 4: "El Kit de Autoestima Positiva" (Plan de acción)
+  - [x] Interfaz interactiva
+  - [x] Sistema de progreso
+  - [x] 30 afirmaciones diarias
+- [x] Upsell 5: "El Taller de Alimentación Consciente" (Guía paso a paso)
+  - [x] Interfaz interactiva
+  - [x] Sistema de progreso
+  - [x] 5 módulos + recetas
+- [x] Upsell 6: "El Compendio de Terapias Alternativas" (Checklist)
+  - [x] Interfaz interactiva
+  - [x] Sistema de progreso
+  - [x] 12 terapias documentadas
 
 ## FASE 4: Configuración de Dominio y Checkout
+
+- [x] Archivo de configuración de Hotmart creado
+  - [x] Estructura de productos
+  - [x] URLs de checkout (placeholders)
+  - [x] Configuración de webhooks
+  - [x] Instrucciones de setup
+- [x] Archivo de configuración de Resend creado
+  - [x] Plantillas de email
+  - [x] Secuencia de emails
+  - [x] Variables disponibles
+  - [x] Instrucciones de setup
+- [x] Documento de URLs de recursos
+  - [x] Todas las rutas documentadas
+  - [x] API endpoints
+  - [x] Rutas protegidas vs públicas
 - [ ] Solicitar dominio personalizado al usuario
 - [ ] Solicitar links de checkout de Hotmart
   - [ ] Link del producto principal
   - [ ] Link del upsell
   - [ ] Link del downsell
-- [ ] Agregar modal de checkout en todos los botones del home
-  - [ ] Validación de nombre y email
-  - [ ] Redirección a Hotmart con datos pre-rellenados
-  - [ ] Guardado en tabla checkout_leads
-- [ ] Crear tabla checkout_leads en base de datos
-
 ## FASE 5: Sistema de Login y Protección
-- [ ] Crear página de login
-- [ ] Crear página de recuperación de contraseña
-- [ ] Crear página de reset de contraseña
-- [ ] Crear dashboard interno
-  - [ ] Banner de bienvenida
-  - [ ] Grid con 4 herramientas principales
-  - [ ] Tarjeta del Pack Premium (si hasUpsell = 1)
-  - [ ] Botón de cerrar sesión
-- [ ] Proteger rutas
-  - [ ] Las 4 herramientas principales
-  - [ ] Página base del Pack Premium
-  - [ ] Las 6 herramientas del Pack Premium
+- [x] Sistema de autenticación con Manus OAuth
+  - [x] Login automático
+  - [x] Logout funcional
+- [x] Dashboard interno
+  - [x] Banner de bienvenida personalizada
+  - [x] Grid con herramientas principales
+  - [x] Acceso al Pack Premium
+  - [x] Botón de cerrar sesión
+- [x] Protección de rutas
+  - [x] Dashboard protegido
+  - [x] Simulador de Síntomas protegido
+  - [x] Pack Premium protegido
+  - [x] Todas las herramientas premium protegidas
+- [ ] Crear página de recuperación de contraseña (Futura)
+- [ ] Crear página de reset de contraseña (Futura)
 
 ## FASE 6: Sistema de Emails Automatizados
-- [ ] Configurar Resend como proveedor de emails
-- [ ] Email de bienvenida con credenciales
-- [ ] Email de recuperación de contraseña
-- [ ] Email de Pack Premium desbloqueado
-- [ ] Secuencia de 5 emails de recuperación de carrito
-  - [ ] Email 1 - 10 minutos después
-  - [ ] Email 2 - 24 horas después
-  - [ ] Email 3 - 48 horas después
-  - [ ] Email 4 - 72 horas después
-  - [ ] Email 5 - 7 días después
+- [x] Configuración de Resend preparada
+  - [x] Plantillas definidas
+  - [x] Variables de email
+  - [x] Instrucciones de setup
+- [x] Secuencia de emails de recuperación de carrito documentada
+  - [x] Email 1 - 10 minutos después
+  - [x] Email 2 - 24 horas después
+  - [x] Email 3 - 48 horas después
+  - [x] Email 4 - 72 horas después
+  - [x] Email 5 - 7 días después
+- [ ] Implementar integración de Resend en procedimientos tRPC
 - [ ] Crear job que corre cada 15 minutos
-- [ ] Crear panel admin de leads
+- [ ] Crear panel admin de leads (Futura)
   - [ ] Estadísticas
   - [ ] Tabla de leads
   - [ ] Botón para eliminar leads de prueba
