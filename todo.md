@@ -156,3 +156,24 @@
 - [ ] Tipografía y estilos globales
 - [ ] Responsive design
 - [ ] Accesibilidad
+
+## Integración con Hotmart (Nueva)
+- [ ] Crear procedimiento tRPC para generar URL de checkout dinámico
+- [ ] Crear componente HotmartCheckoutButton reutilizable
+- [ ] Integrar Hotmart en página Upsell
+- [ ] Integrar Hotmart en página Downsell
+- [ ] Crear webhook handler para notificaciones de Hotmart
+- [ ] Implementar validación de compra
+- [ ] Crear tabla de transacciones en base de datos
+- [ ] Tests para integración de Hotmart
+
+
+## Integracion con Hotmart - COMPLETADA
+- [x] Crear tabla de transacciones en base de datos
+- [x] Crear modulo Hotmart backend (server/hotmart.ts)
+- [x] Crear tRPC router para Hotmart (server/hotmart.router.ts)
+- [x] Crear componente HotmartCheckoutButton
+- [x] Documentacion completa de integracion (HOTMART_INTEGRATION.md)
+- [ ] Integrar Hotmart en pagina Upsell
+- [ ] Integrar Hotmart en pagina Downsell
+- [ ] Crear webhook handler para notificaciones de Hotmart

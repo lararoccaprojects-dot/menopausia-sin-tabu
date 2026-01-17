@@ -21,9 +21,32 @@ export const users = mysqlTable("users", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
 });
-
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
+
+/**
+ * Tabla de transacciones de Hotmart
+ * Almacena información de compras y webhooks de Hotmart
+ */
+export const hotmartTransactions = mysqlTable("hotmart_transactions", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").references(() => users.id),
+  hotmartTransactionId: varchar("hotmartTransactionId", { length: 255 }).unique(),
+  productId: varchar("productId", { length: 255 }).notNull(),
+  productName: varchar("productName", { length: 255 }).notNull(),
+  price: int("price").notNull(), // Precio en centavos
+  currency: varchar("currency", { length: 10 }).default("USD"),
+  status: mysqlEnum("status", ["pending", "completed", "refunded", "failed"]).default("pending"),
+  buyerName: varchar("buyerName", { length: 255 }),
+  buyerEmail: varchar("buyerEmail", { length: 320 }),
+  paymentMethod: varchar("paymentMethod", { length: 100 }),
+  rawWebhookData: text("rawWebhookData"), // JSON raw data from Hotmart
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type HotmartTransaction = typeof hotmartTransactions.$inferSelect;
+export type InsertHotmartTransaction = typeof hotmartTransactions.$inferInsert;
 
 /**
  * Tabla de suscripciones para control de acceso
