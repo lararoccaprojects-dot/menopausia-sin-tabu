@@ -177,3 +177,11 @@
 - [ ] Integrar Hotmart en pagina Upsell
 - [ ] Integrar Hotmart en pagina Downsell
 - [ ] Crear webhook handler para notificaciones de Hotmart
+
+
+## Mejoras de UX - Mostrar Precios en Botones
+- [x] Agregar precio en botones de Home ($19.99)
+- [x] Agregar precio en botones de Upsell ($39.99 y $9.99)
+- [x] Agregar precio en botones de Downsell ($27.99)
+- [x] Agregar precio en botones de Thank You ($19.99)
+- [x] Agregar precio en botones de Dashboard (pendiente)

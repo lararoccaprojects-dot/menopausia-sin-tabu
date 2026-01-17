@@ -204,7 +204,7 @@ export default function Home() {
             className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-6 text-lg rounded-lg"
             onClick={() => setCheckoutModalOpen(true)}
           >
-            Acceder Ahora
+            Acceder Ahora - Solo $19.99
           </Button>
           <p className="text-sm text-gray-500">Garantía de 7 días • Acceso inmediato</p>
         </div>
@@ -351,7 +351,7 @@ export default function Home() {
             className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-6 text-lg rounded-lg"
             onClick={() => setCheckoutModalOpen(true)}
           >
-            Acceder Ahora - Porque estoy lista para entender mi cuerpo
+            Acceder Ahora - Solo $19.99 • Porque estoy lista para entender mi cuerpo
           </Button>
           <p className="text-sm text-gray-500">Acceso inmediato • Garantía de 7 días • Sin compromisos</p>
         </div>

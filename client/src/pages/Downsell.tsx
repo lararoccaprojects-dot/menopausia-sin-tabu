@@ -54,7 +54,7 @@ export default function Downsell() {
             </div>
 
             <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-8 py-6 text-lg rounded-lg w-full font-bold mb-4">
-              Aprovechar Oferta Ahora
+              Aprovechar Oferta Ahora - Solo $27.99
             </Button>
             <p className="text-center text-sm text-gray-500">
               Esta oferta solo está disponible en esta página

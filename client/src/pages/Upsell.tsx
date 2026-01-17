@@ -133,7 +133,7 @@ export default function Upsell() {
                 <p className="text-gray-600 text-sm">{tool.desc}</p>
                 <div className="mt-4 pt-4 border-t border-pink-200">
                   <Button variant="outline" className="w-full text-pink-500 border-pink-500 hover:bg-pink-50">
-                    Ver herramienta
+                    Ver herramienta - $9.99
                   </Button>
                 </div>
               </Card>
@@ -188,10 +188,10 @@ export default function Upsell() {
             Inversión en tu bienestar
           </h2>
           <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg border-2 border-pink-500 shadow-lg">
-            <div className="text-5xl font-bold text-pink-500 mb-4">$19.99</div>
+            <div className="text-5xl font-bold text-pink-500 mb-4">$39.99</div>
             <p className="text-gray-600 mb-6">Acceso de por vida a todas las herramientas premium</p>
             <Button size="lg" className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-6 text-lg rounded-lg w-full mb-4">
-              Obtener Pack Premium
+              Obtener Pack Premium - $39.99
             </Button>
             <p className="text-sm text-gray-500">Garantía de 7 días • Acceso inmediato</p>
           </div>

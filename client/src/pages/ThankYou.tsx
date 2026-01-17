@@ -101,7 +101,7 @@ export default function ThankYou() {
           {/* CTA */}
           <div className="text-center mb-8">
             <Button size="lg" className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-6 text-lg rounded-lg">
-              Abrir mi email
+              Abrir mi email - Acceso a $19.99
             </Button>
           </div>
 
