@@ -47,14 +47,14 @@ export default function Downsell() {
 
             <div className="flex items-center justify-center gap-4 mb-8">
               <div className="text-center">
-                <div className="text-sm text-gray-500 line-through">$19.99</div>
-                <div className="text-4xl font-bold text-pink-500">$9.99</div>
+                <div className="text-sm text-gray-500 line-through">$39.99</div>
+                <div className="text-4xl font-bold text-pink-500">$19.99</div>
               </div>
               <Zap className="w-8 h-8 text-yellow-500" />
             </div>
 
             <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-8 py-6 text-lg rounded-lg w-full font-bold mb-4">
-              Aprovechar Oferta Ahora - Solo $27.99
+              Aprovecha Oferta - Solo Hoy $19.99
             </Button>
             <p className="text-center text-sm text-gray-500">
               Esta oferta solo está disponible en esta página
@@ -88,7 +88,7 @@ export default function Downsell() {
               },
               {
                 item: "Pack Premium (HOY)",
-                price: "$9.99",
+                price: "$19.99",
                 icon: "✨",
                 highlight: true
               }
