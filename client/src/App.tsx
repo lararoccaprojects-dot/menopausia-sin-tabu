@@ -12,6 +12,14 @@ import SymptomSimulator from "./pages/SymptomSimulator";
 import Dashboard from "./pages/Dashboard";
 import PremiumPack from "./pages/PremiumPack";
 import EmotionalWellness from "./pages/EmotionalWellness";
+import ResourceGuide from "./pages/ResourceGuide";
+import WellnessExercises from "./pages/WellnessExercises";
+import Forum from "./pages/Forum";
+import IntimacyManual from "./pages/IntimacyManual";
+import LongTermHealthPlan from "./pages/LongTermHealthPlan";
+import SelfEsteemKit from "./pages/SelfEsteemKit";
+import NutritionWorkshop from "./pages/NutritionWorkshop";
+import AlternativeTherapies from "./pages/AlternativeTherapies";
 
 function Router() {
   return (
@@ -27,10 +35,18 @@ function Router() {
       
       {/* Protected Pages - Main Tools */}
       <Route path={"/simulador-sintomas"} component={SymptomSimulator} />
+      <Route path={"/guia-recursos"} component={ResourceGuide} />
+      <Route path={"/ejercicios-bienestar"} component={WellnessExercises} />
+      <Route path={"/foro"} component={Forum} />
       
       {/* Protected Pages - Premium Pack */}
       <Route path={"/premium-pack"} component={PremiumPack} />
       <Route path={"/premium/emotional-wellness"} component={EmotionalWellness} />
+      <Route path={"/premium/intimacy-manual"} component={IntimacyManual} />
+      <Route path={"/premium/long-term-health"} component={LongTermHealthPlan} />
+      <Route path={"/premium/self-esteem"} component={SelfEsteemKit} />
+      <Route path={"/premium/nutrition"} component={NutritionWorkshop} />
+      <Route path={"/premium/alternative-therapies"} component={AlternativeTherapies} />
       
       {/* Error Pages */}
       <Route path={"/404"} component={NotFound} />
