@@ -5,6 +5,9 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Upsell from "./pages/Upsell";
+import Downsell from "./pages/Downsell";
+import ThankYou from "./pages/ThankYou";
 import SymptomSimulator from "./pages/SymptomSimulator";
 import Dashboard from "./pages/Dashboard";
 import PremiumPack from "./pages/PremiumPack";
@@ -15,6 +18,9 @@ function Router() {
     <Switch>
       {/* Public Pages */}
       <Route path={"/"} component={Home} />
+      <Route path={"/upsell"} component={Upsell} />
+      <Route path={"/downsell"} component={Downsell} />
+      <Route path={"/thank-you"} component={ThankYou} />
       
       {/* Protected Pages - Dashboard */}
       <Route path={"/dashboard"} component={Dashboard} />
