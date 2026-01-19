@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Heart, ChevronDown, ChevronUp, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
@@ -126,6 +126,20 @@ export default function Upsell2IntimacyManual() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-pink-50">
+      {/* Valor Inicial */}
+      <div className="container mx-auto px-4 py-8">
+        <Card className="border-2 border-rose-200 bg-gradient-to-r from-rose-50 to-white mb-8">
+          <CardContent className="pt-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900">Por qué usar el Manual de Intimidad Saludable</h3>
+              <p className="text-gray-700 leading-relaxed">
+                La intimidad durante la menopausia puede cambiar, pero no tiene que desaparecer. Este manual aborda 6 capítulos sobre comunicación con tu pareja, soluciones naturales para sequedad vaginal, reavivar la pasión y disfrutar plenamente.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Header */}
       <div className="bg-white border-b border-rose-200 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-6">

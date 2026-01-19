@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Leaf, ChevronDown, ChevronUp, ArrowLeft, CheckCircle2, Star } from "lucide-react";
 import { useState } from "react";
@@ -232,6 +232,20 @@ export default function Upsell6AlternativeTherapies() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-cyan-50">
+      {/* Valor Inicial */}
+      <div className="container mx-auto px-4 py-8">
+        <Card className="border-2 border-indigo-200 bg-gradient-to-r from-indigo-50 to-white mb-8">
+          <CardContent className="pt-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900">Por qué usar el Compendio de Terapias Alternativas</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Más allá de lo convencional. Este compendio documenta 12 terapias alternativas con guías detalladas de "cómo hacer", información de seguridad y recomendaciones personalizadas según tus síntomas específicos.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Header */}
       <div className="bg-white border-b border-teal-200 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-6">

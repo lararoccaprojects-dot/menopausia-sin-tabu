@@ -199,7 +199,21 @@ export default function Forum() {
   if (selectedThread && selectedThreadData) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-pink-50">
-        {/* Header */}
+        {/* Valor Inicial */}
+      <div className="container mx-auto px-4 py-8">
+        <Card className="border-2 border-purple-200 bg-gradient-to-r from-purple-50 to-white mb-8">
+          <CardContent className="pt-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900">Por qué usar el Foro Comunitario</h3>
+              <p className="text-gray-700 leading-relaxed">
+                No estás sola en esto. El foro conecta a mujeres en tu misma situación con respuestas de expertos (ginecólogas, psicólogas, nutricionistas). Comparte experiencias, haz preguntas y aprende de otras mujeres.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Header */}
         <div className="bg-white border-b border-blue-200 shadow-sm sticky top-0 z-40">
           <div className="container mx-auto px-4 py-6">
             <Button

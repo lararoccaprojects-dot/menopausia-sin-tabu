@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { TrendingUp, ChevronDown, ChevronUp, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
@@ -168,6 +168,20 @@ export default function Upsell3LongTermHealth() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
+      {/* Valor Inicial */}
+      <div className="container mx-auto px-4 py-8">
+        <Card className="border-2 border-teal-200 bg-gradient-to-r from-teal-50 to-white mb-8">
+          <CardContent className="pt-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900">Por qué usar el Plan de Salud a Largo Plazo</h3>
+              <p className="text-gray-700 leading-relaxed">
+                La menopausia es el inicio de una nueva fase. Este plan te ayuda a evaluar tu salud integral y crear una hoja de ruta para los próximos 20-30 años, previniendo enfermedades y viviendo con vitalidad.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Header */}
       <div className="bg-white border-b border-emerald-200 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-6">

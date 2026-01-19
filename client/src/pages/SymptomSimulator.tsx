@@ -146,6 +146,36 @@ export default function SymptomSimulator() {
           </p>
         </div>
 
+        {/* Valor Inicial */}
+        <Card className="mb-8 border-2 border-pink-200 bg-gradient-to-r from-pink-50 to-white">
+          <CardContent className="pt-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900">Por qué usar el Simulador de Síntomas</h3>
+              <p className="text-gray-700 leading-relaxed">
+                La menopausia afecta a cada mujer de manera diferente. Este simulador te ayuda a identificar exactamente qué síntomas experimentas, su intensidad y frecuencia.
+              </p>
+              <ul className="space-y-2 ml-4">
+                <li className="flex items-start gap-3">
+                  <span className="text-pink-500 font-bold">✓</span>
+                  <span className="text-gray-700">Entender tu cuerpo y descubrir patrones</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-pink-500 font-bold">✓</span>
+                  <span className="text-gray-700">Tomar decisiones informadas sobre tratamientos</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-pink-500 font-bold">✓</span>
+                  <span className="text-gray-700">Comunicar con tu médico de forma clara</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-pink-500 font-bold">✓</span>
+                  <span className="text-gray-700">Recibir recomendaciones personalizadas</span>
+                </li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">

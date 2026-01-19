@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Sparkles, ChevronDown, ChevronUp, ArrowLeft, CheckCircle2, Heart, BookOpen, Download } from "lucide-react";
 import { useState } from "react";
@@ -245,6 +245,20 @@ export default function Upsell4SelfEsteemKit() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-orange-50">
+      {/* Valor Inicial */}
+      <div className="container mx-auto px-4 py-8">
+        <Card className="border-2 border-amber-200 bg-gradient-to-r from-amber-50 to-white mb-8">
+          <CardContent className="pt-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900">Por qué usar el Kit de Autoestima Positiva</h3>
+              <p className="text-gray-700 leading-relaxed">
+                Tu valor no disminuye con la edad. Este kit incluye 30 afirmaciones diarias y un plan de 8 semanas para aprender a decir "no" sin culpa, establecer límites saludables y recuperar tu poder personal.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Header */}
       <div className="bg-white border-b border-amber-200 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-6">

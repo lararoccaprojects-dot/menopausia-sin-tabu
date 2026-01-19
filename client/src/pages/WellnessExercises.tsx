@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Dumbbell, Play, Clock, Zap, ArrowLeft, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
@@ -168,6 +168,20 @@ export default function WellnessExercises() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-green-50">
+      {/* Valor Inicial */}
+      <div className="container mx-auto px-4 py-8">
+        <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-white mb-8">
+          <CardContent className="pt-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900">Por qué usar Ejercicios de Bienestar</h3>
+              <p className="text-gray-700 leading-relaxed">
+                El movimiento es medicina. Estos ejercicios están diseñados específicamente para mujeres en menopausia, combinando yoga, pilates, respiración y meditación para aliviar síntomas y fortalecer cuerpo y mente.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Header */}
       <div className="bg-white border-b border-pink-200 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-6">

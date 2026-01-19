@@ -301,6 +301,20 @@ Si el insomnio persiste más de 2 semanas, consulta con tu médico.`,
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-green-50">
+      {/* Valor Inicial */}
+      <div className="container mx-auto px-4 py-8">
+        <Card className="border-2 border-green-200 bg-gradient-to-r from-green-50 to-white mb-8">
+          <CardContent className="pt-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-gray-900">Por qué usar la Guía de Recursos</h3>
+              <p className="text-gray-700 leading-relaxed">
+                La información clara y confiable es tu mejor aliada. Esta guía te proporciona información basada en evidencia, opciones de tratamiento con pros y contras, estrategias prácticas y recursos descargables.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Header */}
       <div className="bg-white border-b border-pink-200 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-6">
