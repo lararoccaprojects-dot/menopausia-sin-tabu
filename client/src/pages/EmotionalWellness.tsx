@@ -1,181 +1,245 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useLocation } from "wouter";
-import { ArrowLeft, CheckCircle, Lock } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { Heart, ArrowLeft, CheckCircle2, Unlock } from "lucide-react";
 import { useState } from "react";
+import { useLocation } from "wouter";
+
+interface Module {
+  id: number;
+  title: string;
+  description: string;
+  lessons: number;
+  duration: string;
+  content: string;
+}
 
 export default function EmotionalWellness() {
-  const { isAuthenticated } = useAuth();
+  const { user } = useAuth();
   const [, setLocation] = useLocation();
-  const [completedModules, setCompletedModules] = useState<string[]>([]);
+  const [completedModules, setCompletedModules] = useState<number[]>([]);
+  const [selectedModule, setSelectedModule] = useState<Module | null>(null);
 
-  if (!isAuthenticated) {
+  const modules: Module[] = [
+    {
+      id: 1,
+      title: "Entendiendo tus Emociones",
+      description: "Aprende a identificar y comprender tus cambios emocionales durante la menopausia",
+      lessons: 4,
+      duration: "45 min",
+      content: "Los cambios hormonales afectan directamente tu estado emocional. En este módulo aprenderás: 1) Cómo los cambios de estrógeno impactan tu cerebro, 2) Identificar patrones emocionales, 3) Técnicas de regulación emocional, 4) Cuándo buscar ayuda profesional."
+    },
+    {
+      id: 2,
+      title: "Manejo del Estrés y la Ansiedad",
+      description: "Estrategias prácticas para reducir estrés y ansiedad en tu día a día",
+      lessons: 5,
+      duration: "60 min",
+      content: "El estrés durante la menopausia puede ser abrumador. Aprenderás: 1) Técnicas de respiración avanzadas, 2) Meditación guiada, 3) Progresión muscular progresiva, 4) Gestión del tiempo, 5) Creación de rutinas de autocuidado."
+    },
+    {
+      id: 3,
+      title: "Autoestima y Aceptación",
+      description: "Reconstruye tu confianza y aprende a aceptar los cambios de tu cuerpo",
+      lessons: 4,
+      duration: "50 min",
+      content: "La menopausia trae cambios corporales. Este módulo te ayuda a: 1) Reencuadrar tu relación con tu cuerpo, 2) Prácticas de amor propio, 3) Afirmaciones poderosas, 4) Celebrar tu sabiduría y experiencia."
+    },
+    {
+      id: 4,
+      title: "Relaciones y Comunicación",
+      description: "Mejora tus relaciones personales durante esta etapa de cambio",
+      lessons: 5,
+      duration: "55 min",
+      content: "Las relaciones pueden verse afectadas. Aprenderás: 1) Comunicación asertiva, 2) Establecer límites saludables, 3) Hablar con tu pareja sobre la menopausia, 4) Apoyo familiar, 5) Construir una comunidad de apoyo."
+    },
+    {
+      id: 5,
+      title: "Resiliencia y Fortaleza",
+      description: "Desarrolla herramientas para enfrentar desafíos con mayor fortaleza",
+      lessons: 4,
+      duration: "45 min",
+      content: "La resiliencia es clave. Descubrirás: 1) Historias de mujeres resilientes, 2) Técnicas de reencuadre cognitivo, 3) Construcción de redes de apoyo, 4) Planes de acción para crisis emocionales."
+    },
+    {
+      id: 6,
+      title: "Propósito y Significado",
+      description: "Redescubre tu propósito y crea una vida significativa en esta nueva etapa",
+      lessons: 4,
+      duration: "50 min",
+      content: "La menopausia es una oportunidad. Explorarás: 1) Redefinir tu identidad, 2) Descubrir nuevas pasiones, 3) Contribución a la comunidad, 4) Crear una visión para los próximos 30 años."
+    },
+    {
+      id: 7,
+      title: "Mindfulness y Presencia",
+      description: "Practica mindfulness para vivir más presente y consciente",
+      lessons: 5,
+      duration: "60 min",
+      content: "La presencia es poder. Aprenderás: 1) Meditación mindfulness, 2) Conciencia corporal, 3) Alimentación consciente, 4) Movimiento consciente, 5) Integración en la vida diaria."
+    },
+    {
+      id: 8,
+      title: "Celebración y Transformación",
+      description: "Celebra tu transformación y crea un plan para tu nuevo capítulo",
+      lessons: 3,
+      duration: "40 min",
+      content: "Tu transformación es digna de celebración. En este módulo: 1) Reflexión sobre tu viaje, 2) Celebración de logros, 3) Creación de rituales de transición, 4) Visión para tu futuro radiante."
+    }
+  ];
+
+  const toggleComplete = (id: number) => {
+    setCompletedModules(prev =>
+      prev.includes(id) ? prev.filter(m => m !== id) : [...prev, id]
+    );
+  };
+
+  const completionPercentage = Math.round((completedModules.length / modules.length) * 100);
+
+  if (selectedModule) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-pink-50 to-green-50 flex items-center justify-center p-4">
-        <Card className="max-w-md">
-          <CardHeader>
-            <CardTitle>Acceso Restringido</CardTitle>
-            <CardDescription>Necesitas estar autenticada para acceder a esta herramienta</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button className="w-full bg-pink-500 hover:bg-pink-600" onClick={() => setLocation("/dashboard")}>
-              Volver al Dashboard
+      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+        {/* Header */}
+        <div className="bg-white border-b border-pink-200 shadow-sm sticky top-0 z-40">
+          <div className="container mx-auto px-4 py-6">
+            <Button
+              variant="ghost"
+              onClick={() => setSelectedModule(null)}
+              className="flex items-center gap-2 mb-4"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Volver
             </Button>
-          </CardContent>
-        </Card>
+            <h1 className="text-3xl font-bold text-gray-900">{selectedModule.title}</h1>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 py-12">
+          <Card className="p-8 border-2 border-pink-200 mb-8">
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <p className="text-gray-600 mb-2">{selectedModule.description}</p>
+                <div className="flex gap-4 text-sm text-gray-600">
+                  <span>📚 {selectedModule.lessons} lecciones</span>
+                  <span>⏱️ {selectedModule.duration}</span>
+                </div>
+              </div>
+              <Button
+                onClick={() => toggleComplete(selectedModule.id)}
+                className={`${
+                  completedModules.includes(selectedModule.id)
+                    ? "bg-green-600 hover:bg-green-700"
+                    : "bg-pink-600 hover:bg-pink-700"
+                } text-white`}
+              >
+                {completedModules.includes(selectedModule.id) ? "✓ Completado" : "Marcar como Completado"}
+              </Button>
+            </div>
+
+            <div className="prose prose-sm max-w-none">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Contenido del Módulo</h2>
+              <p className="text-gray-700 whitespace-pre-wrap">{selectedModule.content}</p>
+            </div>
+
+            <div className="mt-8 p-6 bg-pink-50 rounded-lg border border-pink-200">
+              <h3 className="font-bold text-gray-900 mb-3">Ejercicio Práctico</h3>
+              <p className="text-gray-700 mb-4">
+                Tómate 10 minutos para reflexionar sobre lo que aprendiste. Escribe 3 acciones que puedas implementar hoy mismo.
+              </p>
+              <textarea
+                placeholder="Mis 3 acciones de hoy..."
+                className="w-full p-3 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                rows={4}
+              />
+              <Button className="mt-4 bg-pink-600 hover:bg-pink-700 text-white w-full">
+                Guardar Reflexión
+              </Button>
+            </div>
+          </Card>
+        </div>
       </div>
     );
   }
 
-  const modules = [
-    {
-      id: "module-1",
-      title: "Entendiendo tus Emociones",
-      description: "Aprende cómo la menopausia afecta tus emociones y por qué",
-      duration: "20 min",
-      locked: false,
-    },
-    {
-      id: "module-2",
-      title: "Técnicas de Regulación Emocional",
-      description: "5 técnicas prácticas para manejar emociones intensas",
-      duration: "25 min",
-      locked: false,
-    },
-    {
-      id: "module-3",
-      title: "Mindfulness para la Menopausia",
-      description: "Meditaciones guiadas especializadas",
-      duration: "15 min",
-      locked: false,
-    },
-    {
-      id: "module-4",
-      title: "Gestión del Estrés y la Ansiedad",
-      description: "Estrategias comprobadas para reducir ansiedad",
-      duration: "30 min",
-      locked: false,
-    },
-    {
-      id: "module-5",
-      title: "Comunicación Emocional",
-      description: "Cómo expresar tus sentimientos efectivamente",
-      duration: "25 min",
-      locked: false,
-    },
-    {
-      id: "module-6",
-      title: "Construyendo Resiliencia",
-      description: "Fortalece tu capacidad de adaptación",
-      duration: "20 min",
-      locked: false,
-    },
-    {
-      id: "module-7",
-      title: "Diario Emocional Interactivo",
-      description: "Herramienta para registrar y analizar tus emociones",
-      duration: "Acceso ilimitado",
-      locked: false,
-    },
-    {
-      id: "module-8",
-      title: "Comunidad Privada de Apoyo",
-      description: "Conecta con otras mujeres en tu mismo camino",
-      duration: "Acceso ilimitado",
-      locked: false,
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-green-50 py-12">
-      <div className="container mx-auto px-4 max-w-4xl">
-        {/* Header */}
-        <div className="mb-8">
-          <Button
-            variant="ghost"
-            className="mb-4"
-            onClick={() => setLocation("/premium-pack")}
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Volver al Pack Premium
-          </Button>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">El Mapa de Bienestar Emocional</h1>
-          <p className="text-lg text-gray-600">Guía paso a paso para entender y regular tus emociones durante la menopausia</p>
-        </div>
-
-        {/* Progress */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Tu Progreso</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="w-full bg-gray-200 rounded-full h-4">
-              <div
-                className="bg-pink-500 h-4 rounded-full transition-all"
-                style={{ width: `${(completedModules.length / modules.length) * 100}%` }}
-              ></div>
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      {/* Header */}
+      <div className="bg-white border-b border-pink-200 shadow-sm sticky top-0 z-40">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <Heart className="w-8 h-8 text-pink-600" />
+              <h1 className="text-3xl font-bold text-gray-900">Bienestar Emocional</h1>
             </div>
-            <p className="text-sm text-gray-600 mt-2">
-              {completedModules.length} de {modules.length} módulos completados
-            </p>
-          </CardContent>
+            <Button
+              variant="ghost"
+              onClick={() => setLocation("/dashboard")}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Volver
+            </Button>
+          </div>
+          <p className="text-gray-600">
+            8 módulos de aprendizaje para fortalecer tu salud emocional durante la menopausia
+          </p>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-12">
+        {/* Progress */}
+        <Card className="p-6 mb-8 border-2 border-pink-200 bg-pink-50">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-bold text-gray-900">Tu Progreso</h2>
+            <span className="text-2xl font-bold text-pink-600">{completionPercentage}%</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-3">
+            <div
+              className="bg-gradient-to-r from-pink-500 to-pink-600 h-3 rounded-full transition-all duration-300"
+              style={{ width: `${completionPercentage}%` }}
+            ></div>
+          </div>
+          <p className="text-sm text-gray-600 mt-2">
+            {completedModules.length} de {modules.length} módulos completados
+          </p>
         </Card>
 
         {/* Modules Grid */}
-        <div className="grid gap-4 mb-8">
-          {modules.map((module) => {
-            const isCompleted = completedModules.includes(module.id);
+        <div className="grid md:grid-cols-2 gap-6">
+          {modules.map(module => (
+            <Card
+              key={module.id}
+              className={`p-6 border-2 transition-all cursor-pointer ${
+                completedModules.includes(module.id)
+                  ? "border-green-400 bg-green-50"
+                  : "border-pink-100 hover:border-pink-400"
+              }`}
+              onClick={() => setSelectedModule(module)}
+            >
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900">{module.title}</h3>
+                  <p className="text-sm text-gray-600 mt-1">{module.description}</p>
+                </div>
+                {completedModules.includes(module.id) ? (
+                  <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 ml-2" />
+                ) : (
+                  <Unlock className="w-6 h-6 text-pink-600 flex-shrink-0 ml-2" />
+                )}
+              </div>
 
-            return (
-              <Card key={module.id} className="hover:shadow-lg transition">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <CardTitle className="text-lg">{module.title}</CardTitle>
-                        {isCompleted && <CheckCircle className="w-5 h-5 text-green-500" />}
-                        {module.locked && <Lock className="w-5 h-5 text-gray-400" />}
-                      </div>
-                      <CardDescription>{module.description}</CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">⏱️ {module.duration}</span>
-                    <Button
-                      className={isCompleted ? "bg-green-500 hover:bg-green-600" : "bg-pink-500 hover:bg-pink-600"}
-                      onClick={() => {
-                        if (!isCompleted) {
-                          setCompletedModules([...completedModules, module.id]);
-                        }
-                      }}
-                      disabled={module.locked}
-                    >
-                      {isCompleted ? "✓ Completado" : "Comenzar"}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+              <div className="flex gap-4 text-sm text-gray-600 mb-4">
+                <span>📚 {module.lessons} lecciones</span>
+                <span>⏱️ {module.duration}</span>
+              </div>
+
+              <Button className="w-full bg-pink-600 hover:bg-pink-700 text-white">
+                {completedModules.includes(module.id) ? "Ver Módulo" : "Comenzar Módulo"}
+              </Button>
+            </Card>
+          ))}
         </div>
-
-        {/* CTA */}
-        <Card className="bg-gradient-to-r from-pink-100 to-red-100 border-pink-300">
-          <CardHeader>
-            <CardTitle>¿Necesitas ayuda?</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-gray-700 mb-4">
-              Si tienes preguntas sobre cualquier módulo, puedes acceder a nuestra comunidad privada o contactar con nuestro equipo de apoyo.
-            </p>
-            <Button className="bg-pink-500 hover:bg-pink-600">
-              Contactar Soporte
-            </Button>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );
