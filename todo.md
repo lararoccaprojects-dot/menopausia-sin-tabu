@@ -49,17 +49,20 @@
   - [x] Placeholders para futuras herramientas
   - [x] Sistema de logout
 - [ ] Guía de Recursos
-  - [ ] Interfaz interactiva
-  - [ ] Guardado en base de datos
-  - [ ] Diseño coherente
+  - [ ] 6 guías con contenido completo
+  - [ ] PDFs descargables
+  - [ ] Sistema de búsqueda funcional
+  - [ ] Marcadores favoritos
 - [ ] Ejercicios de Bienestar
-  - [ ] Interfaz interactiva
-  - [ ] Guardado en base de datos
-  - [ ] Diseño coherente
+  - [ ] 8 ejercicios con instrucciones detalladas
+  - [ ] Videos o imágenes demostrativas
+  - [ ] Beneficios específicos
+  - [ ] Seguimiento de progreso
 - [ ] Foro de Preguntas y Respuestas
-  - [ ] Interfaz interactiva
-  - [ ] Guardado en base de datos
-  - [ ] Diseño coherente
+  - [ ] 6+ threads con contenido real
+  - [ ] Respuestas detalladas
+  - [ ] Sistema de votación
+  - [ ] Búsqueda y filtrado
 
 ## FASE 3: Pack Premium - 6 Upsells (REQUIERE LOGIN)
 - [x] Página base del Pack Premium
