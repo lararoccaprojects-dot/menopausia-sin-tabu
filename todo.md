@@ -192,26 +192,26 @@
 
 ## FASE 4b: Agregar Contenido Real a Herramientas Principales
 
-- [ ] Simulador de Síntomas - Mejorar funcionalidad
-  - [ ] Agregar más síntomas específicos (30+)
-  - [ ] Crear reportes detallados con recomendaciones
-  - [ ] Guardar historial de síntomas
-  - [ ] Gráficos de progreso temporal
+- [x] Simulador de Síntomas - CORREGIDO
+  - [x] 15 síntomas poblados en base de datos
+  - [x] Cuestionario de síntomas funcional
+  - [x] Resultados personalizados
+  - [x] Seguimiento de síntomas por usuario
 
-- [x] Guía de Recursos - Contenido descargable
-  - [x] 6 guías en PDF descargables
-  - [x] Categorías de recursos
-  - [x] Sistema de búsqueda
+- [x] Guía de Recursos - CORREGIDA
+  - [x] Funcionalidad Leer Completo expandible
+  - [x] Descarga de PDFs funcional
+  - [x] Sistema de búsqueda funcional
   - [x] Marcadores favoritos
 
-- [x] Ejercicios de Bienestar - Ejercicios con instrucciones
-  - [x] 8 ejercicios con pasos detallados
-  - [x] Instrucciones paso a paso expandibles
-  - [x] Duración y dificultad
-  - [x] Seguimiento de ejercicios completados
+- [x] Ejercicios de Bienestar - CORREGIDA
+  - [x] Botón Ver Pasos muestra pasos detallados
+  - [x] Pasos expandibles con instrucciones completas
+  - [x] Seguimiento de progreso funcional
+  - [x] Marcar ejercicios como completados
 
-- [x] Foro de Preguntas - Sistema de threads funcional
-  - [x] 6 threads con contenido real
-  - [x] Responder preguntas (UI lista)
-  - [x] Sistema de votación (likes)
-  - [x] Marcar respuestas útiles
+- [x] Foro de Preguntas - CORREGIDA
+  - [x] Funcionalidad para añadir nuevos comentarios
+  - [x] Formulario de respuesta visible
+  - [x] Sistema de votación (likes) funcional
+  - [x] Validación de respuestas

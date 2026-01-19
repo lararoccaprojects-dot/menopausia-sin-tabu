@@ -1,15 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { Dumbbell, Play, Clock, Zap, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Dumbbell, Play, Clock, Zap, ArrowLeft, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "wouter";
+import { toast } from "sonner";
 
 export default function WellnessExercises() {
   const { user } = useAuth();
   const [, setLocation] = useLocation();
   const [completedExercises, setCompletedExercises] = useState<number[]>([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
+  const [expandedExercise, setExpandedExercise] = useState<number | null>(null);
 
   const exercises = [
     {
@@ -18,7 +20,14 @@ export default function WellnessExercises() {
       difficulty: "beginner",
       duration: 5,
       description: "Técnica de respiración para controlar los sofocos y la ansiedad",
-      instructions: "Inhala profundamente por la nariz durante 4 segundos, mantén durante 4 segundos, exhala durante 6 segundos. Repite 10 veces.",
+      steps: [
+        "Siéntate en una posición cómoda con la espalda recta",
+        "Inhala profundamente por la nariz durante 4 segundos",
+        "Mantén la respiración durante 4 segundos",
+        "Exhala lentamente por la boca durante 6 segundos",
+        "Repite este ciclo 10 veces",
+        "Descansa y respira normalmente"
+      ],
       benefits: ["Reduce sofocos", "Calma la ansiedad", "Mejora la oxigenación"]
     },
     {
@@ -27,7 +36,14 @@ export default function WellnessExercises() {
       difficulty: "beginner",
       duration: 15,
       description: "Secuencia suave de yoga para relajación, flexibilidad y equilibrio",
-      instructions: "Realiza las posturas de forma lenta y consciente, manteniendo cada una por 1-2 minutos. Enfócate en la respiración.",
+      steps: [
+        "Comienza en posición de loto o sentada cómodamente",
+        "Realiza la postura del gato-vaca (5 repeticiones)",
+        "Pasa a la postura del niño (1-2 minutos)",
+        "Realiza la postura de la paloma (1 minuto cada lado)",
+        "Termina en postura de cadáver (5 minutos)",
+        "Respira profundamente durante toda la secuencia"
+      ],
       benefits: ["Aumenta flexibilidad", "Reduce estrés", "Mejora el sueño"]
     },
     {
@@ -36,7 +52,14 @@ export default function WellnessExercises() {
       difficulty: "intermediate",
       duration: 20,
       description: "Ejercicios para fortalecer el core, mejorar postura y prevenir dolor de espalda",
-      instructions: "Realiza 3 series de 10 repeticiones de cada ejercicio con descansos de 30 segundos. Mantén la estabilidad.",
+      steps: [
+        "Calienta con 5 minutos de movimiento suave",
+        "Realiza 3 series de 10 planchas (30 segundos cada una)",
+        "Realiza 3 series de 10 abdominales cruzados",
+        "Realiza 3 series de 10 elevaciones de pelvis",
+        "Descansa 30 segundos entre series",
+        "Estira el core durante 2 minutos"
+      ],
       benefits: ["Fortalece abdominales", "Mejora postura", "Previene dolor de espalda"]
     },
     {
@@ -45,7 +68,14 @@ export default function WellnessExercises() {
       difficulty: "beginner",
       duration: 30,
       description: "Caminata meditativa para conectar con tu cuerpo y reducir estrés",
-      instructions: "Camina a paso moderado, enfocándote en cada paso y en tu respiración. Observa tu entorno sin juzgar.",
+      steps: [
+        "Elige un lugar tranquilo para caminar",
+        "Comienza caminando a paso moderado",
+        "Enfócate en cada paso y en tu respiración",
+        "Observa tu entorno sin juzgar",
+        "Si tu mente se distrae, trae la atención al presente",
+        "Camina durante 30 minutos sin interrupciones"
+      ],
       benefits: ["Mejora cardiovascular", "Reduce estrés", "Aumenta energía"]
     },
     {
@@ -54,7 +84,14 @@ export default function WellnessExercises() {
       difficulty: "intermediate",
       duration: 25,
       description: "Ejercicios de pilates adaptados para fortalecer músculos y mejorar equilibrio",
-      instructions: "Realiza los movimientos de forma controlada, enfocándote en la estabilidad y la respiración. Sin prisa.",
+      steps: [
+        "Calienta con movimientos suaves de cuello y hombros",
+        "Realiza 10 círculos de cadera en cada dirección",
+        "Realiza 3 series de 10 rolls hacia adelante",
+        "Realiza 3 series de 10 levantamientos de pierna",
+        "Realiza 3 series de 10 extensiones de espalda",
+        "Estira y relaja durante 3 minutos"
+      ],
       benefits: ["Fortalece músculos", "Mejora equilibrio", "Aumenta densidad ósea"]
     },
     {
@@ -63,7 +100,14 @@ export default function WellnessExercises() {
       difficulty: "beginner",
       duration: 10,
       description: "Rutina de estiramientos para liberar tensión muscular y mejorar flexibilidad",
-      instructions: "Mantén cada estiramiento por 30 segundos sin rebotar. Respira profundamente durante cada estiramiento.",
+      steps: [
+        "Estira los brazos hacia arriba durante 30 segundos",
+        "Inclínate hacia adelante y toca los dedos de los pies (30 segundos)",
+        "Estira los cuádriceps de cada pierna (30 segundos cada uno)",
+        "Estira los glúteos en posición de paloma (30 segundos cada lado)",
+        "Estira los hombros cruzando un brazo sobre el pecho (30 segundos cada uno)",
+        "Termina con estiramientos de cuello suave (30 segundos)"
+      ],
       benefits: ["Reduce tensión muscular", "Mejora flexibilidad", "Calma el cuerpo"]
     },
     {
@@ -72,7 +116,14 @@ export default function WellnessExercises() {
       difficulty: "beginner",
       duration: 10,
       description: "Fortalecimiento del suelo pélvico para mejorar salud sexual y urinaria",
-      instructions: "Contrae los músculos del suelo pélvico durante 3 segundos, relaja durante 3 segundos. Repite 10 veces, 3 series.",
+      steps: [
+        "Identifica los músculos del suelo pélvico (detén el flujo de orina)",
+        "Contrae estos músculos durante 3 segundos",
+        "Relaja durante 3 segundos",
+        "Repite 10 veces (esta es una serie)",
+        "Realiza 3 series con descansos de 1 minuto entre ellas",
+        "Practica 3 veces al día para mejores resultados"
+      ],
       benefits: ["Mejora incontinencia", "Aumenta placer sexual", "Fortalece suelo pélvico"]
     },
     {
@@ -81,7 +132,14 @@ export default function WellnessExercises() {
       difficulty: "beginner",
       duration: 15,
       description: "Meditación para calmar la mente, reducir ansiedad y aumentar bienestar",
-      instructions: "Siéntate cómodamente, cierra los ojos y sigue tu respiración. Observa los pensamientos sin juzgar.",
+      steps: [
+        "Siéntate cómodamente en un lugar tranquilo",
+        "Cierra los ojos y toma 3 respiraciones profundas",
+        "Enfócate en tu respiración natural",
+        "Cuando surjan pensamientos, obsérvalos sin juzgar",
+        "Deja que los pensamientos pasen como nubes",
+        "Mantén esta práctica durante 15 minutos"
+      ],
       benefits: ["Reduce ansiedad", "Mejora enfoque", "Aumenta bienestar"]
     }
   ];
@@ -101,6 +159,9 @@ export default function WellnessExercises() {
     setCompletedExercises(prev =>
       prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
     );
+    if (!completedExercises.includes(id)) {
+      toast.success("¡Ejercicio completado!");
+    }
   };
 
   const completionPercentage = Math.round((completedExercises.length / exercises.length) * 100);
@@ -150,76 +211,114 @@ export default function WellnessExercises() {
         </Card>
 
         {/* Difficulty Filter */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="mb-8 flex flex-wrap gap-2">
           {difficulties.map(diff => (
-            <button
+            <Button
               key={diff.id}
+              variant={selectedDifficulty === diff.id ? "default" : "outline"}
+              className={selectedDifficulty === diff.id ? "bg-pink-500 hover:bg-pink-600" : ""}
               onClick={() => setSelectedDifficulty(diff.id)}
-              className={`px-4 py-2 rounded-full transition-colors ${
-                selectedDifficulty === diff.id
-                  ? "bg-pink-500 text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
             >
               {diff.label}
-            </button>
+            </Button>
           ))}
         </div>
 
         {/* Exercises Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {filteredExercises.map(exercise => (
-            <Card
-              key={exercise.id}
-              className={`p-6 border-2 transition-all cursor-pointer ${
-                completedExercises.includes(exercise.id)
-                  ? "border-green-400 bg-green-50"
-                  : "border-pink-100 hover:border-pink-400"
-              }`}
-              onClick={() => toggleComplete(exercise.id)}
-            >
-              <div className="flex justify-between items-start mb-4">
+            <Card key={exercise.id} className="p-6 border-2 border-pink-100 hover:border-pink-400 transition-colors">
+              <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900">{exercise.title}</h3>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {exercise.difficulty === "beginner" ? "Principiante" :
-                     exercise.difficulty === "intermediate" ? "Intermedio" : "Avanzado"}
-                  </p>
+                  <p className="text-sm text-gray-600 mt-1">{exercise.description}</p>
                 </div>
-                {completedExercises.includes(exercise.id) && (
-                  <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0" />
-                )}
+                <button
+                  onClick={() => toggleComplete(exercise.id)}
+                  className="ml-2 flex-shrink-0"
+                >
+                  <CheckCircle2
+                    size={24}
+                    className={completedExercises.includes(exercise.id) ? "fill-green-500 text-green-500" : "text-gray-300"}
+                  />
+                </button>
               </div>
 
-              <p className="text-gray-600 mb-4">{exercise.description}</p>
-
-              <div className="flex gap-4 text-sm text-gray-600 mb-4">
+              {/* Exercise Info */}
+              <div className="flex gap-4 mb-4 text-sm text-gray-600">
                 <div className="flex items-center gap-1">
                   <Clock className="w-4 h-4" />
                   {exercise.duration} min
                 </div>
                 <div className="flex items-center gap-1">
                   <Zap className="w-4 h-4" />
-                  {exercise.benefits.length} beneficios
+                  {exercise.difficulty === "beginner" ? "Principiante" : exercise.difficulty === "intermediate" ? "Intermedio" : "Avanzado"}
                 </div>
               </div>
 
+              {/* Benefits */}
               <div className="mb-4">
                 <p className="text-sm font-semibold text-gray-700 mb-2">Beneficios:</p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  {exercise.benefits.map((benefit, i) => (
-                    <li key={i}>✓ {benefit}</li>
+                  {exercise.benefits.map((benefit, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-pink-500 rounded-full"></span>
+                      {benefit}
+                    </li>
                   ))}
                 </ul>
               </div>
 
-              <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white flex items-center justify-center gap-2">
-                <Play className="w-4 h-4" />
-                Comenzar Ejercicio
-              </Button>
+              {/* Expandable Steps */}
+              {expandedExercise === exercise.id && (
+                <div className="mb-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                  <h4 className="font-semibold text-gray-900 mb-3">Pasos Detallados:</h4>
+                  <ol className="space-y-3">
+                    {exercise.steps.map((step, idx) => (
+                      <li key={idx} className="flex gap-3 text-sm text-gray-700">
+                        <span className="font-bold text-pink-600 flex-shrink-0">{idx + 1}.</span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div className="flex gap-2">
+                <Button
+                  className="flex-1 bg-pink-500 hover:bg-pink-600 text-white"
+                  onClick={() => setExpandedExercise(expandedExercise === exercise.id ? null : exercise.id)}
+                >
+                  {expandedExercise === exercise.id ? (
+                    <>
+                      <ChevronUp className="w-4 h-4 mr-2" />
+                      Cerrar Pasos
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="w-4 h-4 mr-2" />
+                      Ver Pasos
+                    </>
+                  )}
+                </Button>
+                <Button
+                  variant="outline"
+                  className="border-green-500 text-green-600 hover:bg-green-50"
+                  onClick={() => toggleComplete(exercise.id)}
+                >
+                  <Play className="w-4 h-4" />
+                </Button>
+              </div>
             </Card>
           ))}
         </div>
+
+        {filteredExercises.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">No hay ejercicios en esta categoría</p>
+          </div>
+        )}
       </div>
     </div>
   );
