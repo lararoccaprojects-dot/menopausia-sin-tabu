@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { MessageCircle, ThumbsUp, Search, Plus, ArrowLeft, MessageSquare, Send } from "lucide-react";
 import { useState } from "react";
