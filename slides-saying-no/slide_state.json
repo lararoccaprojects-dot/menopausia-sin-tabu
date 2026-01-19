@@ -1,0 +1,276 @@
+{
+  "project_info": {
+    "title": "Portada",
+    "created": 1768857909.6751103,
+    "last_updated": 1768858208.262425,
+    "total_slides": 22
+  },
+  "slides": [
+    {
+      "id": "slide_1",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "slide_2",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "slide_3",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "slide_4",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "slide_5",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "slide_6",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "slide_7",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "slide_8",
+      "state": "edited",
+      "pageNum": 8
+    },
+    {
+      "id": "slide_9",
+      "state": "edited",
+      "pageNum": 9
+    },
+    {
+      "id": "slide_10",
+      "state": "edited",
+      "pageNum": 10
+    },
+    {
+      "id": "slide_11",
+      "state": "edited",
+      "pageNum": 11
+    },
+    {
+      "id": "slide_12",
+      "state": "edited",
+      "pageNum": 12
+    },
+    {
+      "id": "slide_13",
+      "state": "edited",
+      "pageNum": 13
+    },
+    {
+      "id": "slide_14",
+      "state": "edited",
+      "pageNum": 14
+    },
+    {
+      "id": "slide_15",
+      "state": "edited",
+      "pageNum": 15
+    },
+    {
+      "id": "slide_16",
+      "state": "edited",
+      "pageNum": 16
+    },
+    {
+      "id": "slide_17",
+      "state": "edited",
+      "pageNum": 17
+    },
+    {
+      "id": "slide_18",
+      "state": "edited",
+      "pageNum": 18
+    },
+    {
+      "id": "slide_19",
+      "state": "edited",
+      "pageNum": 19
+    },
+    {
+      "id": "slide_20",
+      "state": "edited",
+      "pageNum": 20
+    },
+    {
+      "id": "slide_21",
+      "state": "edited",
+      "pageNum": 21
+    },
+    {
+      "id": "slide_22",
+      "state": "edited",
+      "pageNum": 22
+    }
+  ],
+  "outline": [
+    {
+      "id": "slide_1",
+      "title": "Portada",
+      "summary": "Introducción a la presentación sobre tabla de seguimiento de progreso para la práctica de decir 'no' en 8 semanas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_2",
+      "title": "¿Por Qué un Seguimiento de Progreso?",
+      "summary": "Explicación de los beneficios de usar un seguimiento estructurado para cambiar patrones de comportamiento.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_3",
+      "title": "Tabla Maestra de 8 Semanas",
+      "summary": "Visión general de las métricas clave esperadas para cada semana: culpa, autoestima, energía y síntomas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_4",
+      "title": "Semana 1: Preparación Mental",
+      "summary": "Fase de autoevaluación y preparación emocional para entender patrones de 'sí' automático.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_5",
+      "title": "Semana 2: Práctica en Espejo",
+      "summary": "Creación de frases personalizadas y práctica en ambiente seguro antes de aplicar en la vida real.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_6",
+      "title": "Semana 3: Bajo Riesgo",
+      "summary": "Primeros 'noes' en situaciones de bajo riesgo para construir confianza y celebrar logros.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_7",
+      "title": "Semana 4: Riesgo Medio",
+      "summary": "Situaciones más desafiantes con personas importantes y manejo de reacciones difíciles.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_8",
+      "title": "Semana 5: Alto Riesgo",
+      "summary": "El 'no' más importante: análisis profundo, ensayo y ejecución en situación crítica.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_9",
+      "title": "Semana 6: Automatización",
+      "summary": "Integración de decir 'no' en la rutina cotidiana con observación de patrones.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_10",
+      "title": "Semana 7: Manejo de Manipulación",
+      "summary": "Identificación de manipuladores y estrategias para mantener límites bajo presión.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_11",
+      "title": "Semana 8: Consolidación",
+      "summary": "Evaluación completa de transformación, cambios en relaciones y plan de sostenibilidad.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_12",
+      "title": "Gráfico de Culpa",
+      "summary": "Visualización de la disminución esperada de culpa a lo largo de las 8 semanas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_13",
+      "title": "Gráfico de Autoestima",
+      "summary": "Visualización del aumento esperado de autoestima a lo largo de las 8 semanas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_14",
+      "title": "Gráfico de Energía",
+      "summary": "Visualización del aumento esperado de energía a lo largo de las 8 semanas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_15",
+      "title": "Gráfico de Síntomas de Menopausia",
+      "summary": "Visualización de la reducción esperada de síntomas de menopausia a lo largo de las 8 semanas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_16",
+      "title": "Comparación Antes y Después",
+      "summary": "Tabla de transformación mostrando cambios en todas las métricas después de 8 semanas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_17",
+      "title": "Hitos Principales",
+      "summary": "Checklist de logros completados en cada semana del programa.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_18",
+      "title": "Indicadores de Progreso Exitoso",
+      "summary": "Señales de que estás en el camino correcto en cada fase del programa.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_19",
+      "title": "Cómo Usar Este Seguimiento",
+      "summary": "Pasos prácticos para implementar el seguimiento diariamente y mantener motivación.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_20",
+      "title": "Recursos de Apoyo",
+      "summary": "Cuándo y cómo buscar ayuda profesional si la necesitas durante el proceso.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_21",
+      "title": "Afirmación Final",
+      "summary": "Afirmación poderosa para recordar tu valor y derecho a establecer límites saludables.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_22",
+      "title": "Próximos Pasos",
+      "summary": "Acciones concretas para comenzar la Semana 1 y mantener el compromiso con tu transformación.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indicadores de Progreso Exitoso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 0 60px;
+            margin-bottom: 30px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #D35400;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #2C3E50;
+            font-weight: 700;
+        }
+        
+        .indicators-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 0 60px;
+            flex: 1;
+        }
+        
+        .phase-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .phase-header {
+            background: #D35400;
+            color: #F2F0E9;
+            padding: 14px;
+            text-align: center;
+        }
+        
+        .phase-column:nth-child(2n) .phase-header {
+            background: #8FBC8F;
+        }
+        
+        .phase-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        .indicators-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0 12px;
+        }
+        
+        .indicator-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        
+        .indicator-check {
+            width: 18px;
+            height: 18px;
+            background: #8FBC8F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F2F0E9;
+            font-size: 11px;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .phase-column:nth-child(2n) .indicator-check {
+            background: #D35400;
+        }
+        
+        .indicator-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #2C3E50;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Indicadores de Progreso Exitoso</h1>
+        </div>
+        
+        <div class="indicators-grid">
+            <!-- Fase 1: Preparación -->
+            <div class="phase-column">
+                <div class="phase-header">
+                    <div class="phase-title">Preparación</div>
+                </div>
+                <div class="indicators-list">
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Reconoces tus patrones de "sí"</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Identificas tus miedos</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Practicas afirmaciones</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Sientes curiosidad</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fase 2: Práctica -->
+            <div class="phase-column">
+                <div class="phase-header">
+                    <div class="phase-title">Práctica</div>
+                </div>
+                <div class="indicators-list">
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Practicas con confianza</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Tu voz suena más firme</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Visualizas exitosamente</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Te sientes preparada</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fase 3: Bajo Riesgo -->
+            <div class="phase-column">
+                <div class="phase-header">
+                    <div class="phase-title">Bajo Riesgo</div>
+                </div>
+                <div class="indicators-list">
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Ejecutas primeros "noes"</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Celebras logros pequeños</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">La culpa disminuye</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Ganas confianza</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fase 4: Consolidación -->
+            <div class="phase-column">
+                <div class="phase-header">
+                    <div class="phase-title">Consolidación</div>
+                </div>
+                <div class="indicators-list">
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Decir "no" es automático</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Relaciones transformadas</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Síntomas mejoran</div>
+                    </div>
+                    <div class="indicator-item">
+                        <div class="indicator-check">✓</div>
+                        <div class="indicator-text">Te reconoces a ti misma</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 4: Riesgo Medio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 0 60px;
+            margin-bottom: 40px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #D35400;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #2C3E50;
+            font-weight: 700;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 0 60px;
+            flex: 1;
+        }
+        
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D35400;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-content {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            line-height: 1.7;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        
+        .timeline-marker {
+            width: 24px;
+            height: 24px;
+            background: #8FBC8F;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F2F0E9;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .timeline-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.5;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .metric-box {
+            background: rgba(211, 84, 0, 0.08);
+            padding: 15px;
+            border-left: 4px solid #D35400;
+        }
+        
+        .metric-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #8FBC8F;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        
+        .metric-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: #D35400;
+            font-weight: 700;
+        }
+        
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .examples-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D35400;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .example-item {
+            background: rgba(143, 188, 143, 0.1);
+            padding: 15px;
+            border-left: 4px solid #8FBC8F;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .example-icon {
+            width: 32px;
+            height: 32px;
+            background: #8FBC8F;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F2F0E9;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .example-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Semana 4: Riesgo Medio</h1>
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="left-column">
+                <div class="section">
+                    <div class="section-title">Objetivo</div>
+                    <div class="section-content">"Noes" más desafiantes donde hay más en juego emocional o relacional</div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Registro Diario</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker">1-2</div>
+                            <div class="timeline-text">Identifica 3 oportunidades de riesgo medio</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">3</div>
+                            <div class="timeline-text">Primer "no" de riesgo medio</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">4</div>
+                            <div class="timeline-text">Segundo "no" de riesgo medio</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">5</div>
+                            <div class="timeline-text">Tercer "no" de riesgo medio</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">6-7</div>
+                            <div class="timeline-text">Reflexión y consolidación</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Métricas Esperadas</div>
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <div class="metric-label">Culpa</div>
+                            <div class="metric-value">5-6/10</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">Autoestima</div>
+                            <div class="metric-value">7/10</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">Energía</div>
+                            <div class="metric-value">7/10</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">Síntomas</div>
+                            <div class="metric-value">6/10</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="examples-title">Ejemplos de Riesgo Medio</div>
+                
+                <div class="example-item">
+                    <div class="example-icon">👥</div>
+                    <div class="example-text">Decir no a un favor de un amigo cercano</div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-icon">💑</div>
+                    <div class="example-text">Rechazar una solicitud de tu pareja</div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-icon">💼</div>
+                    <div class="example-text">Decir no a un proyecto en el trabajo</div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-icon">👨‍👩‍👧</div>
+                    <div class="example-text">Rechazar una invitación de un familiar</div>
+                </div>
+                
+                <div class="section" style="margin-top: 20px;">
+                    <div class="section-title">Clave del Éxito</div>
+                    <div class="section-content">Anticipar reacciones difíciles y preparar respuestas. La práctica en riesgo medio fortalece tus límites con personas importantes.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 2: Práctica en Espejo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+        
+        .left-column {
+            flex: 1;
+            padding: 0 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .right-column {
+            width: 380px;
+            background: linear-gradient(135deg, rgba(211, 84, 0, 0.08) 0%, rgba(143, 188, 143, 0.08) 100%);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border-left: 2px solid #D35400;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #D35400;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            color: #2C3E50;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #D35400;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: #2C3E50;
+            font-weight: 700;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .content-item {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .day-item {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .day-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #D35400;
+            font-weight: bold;
+        }
+        
+        .metrics-box h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #D35400;
+        }
+        
+        .metric-item {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .metric-value {
+            color: #D35400;
+            font-weight: 600;
+        }
+        
+        .exercises-list {
+            margin-top: 20px;
+        }
+        
+        .exercise-item {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .exercise-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #8FBC8F;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="left-column">
+            <div class="accent-line"></div>
+            <h1>Semana 2</h1>
+            <p class="subtitle">Práctica en Espejo</p>
+            
+            <p class="content-item"><strong>Objetivo:</strong> Practicar decir "no" en un ambiente seguro (espejo) antes de hacerlo en la vida real.</p>
+            
+            <h2>Registro Diario</h2>
+            <div class="day-item">Día 1-2: Creación de 10 frases personalizadas de "no"</div>
+            <div class="day-item">Día 3: Práctica en espejo - Frases básicas</div>
+            <div class="day-item">Día 4: Práctica en espejo - Con emoción</div>
+            <div class="day-item">Día 5: Práctica en espejo - Versión rápida</div>
+            <div class="day-item">Día 6-7: Visualización guiada</div>
+            
+            <h2>Ejercicios Clave</h2>
+            <div class="exercise-item">Crea frases claras, firmes, amables y breves</div>
+            <div class="exercise-item">Practica 3 veces cada frase en el espejo</div>
+            <div class="exercise-item">Visualiza situaciones exitosas</div>
+            <div class="exercise-item">Prepárate emocionalmente para la vida real</div>
+        </div>
+        
+        <div class="right-column">
+            <div class="metrics-box">
+                <h3>Métricas Esperadas</h3>
+                <div class="metric-item">
+                    <span>Culpa:</span>
+                    <span class="metric-value">7-8/10</span>
+                </div>
+                <div class="metric-item">
+                    <span>Autoestima:</span>
+                    <span class="metric-value">4-5/10</span>
+                </div>
+                <div class="metric-item">
+                    <span>Energía:</span>
+                    <span class="metric-value">5-6/10</span>
+                </div>
+                <div class="metric-item">
+                    <span>Síntomas:</span>
+                    <span class="metric-value">8/10</span>
+                </div>
+            </div>
+            
+            <div class="metrics-box" style="margin-top: 25px;">
+                <h3>Estado Esperado</h3>
+                <div class="content-item" style="margin-bottom: 0; font-size: 13px;">
+                    <strong style="color: #D35400;">Ganando confianza</strong>, nervios anticipatorios pero esperanza creciente
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

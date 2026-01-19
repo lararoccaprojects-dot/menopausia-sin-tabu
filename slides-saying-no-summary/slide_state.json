@@ -1,0 +1,72 @@
+{
+  "project_info": {
+    "title": "Portada",
+    "created": 1768858256.9541826,
+    "last_updated": 1768858328.0954185,
+    "total_slides": 5
+  },
+  "slides": [
+    {
+      "id": "slide_1",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "slide_2",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "slide_3",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "slide_4",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "slide_5",
+      "state": "edited",
+      "pageNum": 5
+    }
+  ],
+  "outline": [
+    {
+      "id": "slide_1",
+      "title": "Portada",
+      "summary": "Portada con título principal, subtítulo y visual inspirador para la presentación resumida del programa de 8 semanas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_2",
+      "title": "Desglose de las 8 Semanas",
+      "summary": "Resumen visual de las 8 fases del programa con títulos, objetivos clave y métricas esperadas para cada semana.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_3",
+      "title": "Transformación Esperada",
+      "summary": "Gráficos de progreso mostrando la disminución de culpa y aumento de autoestima a lo largo de las 8 semanas.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_4",
+      "title": "Indicadores de Progreso Exitoso",
+      "summary": "Señales clave de que estás en el camino correcto en cada fase del programa.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_5",
+      "title": "Próximos Pasos",
+      "summary": "Acciones concretas para comenzar hoy mismo y mantener el compromiso con la transformación.",
+      "image_plan": "Use a suitable image if needed",
+      "slide_template_key": ""
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Usar Este Seguimiento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 0 60px;
+            margin-bottom: 35px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #D35400;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #2C3E50;
+            font-weight: 700;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 0 60px;
+            flex: 1;
+        }
+        
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D35400;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .step-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #D35400;
+            color: #F2F0E9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: 6px;
+        }
+        
+        .step-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            font-weight: 600;
+        }
+        
+        .step-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+        
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .motivation-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #8FBC8F;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .motivation-box {
+            background: rgba(143, 188, 143, 0.08);
+            padding: 18px;
+            border-left: 4px solid #8FBC8F;
+        }
+        
+        .motivation-box-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .motivation-box-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.6;
+        }
+        
+        .quick-tips {
+            background: rgba(211, 84, 0, 0.08);
+            padding: 18px;
+            border-left: 4px solid #D35400;
+        }
+        
+        .quick-tips-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D35400;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .tip-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+        
+        .tip-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .tip-bullet {
+            width: 6px;
+            height: 6px;
+            background: #D35400;
+            border-radius: 50%;
+            margin-top: 7px;
+            flex-shrink: 0;
+        }
+        
+        .tip-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Cómo Usar Este Seguimiento</h1>
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="left-column">
+                <div class="section-title">5 Pasos Prácticos</div>
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Descarga o Imprime</div>
+                        <div class="step-description">Obtén una copia del seguimiento. Imprime si lo prefieres, o úsalo digitalmente.</div>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Establece tu Rutina</div>
+                        <div class="step-description">Elige un momento diario (mañana o noche) para completar tu seguimiento.</div>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Registra Diariamente</div>
+                        <div class="step-description">Completa tu entrada cada día. Sé honesta contigo misma, no hay respuestas "correctas".</div>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Revisa Semanalmente</div>
+                        <div class="step-description">Al final de cada semana, observa patrones y celebra pequeños logros.</div>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Celebra tu Progreso</div>
+                        <div class="step-description">Reconoce cada "no" que dijiste. Cada uno es una victoria.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="motivation-title">Mantén tu Motivación</div>
+                
+                <div class="motivation-box">
+                    <div class="motivation-box-title">📍 Punto de Referencia</div>
+                    <div class="motivation-box-text">Vuelve a esta tabla cuando dudes. Ver tu progreso es poderoso.</div>
+                </div>
+                
+                <div class="motivation-box">
+                    <div class="motivation-box-title">💪 Cuando Sea Difícil</div>
+                    <div class="motivation-box-text">Si una semana es difícil, recuerda por qué comenzaste. El cambio es gradual pero real.</div>
+                </div>
+                
+                <div class="motivation-box">
+                    <div class="motivation-box-title">🎯 Tu "Por Qué"</div>
+                    <div class="motivation-box-text">Escribe tu razón principal para establecer límites. Léela cuando necesites recordar.</div>
+                </div>
+                
+                <div class="quick-tips">
+                    <div class="quick-tips-title">Consejos Rápidos</div>
+                    
+                    <div class="tip-item">
+                        <div class="tip-bullet"></div>
+                        <div class="tip-text">Usa colores para marcar semanas completadas</div>
+                    </div>
+                    
+                    <div class="tip-item">
+                        <div class="tip-bullet"></div>
+                        <div class="tip-text">Comparte tu progreso con una amiga de confianza</div>
+                    </div>
+                    
+                    <div class="tip-item">
+                        <div class="tip-bullet"></div>
+                        <div class="tip-text">Toma una foto de tu tabla al final para recordar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

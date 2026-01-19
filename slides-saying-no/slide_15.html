@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Síntomas de Menopausia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 0 60px;
+            margin-bottom: 30px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #8FBC8F;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #2C3E50;
+            font-weight: 700;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 0 60px;
+            flex: 1;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chart-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .interpretation {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: flex-start;
+            padding-top: 20px;
+        }
+        
+        .interpretation-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #8FBC8F;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .interpretation-item {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .interpretation-number {
+            width: 32px;
+            height: 32px;
+            background: #D35400;
+            color: #F2F0E9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        .interpretation-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .interpretation-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            font-weight: 600;
+        }
+        
+        .interpretation-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Reducción de Síntomas de Menopausia</h1>
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="chart-container">
+                <div class="chart-wrapper">
+                    <canvas id="symptomsChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="interpretation">
+                <div class="interpretation-title">Interpretación del Gráfico</div>
+                
+                <div class="interpretation-item">
+                    <div class="interpretation-number">1</div>
+                    <div class="interpretation-content">
+                        <div class="interpretation-label">Semana 1-2: Síntomas severos</div>
+                        <div class="interpretation-text">El estrés de decir "sí" agrava los síntomas menopáusicos. Es un ciclo que necesita romperse.</div>
+                    </div>
+                </div>
+                
+                <div class="interpretation-item">
+                    <div class="interpretation-number">2</div>
+                    <div class="interpretation-content">
+                        <div class="interpretation-label">Semana 5: Mejora significativa</div>
+                        <div class="interpretation-text">Al establecer límites, reduces estrés. Tu cuerpo comienza a recuperarse y equilibrarse.</div>
+                    </div>
+                </div>
+                
+                <div class="interpretation-item">
+                    <div class="interpretation-number">3</div>
+                    <div class="interpretation-content">
+                        <div class="interpretation-label">Semana 8: Síntomas reducidos</div>
+                        <div class="interpretation-text">No desaparecen completamente, pero son mucho más manejables. La paz mental es transformadora.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const ctx = document.getElementById('symptomsChart').getContext('2d');
+        const symptomsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7', 'Sem 8'],
+                datasets: [{
+                    label: 'Nivel de Síntomas (1-10)',
+                    data: [8, 8, 7, 6, 5, 4, 3, 2],
+                    borderColor: '#8FBC8F',
+                    backgroundColor: 'rgba(143, 188, 143, 0.08)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#8FBC8F',
+                    pointBorderColor: '#F2F0E9',
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            font: {
+                                family: "'Inter', sans-serif",
+                                size: 13,
+                                weight: '500'
+                            },
+                            color: '#2C3E50',
+                            padding: 15
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        min: 0,
+                        ticks: {
+                            font: {
+                                family: "'Inter', sans-serif",
+                                size: 12
+                            },
+                            color: '#2C3E50',
+                            stepSize: 1
+                        },
+                        grid: {
+                            color: 'rgba(143, 188, 143, 0.1)',
+                            drawBorder: false
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                family: "'Inter', sans-serif",
+                                size: 12
+                            },
+                            color: '#2C3E50'
+                        },
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

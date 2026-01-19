@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 3: Bajo Riesgo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px; /* keep as required */
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px; /* never change */
+            overflow: hidden;
+        }
+        .header { padding: 0 60px; margin-bottom: 40px; }
+        .accent-line { width: 60px; height: 4px; background: #D35400; margin-bottom: 15px; border-radius: 2px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 44px; color: #2C3E50; font-weight: 700; }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px; /* reduced from 50 */
+            padding: 0 60px;
+            flex: 1;
+        }
+        .left-column h2, .right-column h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #D35400;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px; /* reduced from 20 */
+        }
+        .metric-box {
+            background: rgba(211, 84, 0, 0.08);
+            padding: 12px; /* reduced from 20 */
+            margin-bottom: 12px; /* reduced from 20 */
+            border-left: 4px solid #D35400;
+        }
+        .metric-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #8FBC8F;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px; /* slightly reduced */
+            font-weight: 600;
+        }
+        .metric-value { font-family: 'Playfair Display', serif; font-size: 28px; color: #2C3E50; font-weight: 700; }
+        .example-item { display: flex; gap: 12px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(143, 188, 143, 0.3); }
+        .example-item:last-child { border-bottom: none; }
+        .example-icon { width: 8px; height: 8px; background: #8FBC8F; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+        .example-text { font-family: 'Inter', sans-serif; font-size: 14px; color: #2C3E50; line-height: 1.5; }
+        p.objective { font-family: 'Inter', sans-serif; font-size: 14px; color: #2C3E50; line-height: 1.7; margin-bottom: 20px; } /* reduced margin */
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Semana 3: Bajo Riesgo</h1>
+        </div>
+        <div class="content-grid">
+            <div class="left-column">
+                <h2>Objetivo</h2>
+                <p class="objective">Primeros "noes" en la vida real para construir confianza y celebrar logros.</p>
+                <h2>Métricas Esperadas</h2>
+                <div class="metric-box">
+                    <div class="metric-label">Culpa</div>
+                    <div class="metric-value">6-7/10</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Autoestima</div>
+                    <div class="metric-value">6/10</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Energía</div>
+                    <div class="metric-value">6-7/10</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Síntomas</div>
+                    <div class="metric-value">7/10</div>
+                </div>
+            </div>
+            <div class="right-column">
+                <h2>Ejemplos de Bajo Riesgo</h2>
+                <div class="example-item">
+                    <div class="example-icon"></div>
+                    <div class="example-text">Rechazar una invitación a un evento que no te interesa</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-icon"></div>
+                    <div class="example-text">Decir no a un vendedor o telemarketing</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-icon"></div>
+                    <div class="example-text">Rechazar una comida que no quieres probar</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-icon"></div>
+                    <div class="example-text">Decir no a un favor pequeño de un conocido</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-icon"></div>
+                    <div class="example-text">Rechazar participar en una actividad grupal</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-icon"></div>
+                    <div class="example-text">Decir no a una solicitud de cambiar planes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

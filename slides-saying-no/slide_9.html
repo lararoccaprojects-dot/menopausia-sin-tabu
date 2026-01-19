@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 6: Automatización</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 0 60px;
+            margin-bottom: 40px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #D35400;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #2C3E50;
+            font-weight: 700;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 0 60px;
+            flex: 1;
+        }
+        
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D35400;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .objective {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .days-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .day-item {
+            background: rgba(211, 84, 0, 0.08);
+            padding: 15px;
+            border-left: 4px solid #D35400;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .day-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #8FBC8F;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 50px;
+        }
+        
+        .day-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            font-weight: 500;
+        }
+        
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .patterns-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .pattern-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        
+        .pattern-icon {
+            width: 8px;
+            height: 8px;
+            background: #8FBC8F;
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+        
+        .pattern-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            line-height: 1.6;
+        }
+        
+        .metrics-section {
+            background: rgba(143, 188, 143, 0.08);
+            padding: 25px;
+            border-left: 4px solid #8FBC8F;
+        }
+        
+        .metrics-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #2C3E50;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+        
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(143, 188, 143, 0.3);
+        }
+        
+        .metric-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .metric-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            font-weight: 500;
+        }
+        
+        .metric-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #8FBC8F;
+            font-weight: 700;
+        }
+        
+        .state-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #2C3E50;
+            line-height: 1.6;
+            padding-top: 15px;
+            border-top: 1px solid rgba(143, 188, 143, 0.3);
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Semana 6: Automatización</h1>
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="left-column">
+                <div>
+                    <div class="section-title">Objetivo</div>
+                    <p class="objective">Hacer que decir "no" sea automático en situaciones cotidianas. Integrar esta práctica en tu rutina diaria sin necesidad de pensar tanto.</p>
+                </div>
+                
+                <div>
+                    <div class="section-title">Registro Diario - Un "No" Cada Día</div>
+                    <div class="days-grid">
+                        <div class="day-item">
+                            <div class="day-label">Lunes</div>
+                            <div class="day-name">Un "no"</div>
+                        </div>
+                        <div class="day-item">
+                            <div class="day-label">Martes</div>
+                            <div class="day-name">Un "no"</div>
+                        </div>
+                        <div class="day-item">
+                            <div class="day-label">Miércoles</div>
+                            <div class="day-name">Un "no"</div>
+                        </div>
+                        <div class="day-item">
+                            <div class="day-label">Jueves</div>
+                            <div class="day-name">Un "no"</div>
+                        </div>
+                        <div class="day-item">
+                            <div class="day-label">Viernes</div>
+                            <div class="day-name">Un "no"</div>
+                        </div>
+                        <div class="day-item">
+                            <div class="day-label">Sábado</div>
+                            <div class="day-name">Un "no"</div>
+                        </div>
+                        <div class="day-item">
+                            <div class="day-label">Domingo</div>
+                            <div class="day-name">Un "no"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div>
+                    <div class="section-title">Patrones a Observar</div>
+                    <div class="patterns-section">
+                        <div class="pattern-item">
+                            <div class="pattern-icon"></div>
+                            <div class="pattern-text"><strong>¿Cuáles son mis "noes" más fáciles?</strong> Identifica situaciones donde dices "no" sin vacilar</div>
+                        </div>
+                        <div class="pattern-item">
+                            <div class="pattern-icon"></div>
+                            <div class="pattern-text"><strong>¿Cuáles son mis "noes" más difíciles?</strong> Reconoce dónde aún sientes resistencia</div>
+                        </div>
+                        <div class="pattern-item">
+                            <div class="pattern-icon"></div>
+                            <div class="pattern-text"><strong>¿Cómo ha cambiado mi perspectiva?</strong> Observa cómo ves ahora los límites</div>
+                        </div>
+                        <div class="pattern-item">
+                            <div class="pattern-icon"></div>
+                            <div class="pattern-text"><strong>¿Cómo se siente decir "no" ahora?</strong> Nota la diferencia emocional</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="metrics-section">
+                    <h3>Métricas Esperadas</h3>
+                    <div class="metric-item">
+                        <span class="metric-label">"Noes" ejecutados</span>
+                        <span class="metric-value">5-7</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Culpa</span>
+                        <span class="metric-value">3-4/10</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Autoestima</span>
+                        <span class="metric-value">8/10</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Energía</span>
+                        <span class="metric-value">9/10</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Síntomas</span>
+                        <span class="metric-value">4/10</span>
+                    </div>
+                    <p class="state-note">Estado: Decir "no" se vuelve cada vez más automático. Notas cambios significativos en tu energía y bienestar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

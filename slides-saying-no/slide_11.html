@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 8: Consolidación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px; /* keep title top padding */
+            overflow: hidden;
+        }
+        .header { padding: 0 60px; margin-bottom: 20px; }
+        .accent-line { width: 60px; height: 4px; background: #D35400; margin-bottom: 15px; border-radius: 2px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 44px; color: #2C3E50; font-weight: 700; }
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px; /* reduced gap */
+            padding: 0 60px;
+            flex: 1;
+            overflow-y: auto;
+        }
+        .left-column { display: flex; flex-direction: column; gap: 16px; }
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D35400;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px; /* slightly smaller */
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+        }
+        .table-header { background: #D35400; color: #F2F0E9; padding: 8px; font-weight: 600; text-align: center; }
+        .table-cell { background: rgba(211, 84, 0, 0.08); padding: 8px; text-align: center; color: #2C3E50; }
+        .table-cell.metric { font-weight: 600; color: #D35400; }
+        /* changes-list reorganized to two columns to save vertical space */
+        .changes-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 12px;
+        }
+        .change-item { display: flex; gap: 10px; align-items: flex-start; }
+        .change-icon { width: 24px; height: 24px; background: #8FBC8F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #F2F0E9; font-size: 12px; font-weight: bold; flex-shrink: 0; }
+        .change-text { font-family: 'Inter', sans-serif; font-size: 13px; color: #2C3E50; line-height: 1.5; }
+        .right-column { display: flex; flex-direction: column; gap: 12px; background: rgba(143, 188, 143, 0.08); padding: 16px; border-left: 4px solid #8FBC8F; }
+        .sustainability-box { display: flex; flex-direction: column; gap: 12px; }
+        .routine-title { font-family: 'Inter', sans-serif; font-size: 13px; color: #8FBC8F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .routine-item { font-family: 'Inter', sans-serif; font-size: 13px; color: #2C3E50; line-height: 1.6; padding-left: 15px; position: relative; }
+        .routine-item::before { content: '→'; position: absolute; left: 0; color: #8FBC8F; font-weight: bold; }
+        .highlight-box { background: rgba(211, 84, 0, 0.1); padding: 12px; border-left: 3px solid #D35400; margin-top: 12px; }
+        .highlight-box p { font-family: 'Inter', sans-serif; font-size: 13px; color: #2C3E50; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Semana 8: Consolidación</h1>
+        </div>
+        <div class="content-wrapper">
+            <div class="left-column">
+                <div class="sustainability-box">
+                    <div class="section-title">Objetivo</div>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: #2C3E50; line-height: 1.7;">Evaluar tu transformación completa, celebrar logros y crear un plan sostenible para mantener tus límites a largo plazo.</p>
+                </div>
+                <div class="sustainability-box">
+                    <div class="section-title">Comparación Antes y Después</div>
+                    <div class="comparison-table">
+                        <div class="table-header">Métrica</div>
+                        <div class="table-header">Semana 1</div>
+                        <div class="table-header">Semana 8</div>
+                        <div class="table-cell">Culpa</div>
+                        <div class="table-cell metric">9/10</div>
+                        <div class="table-cell metric">1-2/10</div>
+                        <div class="table-cell">Autoestima</div>
+                        <div class="table-cell metric">3/10</div>
+                        <div class="table-cell metric">10/10</div>
+                        <div class="table-cell">Energía</div>
+                        <div class="table-cell metric">4/10</div>
+                        <div class="table-cell metric">10/10</div>
+                        <div class="table-cell">Síntomas</div>
+                        <div class="table-cell metric">8/10</div>
+                        <div class="table-cell metric">2/10</div>
+                    </div>
+                </div>
+                <div class="sustainability-box">
+                    <div class="section-title">Cambios en Relaciones</div>
+                    <div class="changes-list">
+                        <div class="change-item">
+                            <div class="change-icon">✓</div>
+                            <div class="change-text"><strong>Con tu jefe:</strong> Más respeto, menos sobrecarga</div>
+                        </div>
+                        <div class="change-item">
+                            <div class="change-icon">✓</div>
+                            <div class="change-text"><strong>Con tu familia:</strong> Límites claros, relaciones más saludables</div>
+                        </div>
+                        <div class="change-item">
+                            <div class="change-icon">✓</div>
+                            <div class="change-text"><strong>Con amigos:</strong> Conexiones más auténticas y equilibradas</div>
+                        </div>
+                        <div class="change-item">
+                            <div class="change-icon">✓</div>
+                            <div class="change-text"><strong>Contigo misma:</strong> Respeto profundo y amor propio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="sustainability-box">
+                    <div class="section-title">Plan de Sostenibilidad</div>
+                </div>
+                <div class="sustainability-box">
+                    <div class="routine-title">Rutina Diaria</div>
+                    <div class="routine-item">Afirmación matutina: "Mis límites son válidos"</div>
+                    <div class="routine-item">Reflexión nocturna: ¿Dije "no" hoy? ¿Cómo me sentí?</div>
+                </div>
+                <div class="sustainability-box">
+                    <div class="routine-title">Rutina Semanal</div>
+                    <div class="routine-item">Revisión de límites establecidos</div>
+                    <div class="routine-item">Celebración de logros pequeños</div>
+                </div>
+                <div class="sustainability-box">
+                    <div class="routine-title">Rutina Mensual</div>
+                    <div class="routine-item">Evaluación completa de progreso</div>
+                    <div class="routine-item">Ajustes según sea necesario</div>
+                </div>
+                <div class="highlight-box">
+                    <p><strong>Disparadores Identificados:</strong> Reconoce las situaciones que te hacen dudar. Prepara respuestas anticipadas para mantener tus límites.</p>
+                </div>
+                <!-- Removed the final reminder box to reduce overall vertical length -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

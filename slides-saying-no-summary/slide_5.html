@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Próximos Pasos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 0 60px;
+            margin-bottom: 35px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #D35400;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #2C3E50;
+            font-weight: 700;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 0 60px;
+            flex: 1;
+        }
+        
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D35400;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .action-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+        
+        .action-number {
+            width: 40px;
+            height: 40px;
+            background: #D35400;
+            color: #F2F0E9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .action-content {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-top: 4px;
+        }
+        
+        .action-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            font-weight: 600;
+        }
+        
+        .action-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.5;
+            opacity: 0.85;
+        }
+        
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .commitment-box {
+            background: rgba(143, 188, 143, 0.08);
+            padding: 30px;
+            border-left: 4px solid #8FBC8F;
+        }
+        
+        .commitment-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: #2C3E50;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .commitment-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .commitment-line {
+            border-top: 2px solid #8FBC8F;
+            padding-top: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #8FBC8F;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 1px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .final-message {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #D35400;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(211, 84, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Próximos Pasos</h1>
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="left-column">
+                <div>
+                    <div class="section-title">Hoy Mismo</div>
+                    
+                    <div class="action-item">
+                        <div class="action-number">1</div>
+                        <div class="action-content">
+                            <div class="action-title">Descarga tu Tabla</div>
+                            <div class="action-description">Obtén una copia del seguimiento de 8 semanas.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-number">2</div>
+                        <div class="action-content">
+                            <div class="action-title">Establece tu Espacio</div>
+                            <div class="action-description">Crea un lugar especial para tu seguimiento diario.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-number">3</div>
+                        <div class="action-content">
+                            <div class="action-title">Elige tu Hora</div>
+                            <div class="action-description">Decide si completarás tu seguimiento por la mañana o noche.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="commitment-box">
+                    <div class="commitment-title">Tu Compromiso</div>
+                    <div class="commitment-text">Me comprometo conmigo misma a completar este programa de 8 semanas. Merezco establecer límites saludables y vivir con paz mental.</div>
+                    <div class="commitment-line">Firma / Fecha</div>
+                </div>
+                
+                <div class="final-message">
+                    ✨ El momento es ahora ✨
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

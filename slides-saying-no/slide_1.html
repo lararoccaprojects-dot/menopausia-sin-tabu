@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Seguimiento de Progreso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #F2F0E9 0%, #FFF8F3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(211, 84, 0, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(143, 188, 143, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 80px 60px;
+            max-width: 700px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #D35400;
+            margin-bottom: 30px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            color: #2C3E50;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            color: #D35400;
+            margin-bottom: 40px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .description {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #2C3E50;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            opacity: 0.85;
+        }
+        
+        .meta {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .meta-item {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #8FBC8F;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .decorative-element {
+            position: absolute;
+            bottom: 60px;
+            right: 80px;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #8FBC8F;
+            opacity: 0.15;
+            border-radius: 8px;
+            transform: rotate(15deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content">
+            <div class="accent-line"></div>
+            <h1>Tabla de Seguimiento de Progreso</h1>
+            <div class="subtitle">"Práctica de Decir 'No'"</div>
+            <p class="description">Plan de 8 semanas para establecer límites saludables, aumentar autoestima y transformar tu relación con tus propias necesidades.</p>
+            <div class="meta">
+                <span class="meta-item">Kit de Autoestima Positiva</span>
+                <span class="meta-item">Menopausia Sin Tabú</span>
+            </div>
+        </div>
+        <div class="decorative-element"></div>
+    </div>
+</body>
+</html>

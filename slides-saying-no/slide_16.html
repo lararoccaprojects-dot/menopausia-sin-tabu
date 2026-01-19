@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparación Antes y Después</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 0 60px;
+            margin-bottom: 40px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #D35400;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #2C3E50;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D35400;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+        
+        .table-wrapper {
+            padding: 0 60px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        thead {
+            background: #D35400;
+            color: #F2F0E9;
+        }
+        
+        th {
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+        }
+        
+        td {
+            padding: 14px 12px;
+            border: none;
+            color: #2C3E50;
+            font-size: 13px;
+        }
+        
+        tbody tr:nth-child(odd) {
+            background: rgba(143, 188, 143, 0.08);
+        }
+        
+        tbody tr:nth-child(even) {
+            background: rgba(211, 84, 0, 0.04);
+        }
+        
+        .metric-name {
+            font-weight: 600;
+            color: #2C3E50;
+            min-width: 160px;
+        }
+        
+        .value-before {
+            text-align: center;
+            color: #D35400;
+            font-weight: 600;
+        }
+        
+        .value-after {
+            text-align: center;
+            color: #8FBC8F;
+            font-weight: 600;
+        }
+        
+        .change-indicator {
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .change-down {
+            color: #8FBC8F;
+        }
+        
+        .change-up {
+            color: #8FBC8F;
+        }
+        
+        .change-text {
+            font-size: 12px;
+            color: #8FBC8F;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Transformación en 8 Semanas</h1>
+            <p class="subtitle">Comparación Antes y Después</p>
+        </div>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Métrica</th>
+                        <th>Semana 1</th>
+                        <th>Semana 8</th>
+                        <th>Cambio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="metric-name">"Síes" automáticos</td>
+                        <td class="value-before">Muchos</td>
+                        <td class="value-after">Pocos</td>
+                        <td class="change-indicator change-down">↓ 80%</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Nivel de Culpa</td>
+                        <td class="value-before">9/10</td>
+                        <td class="value-after">1-2/10</td>
+                        <td class="change-indicator change-down">↓ 80%</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Autoestima</td>
+                        <td class="value-before">3/10</td>
+                        <td class="value-after">10/10</td>
+                        <td class="change-indicator change-up">↑ 230%</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Energía</td>
+                        <td class="value-before">4/10</td>
+                        <td class="value-after">10/10</td>
+                        <td class="change-indicator change-up">↑ 150%</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Síntomas Menopausia</td>
+                        <td class="value-before">8/10</td>
+                        <td class="value-after">2/10</td>
+                        <td class="change-indicator change-down">↓ 75%</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Calidad de Relaciones</td>
+                        <td class="value-before">Desequilibradas</td>
+                        <td class="value-after">Saludables</td>
+                        <td class="change-indicator change-up">✓ Mejoradas</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Paz Mental</td>
+                        <td class="value-before">Baja</td>
+                        <td class="value-after">Alta</td>
+                        <td class="change-indicator change-up">✓ Transformada</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Límites Personales</td>
+                        <td class="value-before">Inexistentes</td>
+                        <td class="value-after">Firmes</td>
+                        <td class="change-indicator change-up">✓ Establecidos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -254,3 +254,53 @@
   - [x] Guía de cómo hacer cada terapia
   - [x] Sistema de favoritos y recomendaciones
   - [x] Información de seguridad y efectividad
+
+
+## FASE 8: Correcciones en Herramientas Premium
+
+- [ ] Upsell 1 - Mapa de Bienestar Emocional
+  - [ ] Mostrar "Ejercicios Incluidos" expandible en cada módulo
+  - [ ] Verificar que todos los ejercicios se muestren correctamente
+
+- [ ] Upsell 2 - Manual de Intimidad Saludable
+  - [ ] Mostrar "Ejercicios Incluidos" expandible en cada capítulo
+  - [ ] Verificar que todos los ejercicios se muestren correctamente
+
+- [ ] Upsell 3 - Plan de Salud a Largo Plazo
+  - [ ] Mostrar "Milestones" expandible en cada fase
+  - [ ] Verificar que todos los milestones se muestren correctamente
+
+- [ ] Upsell 4 - Kit de Autoestima Positiva
+  - [ ] Verificar que los ejercicios diarios se muestren correctamente
+  - [ ] Asegurar que las afirmaciones y ejercicios estén vinculados
+
+- [ ] Upsell 5 - Taller de Alimentación Consciente
+  - [ ] Mostrar "Recetas Incluidas" expandible en cada módulo
+  - [ ] Verificar que todas las recetas se muestren correctamente
+
+- [ ] Upsell 6 - Compendio de Terapias Alternativas
+  - [ ] Mostrar "Cómo Hacer" expandible en cada terapia
+  - [ ] Verificar que todos los pasos se muestren correctamente
+
+## FASE 9: Integración Completa de Contenido Creado - COMPLETADA
+
+- [x] Mapa de Bienestar Emocional - INTEGRACIÓN COMPLETADA
+  - [x] 24 ejercicios detallados expandibles (3 por módulo)
+  - [x] Técnicas de meditación con instrucciones paso a paso
+  - [x] Recursos descargables (botón de descarga)
+  - [x] Tabla de seguimiento de emociones semanal
+  - [x] Beneficios específicos para cada ejercicio
+
+- [x] Kit de Autoestima Positiva - INTEGRACIÓN COMPLETADA
+  - [x] Plan de 8 semanas Practica de Decir No integrado
+  - [x] Tabla de seguimiento de progreso con checkboxes
+  - [x] Dos pestanas: Afirmaciones y Plan de Decir No
+  - [x] Barras de progreso para ambas secciones
+  - [x] Tareas diarias expandibles para cada semana
+
+- [ ] Todas las Herramientas Premium - INTEGRACIÓN GENERAL
+  - [ ] Agregar tablas de seguimiento de progreso en cada herramienta
+  - [ ] Integrar presentaciones de diapositivas correspondientes
+  - [ ] Agregar recursos descargables (PDF, guías, ejercicios)
+  - [ ] Implementar sistema de certificados de completación
+  - [ ] Agregar sistema de notas personales para cada usuario

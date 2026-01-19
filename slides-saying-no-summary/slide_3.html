@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformación Esperada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 0 60px;
+            margin-bottom: 30px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #D35400;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #2C3E50;
+            font-weight: 700;
+        }
+        
+        .charts-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 0 60px;
+            flex: 1;
+        }
+        
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .chart-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #2C3E50;
+            font-weight: 600;
+        }
+        
+        .chart-box {
+            height: 300px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Transformación Esperada</h1>
+        </div>
+        
+        <div class="charts-wrapper">
+            <div class="chart-container">
+                <div class="chart-title">Disminución de Culpa</div>
+                <div class="chart-box">
+                    <canvas id="guiltChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">Aumento de Autoestima</div>
+                <div class="chart-box">
+                    <canvas id="selfEsteemChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Gráfico de Culpa (descendente)
+        const guiltCtx = document.getElementById('guiltChart').getContext('2d');
+        new Chart(guiltCtx, {
+            type: 'line',
+            data: {
+                labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7', 'Sem 8'],
+                datasets: [{
+                    label: 'Nivel de Culpa (%)',
+                    data: [100, 85, 70, 55, 40, 30, 25, 20],
+                    borderColor: '#D35400',
+                    backgroundColor: 'rgba(211, 84, 0, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#D35400',
+                    pointBorderColor: '#F2F0E9',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            font: { family: "'Inter', sans-serif", size: 12 },
+                            color: '#2C3E50',
+                            padding: 15
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            font: { family: "'Inter', sans-serif", size: 12 },
+                            color: '#2C3E50'
+                        },
+                        grid: {
+                            color: 'rgba(211, 84, 0, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: { family: "'Inter', sans-serif", size: 12 },
+                            color: '#2C3E50'
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Gráfico de Autoestima (ascendente)
+        const selfEsteemCtx = document.getElementById('selfEsteemChart').getContext('2d');
+        new Chart(selfEsteemCtx, {
+            type: 'line',
+            data: {
+                labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7', 'Sem 8'],
+                datasets: [{
+                    label: 'Nivel de Autoestima (%)',
+                    data: [20, 30, 45, 55, 70, 80, 85, 90],
+                    borderColor: '#8FBC8F',
+                    backgroundColor: 'rgba(143, 188, 143, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#8FBC8F',
+                    pointBorderColor: '#F2F0E9',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            font: { family: "'Inter', sans-serif", size: 12 },
+                            color: '#2C3E50',
+                            padding: 15
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            font: { family: "'Inter', sans-serif", size: 12 },
+                            color: '#2C3E50'
+                        },
+                        grid: {
+                            color: 'rgba(143, 188, 143, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: { family: "'Inter', sans-serif", size: 12 },
+                            color: '#2C3E50'
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

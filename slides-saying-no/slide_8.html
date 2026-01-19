@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 5: Alto Riesgo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F2F0E9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 0 60px;
+            margin-bottom: 40px;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #D35400;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            color: #2C3E50;
+            font-weight: 700;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 0 60px;
+            flex: 1;
+        }
+        
+        .phases {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .phase {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .phase-number {
+            width: 40px;
+            height: 40px;
+            background: #D35400;
+            color: #F2F0E9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .phase-content h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #2C3E50;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .phase-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #2C3E50;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+        
+        .phase-days {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #8FBC8F;
+            font-weight: 500;
+            margin-top: 3px;
+        }
+        
+        .metrics {
+            background: rgba(211, 84, 0, 0.05);
+            padding: 30px;
+            border-left: 4px solid #D35400;
+        }
+        
+        .metrics h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #2C3E50;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .metric-item {
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .metric-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #2C3E50;
+            font-weight: 500;
+        }
+        
+        .metric-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #D35400;
+            font-weight: 700;
+        }
+        
+        .highlight {
+            background: #8FBC8F;
+            color: #F2F0E9;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <div class="accent-line"></div>
+            <h1>Semana 5: Alto Riesgo</h1>
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="phases">
+                <div class="phase">
+                    <div class="phase-number">1</div>
+                    <div class="phase-content">
+                        <h3>Análisis Profundo</h3>
+                        <p>Examina la situación crítica desde todos los ángulos. Identifica tu verdadero miedo y el costo real de no decir "no".</p>
+                        <div class="phase-days">Días 1-2</div>
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <div class="phase-number">2</div>
+                    <div class="phase-content">
+                        <h3>Ensayo Mental</h3>
+                        <p>Visualiza la situación exitosa. Imagina tu "no" siendo dicho con firmeza y la reacción positiva que esperas.</p>
+                        <div class="phase-days">Día 3</div>
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <div class="phase-number">3</div>
+                    <div class="phase-content">
+                        <h3>Ensayo en Voz Alta</h3>
+                        <p>Practica en el espejo. Escucha cómo suena tu voz, observa tu lenguaje corporal, ajusta lo que sea necesario.</p>
+                        <div class="phase-days">Día 4</div>
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <div class="phase-number">4</div>
+                    <div class="phase-content">
+                        <h3>El Momento de la Verdad</h3>
+                        <p>Ejecuta tu "no" en la situación real. Mantén tu límite, respira profundo, recuerda por qué lo haces.</p>
+                        <div class="phase-days">Día 5</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics">
+                <h3>Métricas Esperadas</h3>
+                
+                <div class="metric-item">
+                    <span class="metric-label">"Noes" ejecutados</span>
+                    <span class="metric-value">1</span>
+                </div>
+                
+                <div class="metric-item">
+                    <span class="metric-label">Nivel de Culpa</span>
+                    <span class="metric-value">4/10</span>
+                </div>
+                
+                <div class="metric-item">
+                    <span class="metric-label">Autoestima</span>
+                    <span class="metric-value">8/10</span>
+                </div>
+                
+                <div class="metric-item">
+                    <span class="metric-label">Energía</span>
+                    <span class="metric-value">8/10</span>
+                </div>
+                
+                <div class="metric-item">
+                    <span class="metric-label">Síntomas Menopausia</span>
+                    <span class="metric-value">5/10</span>
+                </div>
+                
+                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(211, 84, 0, 0.2);">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: #2C3E50; line-height: 1.6; margin-bottom: 10px;">
+                        <strong>Ejemplos de Alto Riesgo:</strong>
+                    </p>
+                    <ul style="font-family: 'Inter', sans-serif; font-size: 12px; color: #2C3E50; line-height: 1.8; margin-left: 15px; opacity: 0.8;">
+                        <li>Decir no a tu jefe sobre horas extras</li>
+                        <li>Decir no a tu pareja sobre algo importante</li>
+                        <li>Decir no a un padre/madre</li>
+                        <li>Decir no a alguien que depende de ti</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
