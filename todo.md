@@ -48,21 +48,21 @@
   - [x] Acceso a Simulador de Síntomas
   - [x] Placeholders para futuras herramientas
   - [x] Sistema de logout
-- [ ] Guía de Recursos
-  - [ ] 6 guías con contenido completo
-  - [ ] PDFs descargables
-  - [ ] Sistema de búsqueda funcional
-  - [ ] Marcadores favoritos
-- [ ] Ejercicios de Bienestar
-  - [ ] 8 ejercicios con instrucciones detalladas
-  - [ ] Videos o imágenes demostrativas
-  - [ ] Beneficios específicos
-  - [ ] Seguimiento de progreso
-- [ ] Foro de Preguntas y Respuestas
-  - [ ] 6+ threads con contenido real
-  - [ ] Respuestas detalladas
-  - [ ] Sistema de votación
-  - [ ] Búsqueda y filtrado
+- [x] Guía de Recursos
+  - [x] 6 guías con contenido completo
+  - [x] PDFs descargables
+  - [x] Sistema de búsqueda funcional
+  - [x] Marcadores favoritos
+- [x] Ejercicios de Bienestar
+  - [x] 8 ejercicios con instrucciones detalladas
+  - [x] Pasos detallados expandibles
+  - [x] Beneficios específicos
+  - [x] Seguimiento de progreso
+- [x] Foro de Preguntas y Respuestas
+  - [x] 6 threads con contenido real
+  - [x] Respuestas detalladas de expertos
+  - [x] Sistema de votación (likes)
+  - [x] Búsqueda y filtrado por categoría
 
 ## FASE 3: Pack Premium - 6 Upsells (REQUIERE LOGIN)
 - [x] Página base del Pack Premium
@@ -198,20 +198,20 @@
   - [ ] Guardar historial de síntomas
   - [ ] Gráficos de progreso temporal
 
-- [ ] Guía de Recursos - Contenido descargable
-  - [ ] 6 guías en PDF descargables
-  - [ ] Categorías de recursos
-  - [ ] Sistema de búsqueda
-  - [ ] Marcadores favoritos
+- [x] Guía de Recursos - Contenido descargable
+  - [x] 6 guías en PDF descargables
+  - [x] Categorías de recursos
+  - [x] Sistema de búsqueda
+  - [x] Marcadores favoritos
 
-- [ ] Ejercicios de Bienestar - Ejercicios con instrucciones
-  - [ ] 8 ejercicios con videos o imágenes
-  - [ ] Instrucciones paso a paso
-  - [ ] Duración y dificultad
-  - [ ] Seguimiento de ejercicios completados
+- [x] Ejercicios de Bienestar - Ejercicios con instrucciones
+  - [x] 8 ejercicios con pasos detallados
+  - [x] Instrucciones paso a paso expandibles
+  - [x] Duración y dificultad
+  - [x] Seguimiento de ejercicios completados
 
-- [ ] Foro de Preguntas - Sistema de threads funcional
-  - [ ] Crear nuevas preguntas
-  - [ ] Responder preguntas
-  - [ ] Sistema de votación (likes)
-  - [ ] Marcar respuestas útiles
+- [x] Foro de Preguntas - Sistema de threads funcional
+  - [x] 6 threads con contenido real
+  - [x] Responder preguntas (UI lista)
+  - [x] Sistema de votación (likes)
+  - [x] Marcar respuestas útiles
