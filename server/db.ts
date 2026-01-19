@@ -1,6 +1,6 @@
 import { eq, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, userSymptoms, symptoms, symptomReports } from "../drizzle/schema";
+import { InsertUser, users, userSymptoms, symptoms, symptomReports, resources, exercises, forumThreads, forumReplies } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -230,3 +230,140 @@ function generateRecommendations(userSymptomsList: any[]): string[] {
 }
 
 // TODO: add feature queries here as your schema grows.
+
+
+// Resources functions
+export async function getResourcesByCategory(userId: number, category: string) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(resources).where(
+    and(eq(resources.userId, userId), eq(resources.category, category))
+  );
+}
+
+export async function addResource(userId: number, title: string, category: string, description: string, fileUrl: string) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(resources).values({
+    userId,
+    title,
+    category,
+    description,
+    fileUrl,
+    isFavorite: false,
+  });
+  return result;
+}
+
+export async function toggleResourceFavorite(resourceId: number, userId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const resource = await db.select().from(resources).where(eq(resources.id, resourceId)).limit(1);
+  if (!resource.length || resource[0].userId !== userId) return null;
+  
+  return db.update(resources).set({
+    isFavorite: !resource[0].isFavorite,
+  }).where(eq(resources.id, resourceId));
+}
+
+// Exercises functions
+export async function getUserExercises(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(exercises).where(eq(exercises.userId, userId));
+}
+
+export async function addExercise(userId: number, exerciseName: string, description: string, duration: number, difficulty: string) {
+  const db = await getDb();
+  if (!db) return null;
+  return db.insert(exercises).values({
+    userId,
+    exerciseName,
+    description,
+    duration,
+    difficulty: difficulty as "fácil" | "moderado" | "difícil",
+    completed: false,
+  });
+}
+
+export async function completeExercise(exerciseId: number, userId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const exercise = await db.select().from(exercises).where(eq(exercises.id, exerciseId)).limit(1);
+  if (!exercise.length || exercise[0].userId !== userId) return null;
+  
+  return db.update(exercises).set({
+    completed: true,
+    completedAt: new Date(),
+  }).where(eq(exercises.id, exerciseId));
+}
+
+// Forum functions
+export async function createForumThread(userId: number, title: string, content: string, category: string) {
+  const db = await getDb();
+  if (!db) return null;
+  return db.insert(forumThreads).values({
+    userId,
+    title,
+    content,
+    category,
+    views: 0,
+    isAnswered: false,
+  });
+}
+
+export async function getForumThreads(category?: string) {
+  const db = await getDb();
+  if (!db) return [];
+  if (category) {
+    return db.select().from(forumThreads).where(eq(forumThreads.category, category));
+  }
+  return db.select().from(forumThreads);
+}
+
+export async function getForumThread(threadId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const thread = await db.select().from(forumThreads).where(eq(forumThreads.id, threadId)).limit(1);
+  return thread.length ? thread[0] : null;
+}
+
+export async function addForumReply(threadId: number, userId: number, content: string) {
+  const db = await getDb();
+  if (!db) return null;
+  return db.insert(forumReplies).values({
+    threadId,
+    userId,
+    content,
+    likes: 0,
+    isHelpful: false,
+  });
+}
+
+export async function getForumReplies(threadId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(forumReplies).where(eq(forumReplies.threadId, threadId));
+}
+
+export async function likeForumReply(replyId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const reply = await db.select().from(forumReplies).where(eq(forumReplies.id, replyId)).limit(1);
+  if (!reply.length) return null;
+  
+  return db.update(forumReplies).set({
+    likes: reply[0].likes + 1,
+  }).where(eq(forumReplies.id, replyId));
+}
+
+export async function markReplyAsHelpful(replyId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const reply = await db.select().from(forumReplies).where(eq(forumReplies.id, replyId)).limit(1);
+  if (!reply.length) return null;
+  
+  return db.update(forumReplies).set({
+    isHelpful: !reply[0].isHelpful,
+  }).where(eq(forumReplies.id, replyId));
+}

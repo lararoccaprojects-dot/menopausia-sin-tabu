@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { MessageCircle, ThumbsUp, Search, Plus, ArrowLeft } from "lucide-react";
+import { MessageCircle, ThumbsUp, Search, Plus, ArrowLeft, MessageSquare } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "wouter";
 
@@ -10,6 +10,7 @@ export default function Forum() {
   const [, setLocation] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedThread, setSelectedThread] = useState<number | null>(null);
+  const [showNewThread, setShowNewThread] = useState(false);
 
   const threads = [
     {
@@ -22,18 +23,19 @@ export default function Forum() {
       likes: 42,
       lastReply: "Hace 2 horas",
       preview: "He estado experimentando sofocos muy intensos por la noche que me despiertan...",
+      content: "He estado experimentando sofocos muy intensos por la noche que me despiertan constantemente. Duermo 2-3 horas máximo. ¿Alguien tiene consejos que realmente funcionen?",
       answers: [
         {
           id: 1,
           author: "Ana López",
-          content: "Yo recomiendo mantener la habitación fresca y usar ropa de algodón. También me ayuda mucho la respiración profunda.",
+          content: "Yo recomiendo mantener la habitación fresca (16-18°C) y usar ropa de algodón. También me ayuda mucho la respiración profunda antes de dormir.",
           likes: 18,
           helpful: true
         },
         {
           id: 2,
           author: "Carmen Ruiz",
-          content: "Prueba con té de salvia antes de dormir. A mí me cambió la vida.",
+          content: "Prueba con té de salvia antes de dormir. A mí me cambió la vida. También evito cafeína después de las 14:00.",
           likes: 12,
           helpful: true
         }
@@ -49,6 +51,7 @@ export default function Forum() {
       likes: 35,
       lastReply: "Hace 5 horas",
       preview: "Últimamente me siento muy irritable y con cambios de humor constantes...",
+      content: "Últimamente me siento muy irritable y con cambios de humor constantes. Un momento estoy bien y al siguiente estoy llorando sin razón aparente. ¿Es normal?",
       answers: []
     },
     {
@@ -61,6 +64,7 @@ export default function Forum() {
       likes: 58,
       lastReply: "Hace 1 hora",
       preview: "Quería compartir los ejercicios que más me han ayudado con los síntomas...",
+      content: "Quería compartir los ejercicios que más me han ayudado con los síntomas. El yoga y pilates han sido transformadores para mí.",
       answers: []
     },
     {
@@ -73,6 +77,7 @@ export default function Forum() {
       likes: 41,
       lastReply: "Hace 3 horas",
       preview: "¿Qué alimentos evitar y cuáles priorizar durante esta etapa?",
+      content: "¿Qué alimentos evitar y cuáles priorizar durante esta etapa? ¿Hay alimentos que realmente ayuden con los síntomas?",
       answers: []
     },
     {
@@ -85,6 +90,20 @@ export default function Forum() {
       likes: 33,
       lastReply: "Hace 4 horas",
       preview: "Compartiendo mis mejores tips para dormir mejor durante la menopausia...",
+      content: "Compartiendo mis mejores tips para dormir mejor durante la menopausia. Después de meses de insomnio, finalmente encontré lo que funciona.",
+      answers: []
+    },
+    {
+      id: 6,
+      title: "Cambios en la intimidad y sexualidad",
+      author: "Patricia Gómez",
+      category: "intimidad",
+      replies: 15,
+      views: 98,
+      likes: 27,
+      lastReply: "Hace 6 horas",
+      preview: "¿Alguien más experimenta cambios en su vida sexual durante la menopausia?",
+      content: "¿Alguien más experimenta cambios en su vida sexual durante la menopausia? Me gustaría saber cómo otros lo manejan.",
       answers: []
     }
   ];
@@ -95,7 +114,8 @@ export default function Forum() {
     { id: "emocional", label: "Emocional" },
     { id: "ejercicio", label: "Ejercicio" },
     { id: "nutrición", label: "Nutrición" },
-    { id: "sueño", label: "Sueño" }
+    { id: "sueño", label: "Sueño" },
+    { id: "intimidad", label: "Intimidad" }
   ];
 
   const filteredThreads = threads.filter(thread =>
@@ -107,9 +127,9 @@ export default function Forum() {
 
   if (selectedThread && selectedThreadData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-green-50">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-pink-50">
         {/* Header */}
-        <div className="bg-white border-b border-pink-200 shadow-sm sticky top-0 z-40">
+        <div className="bg-white border-b border-blue-200 shadow-sm sticky top-0 z-40">
           <div className="container mx-auto px-4 py-6">
             <Button
               variant="ghost"
@@ -125,7 +145,7 @@ export default function Forum() {
 
         {/* Thread Content */}
         <div className="container mx-auto px-4 py-12">
-          <Card className="p-6 mb-8 border-2 border-pink-200">
+          <Card className="p-6 mb-8 border-2 border-blue-200">
             <div className="flex justify-between items-start mb-4">
               <div>
                 <p className="text-gray-600">
@@ -138,38 +158,42 @@ export default function Forum() {
                 <p className="text-sm text-gray-600">{selectedThreadData.views} vistas</p>
               </div>
             </div>
-            <p className="text-gray-700 text-lg">{selectedThreadData.preview}</p>
+            <p className="text-gray-700 text-lg">{selectedThreadData.content}</p>
           </Card>
 
           {/* Answers */}
           <div className="space-y-4 mb-8">
             <h2 className="text-2xl font-bold text-gray-900">Respuestas ({selectedThreadData.answers.length})</h2>
-            {selectedThreadData.answers.map(answer => (
-              <Card key={answer.id} className={`p-6 border-2 ${answer.helpful ? 'border-green-200 bg-green-50' : 'border-gray-200'}`}>
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <p className="font-bold text-gray-900">{answer.author}</p>
-                    {answer.helpful && <p className="text-xs text-green-600 font-semibold">✓ Respuesta Útil</p>}
+            {selectedThreadData.answers.length > 0 ? (
+              selectedThreadData.answers.map(answer => (
+                <Card key={answer.id} className={`p-6 border-2 ${answer.helpful ? 'border-green-200 bg-green-50' : 'border-gray-200'}`}>
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <p className="font-bold text-gray-900">{answer.author}</p>
+                      {answer.helpful && <p className="text-xs text-green-600 font-semibold">✓ Respuesta Útil</p>}
+                    </div>
+                    <button className="flex items-center gap-1 text-gray-600 hover:text-blue-600">
+                      <ThumbsUp className="w-4 h-4" />
+                      <span className="text-sm">{answer.likes}</span>
+                    </button>
                   </div>
-                  <button className="flex items-center gap-1 text-gray-600 hover:text-pink-600">
-                    <ThumbsUp className="w-4 h-4" />
-                    <span className="text-sm">{answer.likes}</span>
-                  </button>
-                </div>
-                <p className="text-gray-700">{answer.content}</p>
-              </Card>
-            ))}
+                  <p className="text-gray-700">{answer.content}</p>
+                </Card>
+              ))
+            ) : (
+              <p className="text-gray-600">Aún no hay respuestas. ¡Sé la primera en responder!</p>
+            )}
           </div>
 
           {/* Reply Form */}
-          <Card className="p-6 border-2 border-pink-200">
+          <Card className="p-6 border-2 border-blue-200">
             <h3 className="text-xl font-bold text-gray-900 mb-4">Añade tu respuesta</h3>
             <textarea
               placeholder="Comparte tu experiencia o consejo..."
-              className="w-full p-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 mb-4"
+              className="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
               rows={4}
             />
-            <Button className="bg-pink-500 hover:bg-pink-600 text-white">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
               Publicar Respuesta
             </Button>
           </Card>
@@ -179,50 +203,65 @@ export default function Forum() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-pink-50">
       {/* Header */}
-      <div className="bg-white border-b border-pink-200 shadow-sm sticky top-0 z-40">
+      <div className="bg-white border-b border-blue-200 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <MessageCircle className="w-8 h-8 text-pink-600" />
-              <h1 className="text-3xl font-bold text-gray-900">Foro de la Comunidad</h1>
+              <MessageCircle className="w-8 h-8 text-blue-600" />
+              <h1 className="text-3xl font-bold text-gray-900">Foro Comunitario</h1>
             </div>
-            <Button
-              variant="ghost"
-              onClick={() => setLocation("/dashboard")}
-              className="flex items-center gap-2"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Volver
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                onClick={() => setShowNewThread(true)}
+                className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
+              >
+                <Plus className="w-4 h-4" />
+                Nueva Pregunta
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => setLocation("/dashboard")}
+                className="flex items-center gap-2"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Volver
+              </Button>
+            </div>
           </div>
           <p className="text-gray-600">
-            Conecta con otras mujeres, comparte experiencias y resuelve dudas
+            Comunidad de mujeres compartiendo experiencias y consejos sobre menopausia
           </p>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
-        {/* Search and New Thread */}
-        <div className="mb-8 space-y-4">
-          <div className="flex gap-4">
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Buscar en el foro..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-              />
-            </div>
-            <Button className="bg-pink-500 hover:bg-pink-600 text-white flex items-center gap-2">
-              <Plus className="w-4 h-4" />
-              Nueva Pregunta
-            </Button>
+        {/* Search */}
+        <div className="mb-8">
+          <div className="relative">
+            <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Buscar en el foro..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
+        </div>
+
+        {/* Category Filter */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {categories.map(cat => (
+            <button
+              key={cat.id}
+              className="px-4 py-2 rounded-full transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300"
+            >
+              {cat.label}
+            </button>
+          ))}
         </div>
 
         {/* Threads List */}
@@ -230,17 +269,17 @@ export default function Forum() {
           {filteredThreads.map(thread => (
             <Card
               key={thread.id}
-              className="p-6 border-2 border-pink-100 hover:border-pink-400 transition-colors cursor-pointer"
+              className="p-6 border-2 border-gray-200 hover:border-blue-400 transition-colors cursor-pointer"
               onClick={() => setSelectedThread(thread.id)}
             >
               <div className="flex justify-between items-start mb-3">
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 hover:text-pink-600">{thread.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 hover:text-blue-600">{thread.title}</h3>
                   <p className="text-sm text-gray-600 mt-1">
                     Pregunta por <strong>{thread.author}</strong>
                   </p>
                 </div>
-                <span className="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm font-semibold">
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
                   {thread.category}
                 </span>
               </div>
@@ -250,7 +289,7 @@ export default function Forum() {
               <div className="flex justify-between items-center text-sm text-gray-600">
                 <div className="flex gap-6">
                   <div className="flex items-center gap-1">
-                    <MessageCircle className="w-4 h-4" />
+                    <MessageSquare className="w-4 h-4" />
                     {thread.replies} respuestas
                   </div>
                   <div>{thread.views} vistas</div>
@@ -264,6 +303,45 @@ export default function Forum() {
           ))}
         </div>
       </div>
+
+      {/* New Thread Modal */}
+      {showNewThread && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <Card className="p-8 max-w-2xl w-full mx-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Nueva Pregunta</h2>
+            <input
+              type="text"
+              placeholder="Título de tu pregunta..."
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+            />
+            <select className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4">
+              <option>Síntomas</option>
+              <option>Emocional</option>
+              <option>Ejercicio</option>
+              <option>Nutrición</option>
+              <option>Sueño</option>
+              <option>Intimidad</option>
+            </select>
+            <textarea
+              placeholder="Describe tu pregunta en detalle..."
+              className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+              rows={6}
+            />
+            <div className="flex gap-3">
+              <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
+                Publicar Pregunta
+              </Button>
+              <Button
+                onClick={() => setShowNewThread(false)}
+                variant="outline"
+                className="flex-1"
+              >
+                Cancelar
+              </Button>
+            </div>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }

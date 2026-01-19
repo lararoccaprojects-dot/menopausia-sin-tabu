@@ -17,8 +17,8 @@ export default function WellnessExercises() {
       title: "Respiración Profunda para Sofocos",
       difficulty: "beginner",
       duration: 5,
-      description: "Técnica de respiración para controlar los sofocos",
-      instructions: "Inhala profundamente por la nariz durante 4 segundos, mantén durante 4 segundos, exhala durante 4 segundos...",
+      description: "Técnica de respiración para controlar los sofocos y la ansiedad",
+      instructions: "Inhala profundamente por la nariz durante 4 segundos, mantén durante 4 segundos, exhala durante 6 segundos. Repite 10 veces.",
       benefits: ["Reduce sofocos", "Calma la ansiedad", "Mejora la oxigenación"]
     },
     {
@@ -26,8 +26,8 @@ export default function WellnessExercises() {
       title: "Yoga Restaurativo",
       difficulty: "beginner",
       duration: 15,
-      description: "Secuencia suave de yoga para relajación y flexibilidad",
-      instructions: "Realiza las posturas de forma lenta y consciente, manteniendo cada una por 1-2 minutos...",
+      description: "Secuencia suave de yoga para relajación, flexibilidad y equilibrio",
+      instructions: "Realiza las posturas de forma lenta y consciente, manteniendo cada una por 1-2 minutos. Enfócate en la respiración.",
       benefits: ["Aumenta flexibilidad", "Reduce estrés", "Mejora el sueño"]
     },
     {
@@ -35,8 +35,8 @@ export default function WellnessExercises() {
       title: "Fortalecimiento de Core",
       difficulty: "intermediate",
       duration: 20,
-      description: "Ejercicios para fortalecer el core y mejorar la postura",
-      instructions: "Realiza 3 series de 10 repeticiones de cada ejercicio con descansos de 30 segundos...",
+      description: "Ejercicios para fortalecer el core, mejorar postura y prevenir dolor de espalda",
+      instructions: "Realiza 3 series de 10 repeticiones de cada ejercicio con descansos de 30 segundos. Mantén la estabilidad.",
       benefits: ["Fortalece abdominales", "Mejora postura", "Previene dolor de espalda"]
     },
     {
@@ -44,8 +44,8 @@ export default function WellnessExercises() {
       title: "Caminata Consciente",
       difficulty: "beginner",
       duration: 30,
-      description: "Caminata meditativa para conectar con tu cuerpo",
-      instructions: "Camina a paso lento, enfocándote en cada paso y en tu respiración...",
+      description: "Caminata meditativa para conectar con tu cuerpo y reducir estrés",
+      instructions: "Camina a paso moderado, enfocándote en cada paso y en tu respiración. Observa tu entorno sin juzgar.",
       benefits: ["Mejora cardiovascular", "Reduce estrés", "Aumenta energía"]
     },
     {
@@ -53,8 +53,8 @@ export default function WellnessExercises() {
       title: "Pilates para la Menopausia",
       difficulty: "intermediate",
       duration: 25,
-      description: "Ejercicios de pilates adaptados para síntomas menopáusicos",
-      instructions: "Realiza los movimientos de forma controlada, enfocándote en la estabilidad...",
+      description: "Ejercicios de pilates adaptados para fortalecer músculos y mejorar equilibrio",
+      instructions: "Realiza los movimientos de forma controlada, enfocándote en la estabilidad y la respiración. Sin prisa.",
       benefits: ["Fortalece músculos", "Mejora equilibrio", "Aumenta densidad ósea"]
     },
     {
@@ -62,26 +62,26 @@ export default function WellnessExercises() {
       title: "Estiramientos Profundos",
       difficulty: "beginner",
       duration: 10,
-      description: "Rutina de estiramientos para liberar tensión",
-      instructions: "Mantén cada estiramiento por 30 segundos sin rebotar...",
+      description: "Rutina de estiramientos para liberar tensión muscular y mejorar flexibilidad",
+      instructions: "Mantén cada estiramiento por 30 segundos sin rebotar. Respira profundamente durante cada estiramiento.",
       benefits: ["Reduce tensión muscular", "Mejora flexibilidad", "Calma el cuerpo"]
     },
     {
       id: 7,
-      title: "HIIT Adaptado",
-      difficulty: "advanced",
-      duration: 20,
-      description: "Entrenamiento de alta intensidad adaptado para la menopausia",
-      instructions: "Alterna 30 segundos de ejercicio intenso con 30 segundos de descanso...",
-      benefits: ["Acelera metabolismo", "Mejora resistencia", "Aumenta energía"]
+      title: "Ejercicios de Kegel",
+      difficulty: "beginner",
+      duration: 10,
+      description: "Fortalecimiento del suelo pélvico para mejorar salud sexual y urinaria",
+      instructions: "Contrae los músculos del suelo pélvico durante 3 segundos, relaja durante 3 segundos. Repite 10 veces, 3 series.",
+      benefits: ["Mejora incontinencia", "Aumenta placer sexual", "Fortalece suelo pélvico"]
     },
     {
       id: 8,
       title: "Meditación Guiada",
       difficulty: "beginner",
       duration: 15,
-      description: "Meditación para calmar la mente y reducir ansiedad",
-      instructions: "Siéntate cómodamente y sigue las instrucciones de la meditación guiada...",
+      description: "Meditación para calmar la mente, reducir ansiedad y aumentar bienestar",
+      instructions: "Siéntate cómodamente, cierra los ojos y sigue tu respiración. Observa los pensamientos sin juzgar.",
       benefits: ["Reduce ansiedad", "Mejora enfoque", "Aumenta bienestar"]
     }
   ];
@@ -125,7 +125,7 @@ export default function WellnessExercises() {
             </Button>
           </div>
           <p className="text-gray-600">
-            Rutinas de ejercicio diseñadas para aliviar síntomas menopáusicos
+            8 rutinas de ejercicio diseñadas para aliviar síntomas menopáusicos
           </p>
         </div>
       </div>

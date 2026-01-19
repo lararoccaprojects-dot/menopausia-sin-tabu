@@ -185,3 +185,30 @@
 - [x] Agregar precio en botones de Downsell ($27.99)
 - [x] Agregar precio en botones de Thank You ($19.99)
 - [x] Agregar precio en botones de Dashboard (pendiente)
+
+
+## FASE 4b: Agregar Contenido Real a Herramientas Principales
+
+- [ ] Simulador de Síntomas - Mejorar funcionalidad
+  - [ ] Agregar más síntomas específicos (30+)
+  - [ ] Crear reportes detallados con recomendaciones
+  - [ ] Guardar historial de síntomas
+  - [ ] Gráficos de progreso temporal
+
+- [ ] Guía de Recursos - Contenido descargable
+  - [ ] 6 guías en PDF descargables
+  - [ ] Categorías de recursos
+  - [ ] Sistema de búsqueda
+  - [ ] Marcadores favoritos
+
+- [ ] Ejercicios de Bienestar - Ejercicios con instrucciones
+  - [ ] 8 ejercicios con videos o imágenes
+  - [ ] Instrucciones paso a paso
+  - [ ] Duración y dificultad
+  - [ ] Seguimiento de ejercicios completados
+
+- [ ] Foro de Preguntas - Sistema de threads funcional
+  - [ ] Crear nuevas preguntas
+  - [ ] Responder preguntas
+  - [ ] Sistema de votación (likes)
+  - [ ] Marcar respuestas útiles

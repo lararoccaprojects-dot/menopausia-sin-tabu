@@ -5,11 +5,13 @@ import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
 import { getDb, getAllSymptoms, getUserSymptoms, addUserSymptom, updateUserSymptom, deleteUserSymptom, generateSymptomReport } from "./db";
 import { checkoutLeads } from "../drizzle/schema";
 import { hotmartRouter } from "./hotmart.router";
+import { toolsRouter } from "./tools.router";
 import { z } from "zod";
 
 export const appRouter = router({
   system: systemRouter,
   hotmart: hotmartRouter,
+  tools: toolsRouter,
   
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),

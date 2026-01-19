@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -195,4 +195,66 @@ export const symptomReports = mysqlTable("symptomReports", {
 export type SymptomReport = typeof symptomReports.$inferSelect;
 export type InsertSymptomReport = typeof symptomReports.$inferInsert;
 
-// TODO: Add your tables here
+// Resources table
+export const resources = mysqlTable("resources", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().references(() => users.id),
+  title: varchar("title", { length: 255 }).notNull(),
+  category: varchar("category", { length: 100 }).notNull(),
+  description: text("description"),
+  fileUrl: text("fileUrl"),
+  isFavorite: boolean("isFavorite").default(false),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Resource = typeof resources.$inferSelect;
+export type InsertResource = typeof resources.$inferInsert;
+
+// Exercises table
+export const exercises = mysqlTable("exercises", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().references(() => users.id),
+  exerciseName: varchar("exerciseName", { length: 255 }).notNull(),
+  description: text("description"),
+  duration: int("duration"), // in minutes
+  difficulty: mysqlEnum("difficulty", ["fácil", "moderado", "difícil"]).default("fácil"),
+  completed: boolean("completed").default(false),
+  completedAt: timestamp("completedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Exercise = typeof exercises.$inferSelect;
+export type InsertExercise = typeof exercises.$inferInsert;
+
+// Forum threads table
+export const forumThreads = mysqlTable("forumThreads", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().references(() => users.id),
+  title: varchar("title", { length: 255 }).notNull(),
+  content: text("content").notNull(),
+  category: varchar("category", { length: 100 }).notNull(),
+  views: int("views").default(0).notNull(),
+  isAnswered: boolean("isAnswered").default(false),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ForumThread = typeof forumThreads.$inferSelect;
+export type InsertForumThread = typeof forumThreads.$inferInsert;
+
+// Forum replies table
+export const forumReplies = mysqlTable("forumReplies", {
+  id: int("id").autoincrement().primaryKey(),
+  threadId: int("threadId").notNull().references(() => forumThreads.id),
+  userId: int("userId").notNull().references(() => users.id),
+  content: text("content").notNull(),
+  likes: int("likes").default(0).notNull(),
+  isHelpful: boolean("isHelpful").default(false),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ForumReply = typeof forumReplies.$inferSelect;
+export type InsertForumReply = typeof forumReplies.$inferInsert;
