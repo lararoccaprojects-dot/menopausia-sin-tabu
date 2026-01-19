@@ -11,15 +11,15 @@ import ThankYou from "./pages/ThankYou";
 import SymptomSimulator from "./pages/SymptomSimulator";
 import Dashboard from "./pages/Dashboard";
 import PremiumPack from "./pages/PremiumPack";
-import EmotionalWellness from "./pages/EmotionalWellness";
 import ResourceGuide from "./pages/ResourceGuide";
 import WellnessExercises from "./pages/WellnessExercises";
 import Forum from "./pages/Forum";
-import IntimacyManual from "./pages/IntimacyManual";
-import LongTermHealthPlan from "./pages/LongTermHealthPlan";
-import SelfEsteemKit from "./pages/SelfEsteemKit";
-import NutritionWorkshop from "./pages/NutritionWorkshop";
-import AlternativeTherapies from "./pages/AlternativeTherapies";
+import Upsell1EmotionalWellness from "./pages/Upsell1EmotionalWellness";
+import Upsell2IntimacyManual from "./pages/Upsell2IntimacyManual";
+import Upsell3LongTermHealth from "./pages/Upsell3LongTermHealth";
+import Upsell4SelfEsteemKit from "./pages/Upsell4SelfEsteemKit";
+import Upsell5NutritionWorkshop from "./pages/Upsell5NutritionWorkshop";
+import Upsell6AlternativeTherapies from "./pages/Upsell6AlternativeTherapies";
 
 function Router() {
   return (
@@ -41,12 +41,12 @@ function Router() {
       
       {/* Protected Pages - Premium Pack */}
       <Route path={"/premium-pack"} component={PremiumPack} />
-      <Route path={"/premium/emotional-wellness"} component={EmotionalWellness} />
-      <Route path={"/premium/intimacy-manual"} component={IntimacyManual} />
-      <Route path={"/premium/long-term-health"} component={LongTermHealthPlan} />
-      <Route path={"/premium/self-esteem"} component={SelfEsteemKit} />
-      <Route path={"/premium/nutrition"} component={NutritionWorkshop} />
-      <Route path={"/premium/alternative-therapies"} component={AlternativeTherapies} />
+      <Route path={"/premium/emotional-wellness"} component={Upsell1EmotionalWellness} />
+      <Route path={"/premium/intimacy-manual"} component={Upsell2IntimacyManual} />
+      <Route path={"/premium/long-term-health"} component={Upsell3LongTermHealth} />
+      <Route path={"/premium/self-esteem"} component={Upsell4SelfEsteemKit} />
+      <Route path={"/premium/nutrition"} component={Upsell5NutritionWorkshop} />
+      <Route path={"/premium/alternative-therapies"} component={Upsell6AlternativeTherapies} />
       
       {/* Error Pages */}
       <Route path={"/404"} component={NotFound} />
