@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { Loader2, Heart, AlertCircle, TrendingUp, CheckCircle2 } from "lucide-react";
+import { Loader2, Heart, AlertCircle, TrendingUp, CheckCircle2, Lightbulb, ArrowLeft } from "lucide-react";
+import { useState } from "react";
+import { useLocation } from "wouter";
 import { toast } from "sonner";
 
 interface SymptomWithUserData {
@@ -20,8 +21,17 @@ interface SymptomWithUserData {
   recordedAt: Date;
 }
 
+interface Recommendation {
+  category: string;
+  title: string;
+  description: string;
+  actions: string[];
+  icon: string;
+}
+
 export default function SymptomSimulator() {
   const { user, isAuthenticated } = useAuth();
+  const [, setLocation] = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<string>("hormonal");
   const [selectedSymptoms, setSelectedSymptoms] = useState<Record<number, { severity: number; frequency: "diaria" | "varias_veces_semana" | "semanal" | "ocasional" }>>(
     {}
@@ -86,6 +96,119 @@ export default function SymptomSimulator() {
     sexual: "bg-rose-100 text-rose-700",
   };
 
+  // Recomendaciones personalizadas según síntomas
+  const getPersonalizedRecommendations = (): Recommendation[] => {
+    const recommendations: Recommendation[] = [];
+    const selectedSymptomNames = Object.keys(selectedSymptoms).map(id => {
+      const symptom = allSymptoms?.find(s => s.id === parseInt(id));
+      return symptom?.name.toLowerCase() || '';
+    });
+
+    // Recomendaciones para sofocos
+    if (selectedSymptomNames.some(s => s.includes('sofoco') || s.includes('calor'))) {
+      recommendations.push({
+        category: 'Sofocos',
+        title: '🌡️ Manejo de Sofocos',
+        description: 'Los sofocos son uno de los síntomas más comunes. Aquí hay estrategias efectivas:',
+        actions: [
+          'Practica respiración profunda 4-7-8 cuando sientas un sofoco',
+          'Usa ropa en capas para ajustar rápidamente',
+          'Evita cafeína, alcohol y comidas picantes',
+          'Mantén tu habitación fresca (16-19°C)',
+          'Prueba el ejercicio regular, especialmente yoga'
+        ],
+        icon: '🌡️'
+      });
+    }
+
+    // Recomendaciones para cambios de humor
+    if (selectedSymptomNames.some(s => s.includes('humor') || s.includes('ánimo'))) {
+      recommendations.push({
+        category: 'Emocional',
+        title: '🧠 Salud Emocional',
+        description: 'Los cambios de humor son normales durante la menopausia. Estas estrategias pueden ayudar:',
+        actions: [
+          'Practica meditación diaria (10-15 minutos)',
+          'Mantén un diario emocional para identificar patrones',
+          'Busca apoyo en amigos, familia o grupos de apoyo',
+          'Considera terapia psicológica si es necesario',
+          'Realiza actividades que disfrutes regularmente'
+        ],
+        icon: '🧠'
+      });
+    }
+
+    // Recomendaciones para problemas de sueño
+    if (selectedSymptomNames.some(s => s.includes('sueño') || s.includes('insomnio'))) {
+      recommendations.push({
+        category: 'Sueño',
+        title: '😴 Mejora del Sueño',
+        description: 'Un buen descanso es crucial. Intenta estas prácticas:',
+        actions: [
+          'Establece una rutina nocturna consistente',
+          'Evita pantallas 1 hora antes de dormir',
+          'Prueba técnicas de relajación o meditación',
+          'Limita cafeína después de las 14:00',
+          'Mantén la habitación oscura y fresca'
+        ],
+        icon: '😴'
+      });
+    }
+
+    // Recomendaciones para sequedad vaginal
+    if (selectedSymptomNames.some(s => s.includes('sequedad') || s.includes('vaginal'))) {
+      recommendations.push({
+        category: 'Intimidad',
+        title: '💕 Salud Íntima',
+        description: 'La sequedad vaginal es tratable. Aquí hay soluciones:',
+        actions: [
+          'Usa lubricantes naturales o hidratantes vaginales',
+          'Aumenta el tiempo de estimulación',
+          'Comunica abiertamente con tu pareja',
+          'Considera consultar con tu ginecólogo',
+          'Realiza ejercicios de Kegel regularmente'
+        ],
+        icon: '💕'
+      });
+    }
+
+    // Recomendaciones para fatiga
+    if (selectedSymptomNames.some(s => s.includes('fatiga') || s.includes('cansancio'))) {
+      recommendations.push({
+        category: 'Energía',
+        title: '⚡ Aumento de Energía',
+        description: 'La fatiga es común pero manejable. Prueba esto:',
+        actions: [
+          'Realiza ejercicio moderado 30 minutos diarios',
+          'Asegura 7-9 horas de sueño',
+          'Aumenta ingesta de hierro y vitamina B12',
+          'Toma descansos regulares durante el día',
+          'Consulta con tu médico si persiste'
+        ],
+        icon: '⚡'
+      });
+    }
+
+    // Recomendación general si no hay síntomas específicos
+    if (recommendations.length === 0 && Object.keys(selectedSymptoms).length > 0) {
+      recommendations.push({
+        category: 'General',
+        title: '✨ Bienestar General',
+        description: 'Para mantener tu bienestar durante la menopausia:',
+        actions: [
+          'Mantén una alimentación equilibrada y nutritiva',
+          'Realiza ejercicio regular (cardio, fuerza, flexibilidad)',
+          'Practica técnicas de relajación y mindfulness',
+          'Busca apoyo social y emocional',
+          'Realiza revisiones médicas regulares'
+        ],
+        icon: '✨'
+      });
+    }
+
+    return recommendations;
+  };
+
   const filteredSymptoms = allSymptoms?.filter((s) => s.category === selectedCategory) || [];
 
   const handleAddSymptom = (symptomId: number) => {
@@ -132,27 +255,34 @@ export default function SymptomSimulator() {
     );
   }
 
+  const recommendations = getPersonalizedRecommendations();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-green-50 py-12">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
+        <div className="mb-8 flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <Heart className="w-8 h-8 text-pink-500" />
-            <h1 className="text-4xl font-bold text-gray-900">Simulador de Síntomas</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Simulador de Síntomas</h1>
           </div>
-          <p className="text-lg text-gray-600">
-            Registra y monitorea tus síntomas de menopausia. Entiende patrones y recibe recomendaciones personalizadas.
-          </p>
+          <Button
+            variant="ghost"
+            onClick={() => setLocation("/dashboard")}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Volver
+          </Button>
         </div>
 
         {/* Valor Inicial */}
         <Card className="mb-8 border-2 border-pink-200 bg-gradient-to-r from-pink-50 to-white">
           <CardContent className="pt-6">
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-gray-900">Por qué usar el Simulador de Síntomas</h3>
+              <h3 className="text-xl font-bold text-gray-900">¿Por qué usar el Simulador de Síntomas?</h3>
               <p className="text-gray-700 leading-relaxed">
-                La menopausia afecta a cada mujer de manera diferente. Este simulador te ayuda a identificar exactamente qué síntomas experimentas, su intensidad y frecuencia.
+                La menopausia afecta a cada mujer de manera diferente. Este simulador te ayuda a identificar exactamente qué síntomas experimentas, su intensidad y frecuencia, y recibe recomendaciones personalizadas.
               </p>
               <ul className="space-y-2 ml-4">
                 <li className="flex items-start gap-3">
@@ -161,15 +291,11 @@ export default function SymptomSimulator() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-pink-500 font-bold">✓</span>
+                  <span className="text-gray-700">Recibir recomendaciones personalizadas según tus síntomas</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-pink-500 font-bold">✓</span>
                   <span className="text-gray-700">Tomar decisiones informadas sobre tratamientos</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-pink-500 font-bold">✓</span>
-                  <span className="text-gray-700">Comunicar con tu médico de forma clara</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-pink-500 font-bold">✓</span>
-                  <span className="text-gray-700">Recibir recomendaciones personalizadas</span>
                 </li>
               </ul>
             </div>
@@ -252,7 +378,7 @@ export default function SymptomSimulator() {
                                   min={1}
                                   max={10}
                                   step={1}
-                                  className="w-full"
+                                  className="mt-2"
                                 />
                               </div>
 
@@ -262,7 +388,7 @@ export default function SymptomSimulator() {
                                   Frecuencia
                                 </label>
                                 <div className="flex flex-wrap gap-2">
-                                  {(["diaria", "varias_veces_semana", "semanal", "ocasional"] as const).map((freq) => (
+                                  {["diaria", "varias_veces_semana", "semanal", "ocasional"].map((freq) => (
                                     <Button
                                       key={freq}
                                       size="sm"
@@ -272,13 +398,13 @@ export default function SymptomSimulator() {
                                         setSelectedSymptoms({
                                           ...selectedSymptoms,
                                           [symptom.id]: {
-                                            severity: selectedSymptoms[symptom.id]?.severity || 5,
-                                            frequency: freq,
+                                            severity,
+                                            frequency: freq as "diaria" | "varias_veces_semana" | "semanal" | "ocasional",
                                           },
                                         });
                                       }}
                                     >
-                                      {freq.replace(/_/g, " ")}
+                                      {freq === "diaria" ? "Diaria" : freq === "varias_veces_semana" ? "Varias veces/semana" : freq === "semanal" ? "Semanal" : "Ocasional"}
                                     </Button>
                                   ))}
                                 </div>
@@ -290,51 +416,30 @@ export default function SymptomSimulator() {
                                   <>
                                     <Button
                                       size="sm"
-                                      className="bg-blue-500 hover:bg-blue-600"
+                                      className="flex-1 bg-blue-500 hover:bg-blue-600"
                                       onClick={() => handleUpdateSymptom(userSymptom.id, symptom.id)}
-                                      disabled={updateSymptomMutation.isPending}
                                     >
-                                      {updateSymptomMutation.isPending ? "Actualizando..." : "Actualizar"}
+                                      Actualizar
                                     </Button>
                                     <Button
                                       size="sm"
                                       variant="destructive"
                                       onClick={() => handleDeleteSymptom(userSymptom.id)}
-                                      disabled={deleteSymptomMutation.isPending}
                                     >
-                                      {deleteSymptomMutation.isPending ? "Eliminando..." : "Eliminar"}
+                                      Eliminar
                                     </Button>
                                   </>
                                 ) : (
                                   <Button
                                     size="sm"
-                                    className="bg-green-500 hover:bg-green-600"
+                                    className="flex-1 bg-pink-500 hover:bg-pink-600"
                                     onClick={() => handleAddSymptom(symptom.id)}
-                                    disabled={addSymptomMutation.isPending}
                                   >
-                                    {addSymptomMutation.isPending ? "Agregando..." : "Agregar"}
+                                    Agregar
                                   </Button>
                                 )}
                               </div>
                             </div>
-                          )}
-
-                          {!isSelected && (
-                            <Button
-                              size="sm"
-                              className="w-full bg-pink-500 hover:bg-pink-600"
-                              onClick={() => {
-                                setSelectedSymptoms({
-                                  ...selectedSymptoms,
-                                  [symptom.id]: {
-                                    severity: 5,
-                                    frequency: "ocasional",
-                                  },
-                                });
-                              }}
-                            >
-                              Seleccionar
-                            </Button>
                           )}
                         </div>
                       );
@@ -345,84 +450,60 @@ export default function SymptomSimulator() {
             </Card>
           </div>
 
-          {/* Sidebar - Summary & Report */}
+          {/* Sidebar - Recomendaciones Personalizadas */}
           <div className="space-y-6">
-            {/* Summary Card */}
-            {userSymptoms && userSymptoms.length > 0 && (
-              <Card className="bg-gradient-to-br from-pink-50 to-green-50">
+            {recommendations.length > 0 && (
+              <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-white">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-pink-500" />
-                    Resumen
-                  </CardTitle>
+                  <div className="flex items-center gap-2">
+                    <Lightbulb className="w-5 h-5 text-green-600" />
+                    <CardTitle className="text-lg">Recomendaciones Personalizadas</CardTitle>
+                  </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div>
-                    <p className="text-sm text-gray-600">Total de Síntomas</p>
-                    <p className="text-3xl font-bold text-gray-900">{userSymptoms.length}</p>
-                  </div>
+                  {recommendations.map((rec, idx) => (
+                    <div key={idx} className="p-4 bg-white rounded-lg border border-green-200 space-y-3">
+                      <h4 className="font-bold text-gray-900">{rec.title}</h4>
+                      <p className="text-sm text-gray-700">{rec.description}</p>
+                      <ul className="space-y-2">
+                        {rec.actions.map((action, actionIdx) => (
+                          <li key={actionIdx} className="flex gap-2 text-sm text-gray-700">
+                            <span className="text-green-600 font-bold">•</span>
+                            <span>{action}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            )}
 
+            {/* Resumen de Síntomas */}
+            {userSymptoms && userSymptoms.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Tu Resumen</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
                   <div>
-                    <p className="text-sm text-gray-600">Intensidad Promedio</p>
-                    <p className="text-3xl font-bold text-pink-500">
-                      {Math.round(userSymptoms.reduce((sum, s) => sum + s.severity, 0) / userSymptoms.length)}/10
-                    </p>
+                    <p className="text-sm text-gray-600">Síntomas registrados</p>
+                    <p className="text-2xl font-bold text-pink-600">{userSymptoms.length}</p>
                   </div>
-
                   <div>
-                    <p className="text-sm text-gray-600 mb-2">Por Categoría</p>
-                    <div className="space-y-2">
+                    <p className="text-sm text-gray-600 mb-2">Síntomas por categoría</p>
+                    <div className="space-y-1">
                       {categories.map((cat) => {
-                        const count = userSymptoms.filter((s) => s.symptomCategory === cat).length;
+                        const count = userSymptoms.filter(s => s.symptomCategory === cat).length;
                         return count > 0 ? (
-                          <div key={cat} className="flex justify-between items-center">
-                            <Badge className={categoryColors[cat]}>{categoryLabels[cat]}</Badge>
-                            <span className="font-semibold text-gray-900">{count}</span>
+                          <div key={cat} className="flex justify-between text-sm">
+                            <span className="text-gray-700">{categoryLabels[cat]}</span>
+                            <Badge className={categoryColors[cat]}>{count}</Badge>
                           </div>
                         ) : null;
                       })}
                     </div>
                   </div>
-
-                  <Button
-                    className="w-full bg-pink-500 hover:bg-pink-600"
-                    onClick={() => setShowReport(!showReport)}
-                  >
-                    {showReport ? "Ocultar Reporte" : "Ver Reporte Completo"}
-                  </Button>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Report Card */}
-            {showReport && report && (
-              <Card className="border-2 border-green-300">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <AlertCircle className="w-5 h-5 text-green-600" />
-                    Recomendaciones
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    {report && typeof report === "object" && "recommendations" in report && report.recommendations && JSON.parse(report.recommendations as string).map((rec: string, i: number) => (
-                      <div key={i} className="p-3 bg-green-50 rounded-lg border border-green-200">
-                        <p className="text-sm text-gray-700">{rec}</p>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Empty State */}
-            {!userSymptoms || userSymptoms.length === 0 && (
-              <Card className="border-2 border-dashed border-gray-300">
-                <CardContent className="py-8 text-center">
-                  <Heart className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-600">
-                    Selecciona síntomas para comenzar a monitorear tu salud
-                  </p>
                 </CardContent>
               </Card>
             )}
