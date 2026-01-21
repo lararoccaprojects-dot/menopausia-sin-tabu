@@ -329,3 +329,17 @@
 - [x] Kit de Autoestima Positiva - Texto de valor inicial
 - [x] Taller de Alimentación Consciente - Texto de valor inicial
 - [x] Compendio de Terapias Alternativas - Texto de valor inicial
+
+
+## FASE 12: Mejoras Finales
+
+- [ ] Mapa de Bienestar Emocional - Agregar ejercicios
+  - [ ] Agregar 2 ejercicios más por módulo (total 12 ejercicios)
+  - [ ] Instrucciones detalladas para cada ejercicio
+  - [ ] Beneficios específicos
+
+- [ ] Funcionalidad de Descarga de Documentos
+  - [ ] Implementar generador de PDF
+  - [ ] Crear documentos descargables para cada módulo/herramienta
+  - [ ] Botón de descarga funcional en todas las herramientas premium
+  - [ ] Verificar que los archivos se descargan correctamente
