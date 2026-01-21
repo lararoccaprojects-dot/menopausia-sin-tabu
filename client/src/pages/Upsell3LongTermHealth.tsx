@@ -84,46 +84,70 @@ export default function Upsell3LongTermHealth() {
   const phases = [
     {
       id: 1,
-      title: "Evaluación Integral",
+      title: "Evaluación Integral (Año 1)",
       icon: "🔍",
       description: "Entiende tu salud actual",
       keyPoints: [
         "Historial médico completo",
         "Factores de riesgo personales",
         "Baseline de salud actual"
+      ],
+      objectives: [
+        { timeframe: "5 años", goal: "Conocer tu estado de salud completo y establecer baseline" },
+        { timeframe: "10 años", goal: "Mantener o mejorar los indicadores de salud inicial" },
+        { timeframe: "20 años", goal: "Prevenir enfermedades crónicas identificadas en evaluación" },
+        { timeframe: "30 años", goal: "Envejecer activamente con independencia y vitalidad" }
       ]
     },
     {
       id: 2,
-      title: "Prevención de Enfermedades",
+      title: "Prevención de Enfermedades (Años 1-5)",
       icon: "🛡️",
       description: "Reduce riesgos de salud futura",
       keyPoints: [
         "Osteoporosis: calcio y vitamina D",
         "Enfermedades cardíacas: ejercicio y dieta",
         "Diabetes: control de peso y glucosa"
+      ],
+      objectives: [
+        { timeframe: "5 años", goal: "Densidad ósea normal (T-score > -1), presión arterial < 130/80" },
+        { timeframe: "10 años", goal: "Colesterol total < 200, sin diagnóstico de diabetes" },
+        { timeframe: "20 años", goal: "Mantener independencia funcional, sin caídas graves" },
+        { timeframe: "30 años", goal: "Calidad de vida óptima, sin limitaciones por enfermedades prevenibles" }
       ]
     },
     {
       id: 3,
-      title: "Nutrición Optimizada",
+      title: "Nutrición Optimizada (Años 5-15)",
       icon: "🥗",
       description: "Alimentación para longevidad",
       keyPoints: [
         "Dieta mediterránea recomendada",
         "Suplementos esenciales",
         "Hidratación y energía"
+      ],
+      objectives: [
+        { timeframe: "5 años", goal: "Adoptar dieta mediterránea, IMC entre 18.5-24.9" },
+        { timeframe: "10 años", goal: "Mantener peso saludable, energía consistente sin fatiga" },
+        { timeframe: "20 años", goal: "Nutrición óptima para prevención de Alzheimer y cáncer" },
+        { timeframe: "30 años", goal: "Longevidad saludable con nutrientes para envejecimiento activo" }
       ]
     },
     {
       id: 4,
-      title: "Envejecimiento Activo",
+      title: "Envejecimiento Activo (Años 15-30)",
       icon: "🏃",
       description: "Mantén vitalidad y fuerza",
       keyPoints: [
         "Ejercicio regular y variado",
         "Flexibilidad y equilibrio",
         "Conexión social y mental"
+      ],
+      objectives: [
+        { timeframe: "5 años", goal: "150 min cardio/semana, 2x fuerza, flexibilidad mejorada" },
+        { timeframe: "10 años", goal: "Fuerza muscular mantenida, equilibrio excelente, sin caídas" },
+        { timeframe: "20 años", goal: "Cognición aguda, conexión social fuerte, vitalidad constante" },
+        { timeframe: "30 años", goal: "Envejecimiento exitoso con independencia, propósito y alegría" }
       ]
     }
   ];
@@ -244,6 +268,19 @@ export default function Upsell3LongTermHealth() {
                         </div>
                       ))}
                     </div>
+                    {phase.objectives && (
+                      <div className="mt-4 p-4 bg-white rounded-lg border-l-4 border-blue-600">
+                        <p className="font-semibold text-gray-900 mb-3 text-sm">Objetivos a Conseguir:</p>
+                        <div className="space-y-2">
+                          {phase.objectives.map((obj, idx) => (
+                            <div key={idx} className="text-sm">
+                              <span className="font-semibold text-blue-600">{obj.timeframe}:</span>
+                              <span className="text-gray-700 ml-2">{obj.goal}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="flex items-center gap-2">

@@ -160,6 +160,63 @@ export default function WellnessExercises() {
       ],
       benefits: ["Reduce ansiedad", "Mejora concentración", "Aumenta bienestar"],
       icon: "🧠"
+    },
+    {
+      id: 9,
+      title: "Entrenamiento de Fuerza Avanzado",
+      difficulty: "advanced",
+      duration: 40,
+      description: "Rutina de fuerza completa con pesas para fortalecer todo el cuerpo y aumentar densidad ósea",
+      steps: [
+        "Calienta con 5 minutos de cardio ligero",
+        "Sentadillas con pesas: 4 series de 8-10 repeticiones",
+        "Peso muerto: 4 series de 8-10 repeticiones",
+        "Press de pecho: 3 series de 10-12 repeticiones",
+        "Filas con pesas: 3 series de 10-12 repeticiones",
+        "Flexiones de brazos con mancuernas: 3 series de 10 repeticiones",
+        "Descanso de 60-90 segundos entre series",
+        "Estiramiento completo de 5 minutos"
+      ],
+      benefits: ["Aumenta masa muscular", "Fortalece huesos", "Mejora metabolismo", "Aumenta confianza"],
+      icon: "🏋️"
+    },
+    {
+      id: 10,
+      title: "HIIT (Entrenamiento Intervalado de Alta Intensidad)",
+      difficulty: "advanced",
+      duration: 30,
+      description: "Ejercicios de alta intensidad alternados con descanso para máxima quema de calorías",
+      steps: [
+        "Calienta durante 2 minutos con movimientos suaves",
+        "Burpees: 30 segundos intenso, 30 segundos descanso",
+        "Saltos de cuerda: 30 segundos intenso, 30 segundos descanso",
+        "Mountain climbers: 30 segundos intenso, 30 segundos descanso",
+        "Sentadillas explosivas: 30 segundos intenso, 30 segundos descanso",
+        "Repite toda la secuencia 3 veces",
+        "Enfriamiento con caminata lenta y estiramientos",
+        "Respiración profunda final"
+      ],
+      benefits: ["Quema calorías rápidamente", "Mejora cardiovascular", "Aumenta metabolismo", "Ahorra tiempo"],
+      icon: "⚡"
+    },
+    {
+      id: 11,
+      title: "Yoga Dinámico Avanzado",
+      difficulty: "advanced",
+      duration: 45,
+      description: "Secuencia de yoga más desafiante que combina fuerza, flexibilidad y equilibrio",
+      steps: [
+        "Calentamiento con saludos al sol (5 minutos)",
+        "Postura del guerrero III: 5 repeticiones cada lado",
+        "Postura de la rueda: 3 repeticiones de 20-30 segundos",
+        "Postura del escorpión: 3 repeticiones de 20-30 segundos",
+        "Postura del pino: 5 intentos con apoyo en pared",
+        "Postura del pavo real: 3 repeticiones de 15-20 segundos",
+        "Transiciones fluidas entre posturas",
+        "Meditación final de 5 minutos en postura de cadáver"
+      ],
+      benefits: ["Aumenta fuerza y flexibilidad", "Mejora equilibrio", "Desarrolla confianza", "Profunda relajación"],
+      icon: "🧘"
     }
   ];
 

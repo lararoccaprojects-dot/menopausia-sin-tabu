@@ -189,6 +189,24 @@ export default function SymptomSimulator() {
       });
     }
 
+    // Recomendaciones para cambios en libido
+    if (selectedSymptomNames.some(s => s.includes('libido') || s.includes('deseo') || s.includes('sexual'))) {
+      recommendations.push({
+        category: 'Libido',
+        title: '💑 Revitaliza tu Vida Sexual',
+        description: 'Los cambios en el deseo sexual son normales. Aquí hay formas de reconectar:',
+        actions: [
+          'Comunica abiertamente con tu pareja sobre tus sentimientos',
+          'Aumenta el tiempo de intimidad sin presión',
+          'Prueba técnicas de mindfulness durante la intimidad',
+          'Considera lubricantes para mayor comodidad',
+          'Realiza ejercicios de Kegel para aumentar sensibilidad',
+          'Consulta con un especialista si es necesario'
+        ],
+        icon: '💑'
+      });
+    }
+
     // Recomendación general si no hay síntomas específicos
     if (recommendations.length === 0 && Object.keys(selectedSymptoms).length > 0) {
       recommendations.push({
