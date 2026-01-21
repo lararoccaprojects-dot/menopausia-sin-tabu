@@ -26,6 +26,7 @@ export default function Upsell1EmotionalWellness() {
       exercises: [
         {
           name: "Técnica PAUSA",
+          image: "/exercise-breathing.jpg",
           steps: [
             "P - Pausa: Detente por 10 segundos",
             "A - Acepta: Reconoce la emoción sin juzgar",
@@ -36,6 +37,7 @@ export default function Upsell1EmotionalWellness() {
         },
         {
           name: "Mapeo Emocional Diario",
+          image: "/exercise-journaling.jpg",
           steps: [
             "Crea una tabla con horas del día (mañana, tarde, noche)",
             "Registra tu emoción principal en cada momento",
@@ -46,6 +48,7 @@ export default function Upsell1EmotionalWellness() {
         },
         {
           name: "Diálogo Compasivo",
+          image: "/exercise-mindfulness.jpg",
           steps: [
             "Escribe un monólogo interno negativo que tengas",
             "Ahora reescríbelo como si fuera tu mejor amiga hablándote",
@@ -69,6 +72,7 @@ export default function Upsell1EmotionalWellness() {
       exercises: [
         {
           name: "Meditación 5-5-5",
+          image: "/exercise-breathing.jpg",
           steps: [
             "Siéntate cómodamente, espalda recta",
             "Inhala contando hasta 5",
@@ -79,6 +83,7 @@ export default function Upsell1EmotionalWellness() {
         },
         {
           name: "Escaneo Corporal",
+          image: "/exercise-mindfulness.jpg",
           steps: [
             "Acuéstate o siéntate cómodamente",
             "Cierra los ojos y enfoca en tu cabeza",
@@ -89,6 +94,7 @@ export default function Upsell1EmotionalWellness() {
         },
         {
           name: "Mindfulness del Presente",
+          image: "/exercise-journaling.jpg",
           steps: [
             "Elige un objeto (taza de té, flor, vela)",
             "Observa sus colores, texturas, detalles por 5 minutos",
@@ -112,6 +118,7 @@ export default function Upsell1EmotionalWellness() {
       exercises: [
         {
           name: "Carta de Amor a Ti Misma",
+          image: "/exercise-journaling.jpg",
           steps: [
             "Escribe una carta como si fueras tu mejor amiga",
             "Reconoce lo que estás viviendo",
@@ -122,6 +129,7 @@ export default function Upsell1EmotionalWellness() {
         },
         {
           name: "Práctica de Gratitud Corporal",
+          image: "/exercise-mindfulness.jpg",
           steps: [
             "Siéntate tranquilamente por 5 minutos",
             "Agradece a cada parte de tu cuerpo por lo que hace",
@@ -132,6 +140,7 @@ export default function Upsell1EmotionalWellness() {
         },
         {
           name: "Ritual de Aceptación",
+          image: "/exercise-breathing.jpg",
           steps: [
             "Elige un síntoma que te molesta",
             "Escribe: 'Acepto que [síntoma] es parte de mi viaje'",
@@ -155,6 +164,7 @@ export default function Upsell1EmotionalWellness() {
       exercises: [
         {
           name: "Diario de Logros",
+          image: "/exercise-journaling.jpg",
           steps: [
             "Cada noche, escribe 3 cosas que hiciste bien",
             "Pueden ser pequeñas: 'Respiré profundamente', 'Fui amable'",
@@ -164,6 +174,7 @@ export default function Upsell1EmotionalWellness() {
         },
         {
           name: "Conexión con Otras Mujeres",
+          image: "/exercise-mindfulness.jpg",
           steps: [
             "Busca un grupo de apoyo (presencial u online)",
             "Comparte tu experiencia sin miedo al juicio",
@@ -174,6 +185,7 @@ export default function Upsell1EmotionalWellness() {
         },
         {
           name: "Celebración de Hitos",
+          image: "/exercise-grounding.jpg",
           steps: [
             "Cada semana, identifica un hito (grande o pequeño)",
             "Crea un ritual para celebrarlo (baile, música, regalo)",
@@ -334,19 +346,32 @@ export default function Upsell1EmotionalWellness() {
                   {/* Ejercicios */}
                   <div className="space-y-6">
                     {module.exercises.map((exercise, exIdx) => (
-                      <div key={exIdx}>
-                        <h4 className="font-bold text-gray-900 mb-3">
-                          Ejercicio {exIdx + 1}: {exercise.name}
-                        </h4>
-                        <div className="space-y-2">
-                          {exercise.steps.map((step, idx) => (
-                            <div key={idx} className="flex gap-3">
-                              <span className="font-bold text-purple-600 flex-shrink-0">
-                                {idx + 1}.
-                              </span>
-                              <p className="text-sm text-gray-700">{step}</p>
+                      <div key={exIdx} className="border border-purple-200 rounded-lg p-4 bg-white">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          {exercise.image && (
+                            <div className="md:col-span-1">
+                              <img
+                                src={exercise.image}
+                                alt={exercise.name}
+                                className="w-full h-48 object-cover rounded-lg"
+                              />
                             </div>
-                          ))}
+                          )}
+                          <div className={exercise.image ? "md:col-span-2" : ""}>
+                            <h4 className="font-bold text-gray-900 mb-3">
+                              Ejercicio {exIdx + 1}: {exercise.name}
+                            </h4>
+                            <div className="space-y-2">
+                              {exercise.steps.map((step, idx) => (
+                                <div key={idx} className="flex gap-3">
+                                  <span className="font-bold text-purple-600 flex-shrink-0">
+                                    {idx + 1}.
+                                  </span>
+                                  <p className="text-sm text-gray-700">{step}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     ))}

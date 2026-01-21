@@ -367,3 +367,20 @@
   - [ ] Agregar más terapias
   - [ ] Implementar descarga funcional
   - [ ] Mejorar instrucciones
+
+## FASE 13: Mejoras Específicas de Herramientas Premium
+
+- [ ] Mapa de Bienestar Emocional - AGREGAR IMÁGENES
+  - [ ] Buscar/generar imágenes de cada ejercicio
+  - [ ] Integrar imágenes en la interfaz
+  - [ ] Mejorar visualización de ejercicios
+
+- [ ] Plan de Salud a Largo Plazo - AGREGAR PLANTILLAS
+  - [ ] Crear plantillas autorellenables
+  - [ ] Integrar formularios interactivos
+  - [ ] Permitir descarga de plantillas completadas
+
+- [ ] Taller de Alimentación Consciente - AGREGAR RECETAS
+  - [ ] Agregar recetas detalladas con ingredientes
+  - [ ] Crear menús completos semanales
+  - [ ] Incluir información nutricional
