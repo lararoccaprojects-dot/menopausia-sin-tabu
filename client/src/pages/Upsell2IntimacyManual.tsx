@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { Heart, ChevronDown, ChevronUp, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Heart, ChevronDown, ChevronUp, ArrowLeft, CheckCircle2, Download } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "wouter";
+import { toast } from "sonner";
 
 export default function Upsell2IntimacyManual() {
   const { user } = useAuth();
@@ -14,132 +15,75 @@ export default function Upsell2IntimacyManual() {
   const chapters = [
     {
       id: 1,
-      title: "Entendiendo los cambios en la intimidad",
-      description: "Cómo la menopausia afecta la sexualidad y las relaciones",
-      duration: "20 min",
-      content: [
-        "Cambios hormonales y su impacto en el deseo sexual",
-        "Sequedad vaginal: causas y soluciones",
-        "Cambios en la respuesta sexual",
-        "Mitos sobre la sexualidad en la menopausia"
+      title: "Cambios en la Intimidad",
+      icon: "💭",
+      description: "Entiende qué está pasando en tu cuerpo",
+      keyPoints: [
+        "Cambios hormonales = cambios en deseo sexual",
+        "Sequedad vaginal tiene soluciones simples",
+        "Tu sexualidad evoluciona, no desaparece"
       ],
-      assessment: [
-        "¿Cómo ha cambiado tu deseo sexual?",
-        "¿Qué cambios físicos has notado?",
-        "¿Cómo afecta esto a tu relación?"
-      ]
+      actionable: "Haz una lista: ¿Qué cambios has notado? ¿Qué sigue siendo igual?"
     },
     {
       id: 2,
-      title: "Comunicación con tu pareja",
-      description: "Cómo hablar abiertamente sobre intimidad y necesidades",
-      duration: "25 min",
-      content: [
-        "Crear un espacio seguro para hablar",
-        "Expresar necesidades sin culpa",
-        "Escucha activa y empatía",
-        "Resolver conflictos con compasión"
+      title: "Comunicación Efectiva",
+      icon: "💬",
+      description: "Habla con tu pareja sin vergüenza",
+      keyPoints: [
+        "Elige un momento tranquilo para hablar",
+        "Usa 'Yo siento' en lugar de 'Tú haces'",
+        "Escucha sin defenderte"
       ],
-      assessment: [
-        "¿Qué necesitas comunicar a tu pareja?",
-        "¿Cuáles son tus miedos?",
-        "¿Cómo puedes ser más vulnerable?"
-      ]
+      actionable: "Escribe 3 cosas que necesitas comunicar. Practica frente al espejo."
     },
     {
       id: 3,
-      title: "Soluciones naturales y médicas",
-      description: "Opciones para mejorar la sequedad vaginal y el deseo",
-      duration: "20 min",
-      content: [
-        "Lubricantes naturales y comerciales",
-        "Hidratantes vaginales",
-        "Terapia hormonal: opciones y consideraciones",
-        "Suplementos y alimentos que ayudan"
+      title: "Soluciones Naturales",
+      icon: "🌿",
+      description: "Opciones prácticas para sequedad y dolor",
+      keyPoints: [
+        "Lubricantes naturales: coco, almendra, rosa mosqueta",
+        "Hidratantes vaginales para uso regular",
+        "Masajes y estimulación para aumentar flujo"
       ],
-      assessment: [
-        "¿Qué soluciones te interesan?",
-        "¿Has consultado con un médico?",
-        "¿Cuál es tu preferencia: natural o médica?"
-      ]
+      actionable: "Prueba un lubricante natural esta semana. Nota los cambios."
     },
     {
       id: 4,
-      title: "Reavivar la pasión",
-      description: "Estrategias para mantener o recuperar la conexión sexual",
-      duration: "30 min",
-      content: [
-        "Crear rituals de intimidad",
-        "Exploración sensual sin presión",
-        "Fantasías y juegos seguros",
-        "Redescubrir el placer"
+      title: "Reavivar la Pasión",
+      icon: "🔥",
+      description: "Redescubre el placer y la conexión",
+      keyPoints: [
+        "Intimidad ≠ solo penetración",
+        "Explora nuevas formas de conexión",
+        "Prioriza el placer sobre el rendimiento"
       ],
-      assessment: [
-        "¿Qué te excitaba antes?",
-        "¿Qué nuevas cosas quieres explorar?",
-        "¿Cómo puedes crear más conexión?"
-      ]
-    },
-    {
-      id: 5,
-      title: "Autoplacer y autosexualidad",
-      description: "Conocer tu cuerpo y disfrutar de la sexualidad sola",
-      duration: "25 min",
-      content: [
-        "La masturbación como parte de la salud sexual",
-        "Exploración sin culpa",
-        "Conocer tus zonas de placer",
-        "Orgasmos y variedad"
-      ],
-      assessment: [
-        "¿Cómo es tu relación con tu cuerpo?",
-        "¿Qué te impide disfrutar?",
-        "¿Qué necesitas para sentirte segura?"
-      ]
-    },
-    {
-      id: 6,
-      title: "Intimidad más allá del sexo",
-      description: "Conexión emocional, física y espiritual",
-      duration: "20 min",
-      content: [
-        "Afecto y contacto físico",
-        "Intimidad emocional profunda",
-        "Conexión espiritual",
-        "Intimidad sin penetración"
-      ],
-      assessment: [
-        "¿Qué formas de intimidad valoras?",
-        "¿Cómo puedes aumentar la conexión?",
-        "¿Qué necesitas de tu pareja?"
-      ]
+      actionable: "Planifica una noche especial. Enfócate en conexión, no en resultados."
     }
   ];
 
-  const toggleComplete = (id: number) => {
-    setCompletedChapters(prev =>
-      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
-    );
+  const toggleChapter = (id: number) => {
+    setExpandedChapter(expandedChapter === id ? null : id);
   };
 
-  const completionPercentage = Math.round((completedChapters.length / chapters.length) * 100);
+  const toggleComplete = (id: number) => {
+    if (completedChapters.includes(id)) {
+      setCompletedChapters(completedChapters.filter(c => c !== id));
+    } else {
+      setCompletedChapters([...completedChapters, id]);
+      toast.success("¡Capítulo completado!");
+    }
+  };
+
+  const handleDownload = (title: string) => {
+    toast.success(`Descargando: ${title}`);
+  };
+
+  const progress = Math.round((completedChapters.length / chapters.length) * 100);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-pink-50">
-      {/* Valor Inicial */}
-      <div className="container mx-auto px-4 py-8">
-        <Card className="border-2 border-rose-200 bg-gradient-to-r from-rose-50 to-white mb-8">
-          <CardContent className="pt-6">
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold text-gray-900">Por qué usar el Manual de Intimidad Saludable</h3>
-              <p className="text-gray-700 leading-relaxed">
-                La intimidad durante la menopausia puede cambiar, pero no tiene que desaparecer. Este manual aborda 6 capítulos sobre comunicación con tu pareja, soluciones naturales para sequedad vaginal, reavivar la pasión y disfrutar plenamente.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-white pb-12">
       {/* Header */}
       <div className="bg-white border-b border-rose-200 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-6">
@@ -157,138 +101,127 @@ export default function Upsell2IntimacyManual() {
               Volver
             </Button>
           </div>
-          <p className="text-gray-600">
-            6 capítulos especializados para mantener una vida sexual plena durante la menopausia
-          </p>
+          <div className="w-full bg-rose-100 rounded-full h-2">
+            <div
+              className="bg-rose-600 h-2 rounded-full transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          <p className="text-sm text-gray-600 mt-2">{progress}% completado</p>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
-        {/* Progress Section */}
-        <Card className="p-6 mb-8 border-2 border-rose-200 bg-rose-50">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-gray-900">Tu Progreso</h2>
-            <span className="text-2xl font-bold text-rose-600">{completionPercentage}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-3">
-            <div
-              className="bg-rose-500 h-3 rounded-full transition-all duration-300"
-              style={{ width: `${completionPercentage}%` }}
-            />
-          </div>
-          <p className="text-sm text-gray-600 mt-2">
-            {completedChapters.length} de {chapters.length} capítulos completados
-          </p>
+      {/* Valor Inicial */}
+      <div className="container mx-auto px-4 py-8">
+        <Card className="border-2 border-rose-200 bg-gradient-to-r from-rose-50 to-white mb-8">
+          <CardContent className="pt-6">
+            <div className="space-y-3">
+              <h3 className="text-lg font-bold text-gray-900">Tu intimidad importa</h3>
+              <p className="text-gray-700 text-sm">
+                4 capítulos prácticos para navegar los cambios en tu vida sexual durante la menopausia. Incluye soluciones reales, conversaciones difíciles y formas de reavivar la pasión.
+              </p>
+            </div>
+          </CardContent>
         </Card>
+      </div>
 
-        {/* Chapters Grid */}
-        <div className="space-y-4">
-          {chapters.map(chapter => (
-            <Card key={chapter.id} className="p-6 border-2 border-rose-100 hover:border-rose-400 transition-colors">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900">{chapter.title}</h3>
-                  <p className="text-sm text-gray-600 mt-1">{chapter.description}</p>
+      {/* Capítulos */}
+      <div className="container mx-auto px-4 space-y-4">
+        {chapters.map((chapter) => (
+          <Card
+            key={chapter.id}
+            className={`border-2 transition-all ${
+              completedChapters.includes(chapter.id)
+                ? "border-rose-400 bg-rose-50"
+                : "border-rose-200 hover:border-rose-400"
+            }`}
+          >
+            <div
+              className="p-6 cursor-pointer"
+              onClick={() => toggleChapter(chapter.id)}
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex items-start gap-4 flex-1">
+                  <span className="text-3xl">{chapter.icon}</span>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-900">{chapter.title}</h3>
+                    <p className="text-sm text-gray-600">{chapter.description}</p>
+                  </div>
                 </div>
-                <button
-                  onClick={() => toggleComplete(chapter.id)}
-                  className="ml-2 flex-shrink-0"
-                >
-                  <CheckCircle2
-                    size={24}
-                    className={completedChapters.includes(chapter.id) ? "fill-rose-500 text-rose-500" : "text-gray-300"}
-                  />
-                </button>
-              </div>
-
-              {/* Chapter Info */}
-              <div className="flex gap-4 mb-4 text-sm text-gray-600">
-                <span className="flex items-center gap-1">
-                  ⏱️ {chapter.duration}
-                </span>
-              </div>
-
-              {/* Expandable Content */}
-              {expandedChapter === chapter.id && (
-                <div className="mb-4 p-4 bg-rose-50 rounded-lg border border-rose-200">
-                  <h4 className="font-semibold text-gray-900 mb-3">Contenido del Capítulo:</h4>
-                  <ul className="space-y-2 mb-4">
-                    {chapter.content.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                        <span className="text-rose-600 mt-1">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <h4 className="font-semibold text-gray-900 mb-3">Preguntas de Autoevaluación:</h4>
-                  <ul className="space-y-2">
-                    {chapter.assessment.map((question, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                        <span className="text-blue-600 mt-1">?</span>
-                        <span>{question}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Action Buttons */}
-              <div className="flex gap-2">
-                <Button
-                  className="flex-1 bg-rose-500 hover:bg-rose-600 text-white"
-                  onClick={() => setExpandedChapter(expandedChapter === chapter.id ? null : chapter.id)}
-                >
-                  {expandedChapter === chapter.id ? (
-                    <>
-                      <ChevronUp className="w-4 h-4 mr-2" />
-                      Cerrar Capítulo
-                    </>
-                  ) : (
-                    <>
-                      <ChevronDown className="w-4 h-4 mr-2" />
-                      Ver Capítulo
-                    </>
+                <div className="flex items-center gap-2">
+                  {completedChapters.includes(chapter.id) && (
+                    <CheckCircle2 className="w-6 h-6 text-green-600" />
                   )}
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-rose-500 text-rose-600 hover:bg-rose-50"
-                  onClick={() => toggleComplete(chapter.id)}
-                >
-                  {completedChapters.includes(chapter.id) ? "✓ Completado" : "Marcar"}
-                </Button>
+                  {expandedChapter === chapter.id ? (
+                    <ChevronUp className="w-5 h-5 text-rose-600" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-rose-600" />
+                  )}
+                </div>
               </div>
-            </Card>
-          ))}
-        </div>
 
-        {/* Summary Section */}
-        <Card className="p-6 mt-8 border-2 border-green-200 bg-green-50">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Lo que lograrás con este manual</h3>
-          <ul className="space-y-3">
-            <li className="flex items-start gap-3">
-              <span className="text-green-600 text-lg">✓</span>
-              <span className="text-gray-700"><strong>Confianza renovada:</strong> Comprende y acepta los cambios en tu sexualidad</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-green-600 text-lg">✓</span>
-              <span className="text-gray-700"><strong>Comunicación mejorada:</strong> Habla abiertamente con tu pareja sin vergüenza</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-green-600 text-lg">✓</span>
-              <span className="text-gray-700"><strong>Soluciones prácticas:</strong> Conoce opciones naturales y médicas</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-green-600 text-lg">✓</span>
-              <span className="text-gray-700"><strong>Conexión fortalecida:</strong> Reavivar la pasión y la intimidad</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-green-600 text-lg">✓</span>
-              <span className="text-gray-700"><strong>Placer redescubierto:</strong> Disfrutar de la sexualidad sin culpa</span>
-            </li>
-          </ul>
+              {/* Puntos Clave */}
+              <div className="mt-4 space-y-2">
+                {chapter.keyPoints.map((point, idx) => (
+                  <div key={idx} className="flex items-start gap-2">
+                    <span className="text-rose-600 font-bold text-sm">✓</span>
+                    <span className="text-sm text-gray-700">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Contenido Expandido */}
+            {expandedChapter === chapter.id && (
+              <div className="border-t border-rose-200 px-6 py-6 bg-rose-50">
+                <div className="space-y-6">
+                  {/* Acción Recomendada */}
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-2">Acción para esta semana:</h4>
+                    <p className="text-sm text-gray-700 bg-white p-4 rounded-lg border-l-4 border-rose-600">
+                      {chapter.actionable}
+                    </p>
+                  </div>
+
+                  {/* Botones */}
+                  <div className="flex gap-3 pt-4 border-t border-rose-200">
+                    <Button
+                      onClick={() => toggleComplete(chapter.id)}
+                      className={`flex-1 ${
+                        completedChapters.includes(chapter.id)
+                          ? "bg-green-600 hover:bg-green-700"
+                          : "bg-rose-600 hover:bg-rose-700"
+                      }`}
+                    >
+                      <CheckCircle2 className="w-4 h-4 mr-2" />
+                      {completedChapters.includes(chapter.id)
+                        ? "Completado"
+                        : "Marcar como completado"}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => handleDownload(chapter.title)}
+                      className="flex-1"
+                    >
+                      <Download className="w-4 h-4 mr-2" />
+                      Descargar
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </Card>
+        ))}
+      </div>
+
+      {/* Consejo Final */}
+      <div className="container mx-auto px-4 mt-12">
+        <Card className="bg-gradient-to-r from-rose-600 to-rose-700 border-0 text-white">
+          <CardContent className="pt-6">
+            <p className="text-center text-lg font-semibold">
+              💕 Recuerda: Tu intimidad es importante. Mereces placer y conexión.
+            </p>
+          </CardContent>
         </Card>
       </div>
     </div>

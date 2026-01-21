@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { TrendingUp, ChevronDown, ChevronUp, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { TrendingUp, ChevronDown, ChevronUp, ArrowLeft, CheckCircle2, Download } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "wouter";
+import { toast } from "sonner";
 
 export default function Upsell3LongTermHealth() {
   const { user } = useAuth();
@@ -14,180 +15,85 @@ export default function Upsell3LongTermHealth() {
   const phases = [
     {
       id: 1,
-      title: "Evaluación Integral de Salud",
-      description: "Análisis completo de tu estado de salud actual",
-      duration: "30 min",
-      content: [
-        "Evaluación de síntomas actuales",
-        "Historial de salud familiar",
-        "Factores de riesgo personales",
-        "Pruebas recomendadas",
-        "Métricas de bienestar"
+      title: "Evaluación Integral",
+      icon: "📋",
+      description: "Conoce tu estado de salud actual",
+      duration: "1 semana",
+      keyPoints: [
+        "Revisa tu historial médico",
+        "Identifica factores de riesgo familiares",
+        "Documenta síntomas actuales"
       ],
-      milestones: [
-        "Completar cuestionario de salud",
-        "Revisar historial médico",
-        "Identificar áreas de riesgo"
-      ]
+      actionable: "Haz una cita con tu ginecólogo para análisis de sangre completo"
     },
     {
       id: 2,
-      title: "Salud Cardiovascular",
-      description: "Proteger tu corazón después de la menopausia",
-      duration: "25 min",
-      content: [
-        "Riesgo cardiovascular aumentado post-menopausia",
-        "Presión arterial y colesterol",
-        "Ejercicio para la salud del corazón",
-        "Nutrición cardioprotectora",
-        "Suplementos recomendados"
+      title: "Prevención Ósea",
+      icon: "🦴",
+      description: "Protege tu salud ósea después de la menopausia",
+      duration: "Continuo",
+      keyPoints: [
+        "Calcio: 1000-1200 mg/día",
+        "Vitamina D: 800-1000 UI/día",
+        "Ejercicio de resistencia 3x/semana"
       ],
-      milestones: [
-        "Medir presión arterial",
-        "Hacer análisis de colesterol",
-        "Crear plan de ejercicio cardiovascular"
-      ]
+      actionable: "Comienza suplementos de calcio + vitamina D esta semana"
     },
     {
       id: 3,
-      title: "Salud Ósea y Prevención de Osteoporosis",
-      description: "Mantener densidad ósea y prevenir fracturas",
-      duration: "25 min",
-      content: [
-        "Pérdida de densidad ósea post-menopausia",
-        "Factores de riesgo de osteoporosis",
-        "Calcio y vitamina D",
-        "Ejercicios de fortalecimiento",
-        "Pruebas de densidad ósea"
+      title: "Salud Cardiovascular",
+      icon: "❤️",
+      description: "Reduce riesgo de enfermedades del corazón",
+      duration: "Continuo",
+      keyPoints: [
+        "Camina 30 min/día, 5 días/semana",
+        "Reduce sodio y grasas saturadas",
+        "Controla presión arterial mensualmente"
       ],
-      milestones: [
-        "Hacer prueba de densidad ósea (DEXA)",
-        "Aumentar ingesta de calcio",
-        "Iniciar ejercicios de fortalecimiento"
-      ]
+      actionable: "Compra un monitor de presión arterial y mide hoy"
     },
     {
       id: 4,
-      title: "Prevención de Enfermedades Crónicas",
-      description: "Reducir riesgo de diabetes, cáncer y otras enfermedades",
-      duration: "30 min",
-      content: [
-        "Riesgo de diabetes tipo 2",
-        "Prevención de ciertos cánceres",
-        "Salud cognitiva y Alzheimer",
-        "Estilos de vida preventivos",
-        "Screening recomendado"
+      title: "Prevención de Cáncer",
+      icon: "🛡️",
+      description: "Exámenes y hábitos preventivos",
+      duration: "Anual",
+      keyPoints: [
+        "Mamografía anual (si es recomendado)",
+        "Papanicolau cada 3-5 años",
+        "Evita tabaco y alcohol excesivo"
       ],
-      milestones: [
-        "Hacer prueba de glucosa",
-        "Agendar screening de cáncer",
-        "Crear plan de prevención"
-      ]
-    },
-    {
-      id: 5,
-      title: "Nutrición Optimizada para Longevidad",
-      description: "Plan nutricional para los próximos 20-30 años",
-      duration: "25 min",
-      content: [
-        "Necesidades nutricionales post-menopausia",
-        "Antioxidantes y antiinflamatorios",
-        "Proteína y masa muscular",
-        "Hidratación óptima",
-        "Suplementos esenciales"
-      ],
-      milestones: [
-        "Crear plan de nutrición personalizado",
-        "Hacer lista de compras saludable",
-        "Comenzar suplementación"
-      ]
-    },
-    {
-      id: 6,
-      title: "Fitness y Movimiento",
-      description: "Rutina de ejercicio para salud a largo plazo",
-      duration: "25 min",
-      content: [
-        "Ejercicio aeróbico para el corazón",
-        "Entrenamiento de resistencia",
-        "Flexibilidad y equilibrio",
-        "Prevención de caídas",
-        "Rutina personalizada"
-      ],
-      milestones: [
-        "Crear rutina de ejercicio semanal",
-        "Establecer metas de actividad",
-        "Encontrar actividades que disfrutes"
-      ]
-    },
-    {
-      id: 7,
-      title: "Salud Mental y Cognitiva",
-      description: "Mantener mente aguda y bienestar emocional",
-      duration: "20 min",
-      content: [
-        "Estimulación cognitiva",
-        "Prevención de depresión y ansiedad",
-        "Sueño de calidad",
-        "Manejo del estrés",
-        "Conexión social"
-      ],
-      milestones: [
-        "Establecer rutina de sueño",
-        "Iniciar práctica de meditación",
-        "Planificar actividades sociales"
-      ]
-    },
-    {
-      id: 8,
-      title: "Visión a 20-30 Años",
-      description: "Tu hoja de ruta hacia una vida plena",
-      duration: "30 min",
-      content: [
-        "Definir metas de salud a largo plazo",
-        "Crear plan de acción anual",
-        "Sistema de seguimiento",
-        "Ajustes según cambios",
-        "Celebración de logros"
-      ],
-      milestones: [
-        "Definir visión de futuro",
-        "Crear plan de 5 años",
-        "Establecer sistema de seguimiento"
-      ]
+      actionable: "Agenda tus exámenes preventivos para este año"
     }
   ];
 
-  const toggleComplete = (id: number) => {
-    setCompletedPhases(prev =>
-      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
-    );
+  const togglePhase = (id: number) => {
+    setExpandedPhase(expandedPhase === id ? null : id);
   };
 
-  const completionPercentage = Math.round((completedPhases.length / phases.length) * 100);
+  const toggleComplete = (id: number) => {
+    if (completedPhases.includes(id)) {
+      setCompletedPhases(completedPhases.filter(p => p !== id));
+    } else {
+      setCompletedPhases([...completedPhases, id]);
+      toast.success("¡Fase completada!");
+    }
+  };
+
+  const handleDownload = (title: string) => {
+    toast.success(`Descargando: ${title}`);
+  };
+
+  const progress = Math.round((completedPhases.length / phases.length) * 100);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
-      {/* Valor Inicial */}
-      <div className="container mx-auto px-4 py-8">
-        <Card className="border-2 border-teal-200 bg-gradient-to-r from-teal-50 to-white mb-8">
-          <CardContent className="pt-6">
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold text-gray-900">Por qué usar el Plan de Salud a Largo Plazo</h3>
-              <p className="text-gray-700 leading-relaxed">
-                La menopausia es el inicio de una nueva fase. Este plan te ayuda a evaluar tu salud integral y crear una hoja de ruta para los próximos 20-30 años, previniendo enfermedades y viviendo con vitalidad.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-white pb-12">
       {/* Header */}
-      <div className="bg-white border-b border-emerald-200 shadow-sm sticky top-0 z-40">
+      <div className="bg-white border-b border-teal-200 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <TrendingUp className="w-8 h-8 text-emerald-600" />
+              <TrendingUp className="w-8 h-8 text-teal-600" />
               <h1 className="text-3xl font-bold text-gray-900">Plan de Salud a Largo Plazo</h1>
             </div>
             <Button
@@ -199,138 +105,132 @@ export default function Upsell3LongTermHealth() {
               Volver
             </Button>
           </div>
-          <p className="text-gray-600">
-            8 fases para mantener tu salud durante los próximos 20-30 años
-          </p>
+          <div className="w-full bg-teal-100 rounded-full h-2">
+            <div
+              className="bg-teal-600 h-2 rounded-full transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          <p className="text-sm text-gray-600 mt-2">{progress}% completado</p>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
-        {/* Progress Section */}
-        <Card className="p-6 mb-8 border-2 border-emerald-200 bg-emerald-50">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-gray-900">Tu Progreso</h2>
-            <span className="text-2xl font-bold text-emerald-600">{completionPercentage}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-3">
-            <div
-              className="bg-emerald-500 h-3 rounded-full transition-all duration-300"
-              style={{ width: `${completionPercentage}%` }}
-            />
-          </div>
-          <p className="text-sm text-gray-600 mt-2">
-            {completedPhases.length} de {phases.length} fases completadas
-          </p>
+      {/* Valor Inicial */}
+      <div className="container mx-auto px-4 py-8">
+        <Card className="border-2 border-teal-200 bg-gradient-to-r from-teal-50 to-white mb-8">
+          <CardContent className="pt-6">
+            <div className="space-y-3">
+              <h3 className="text-lg font-bold text-gray-900">Tu salud a largo plazo</h3>
+              <p className="text-gray-700 text-sm">
+                4 áreas clave para vivir saludable los próximos 20-30 años. Cada fase tiene acciones concretas que puedes comenzar hoy.
+              </p>
+            </div>
+          </CardContent>
         </Card>
+      </div>
 
-        {/* Phases Grid */}
-        <div className="space-y-4">
-          {phases.map(phase => (
-            <Card key={phase.id} className="p-6 border-2 border-emerald-100 hover:border-emerald-400 transition-colors">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900">{phase.title}</h3>
-                  <p className="text-sm text-gray-600 mt-1">{phase.description}</p>
+      {/* Fases */}
+      <div className="container mx-auto px-4 space-y-4">
+        {phases.map((phase) => (
+          <Card
+            key={phase.id}
+            className={`border-2 transition-all ${
+              completedPhases.includes(phase.id)
+                ? "border-teal-400 bg-teal-50"
+                : "border-teal-200 hover:border-teal-400"
+            }`}
+          >
+            <div
+              className="p-6 cursor-pointer"
+              onClick={() => togglePhase(phase.id)}
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex items-start gap-4 flex-1">
+                  <span className="text-3xl">{phase.icon}</span>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-lg font-bold text-gray-900">{phase.title}</h3>
+                      <span className="text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded">
+                        {phase.duration}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600">{phase.description}</p>
+                  </div>
                 </div>
-                <button
-                  onClick={() => toggleComplete(phase.id)}
-                  className="ml-2 flex-shrink-0"
-                >
-                  <CheckCircle2
-                    size={24}
-                    className={completedPhases.includes(phase.id) ? "fill-emerald-500 text-emerald-500" : "text-gray-300"}
-                  />
-                </button>
-              </div>
-
-              {/* Phase Info */}
-              <div className="flex gap-4 mb-4 text-sm text-gray-600">
-                <span className="flex items-center gap-1">
-                  ⏱️ {phase.duration}
-                </span>
-              </div>
-
-              {/* Expandable Content */}
-              {expandedPhase === phase.id && (
-                <div className="mb-4 p-4 bg-emerald-50 rounded-lg border border-emerald-200">
-                  <h4 className="font-semibold text-gray-900 mb-3">Contenido:</h4>
-                  <ul className="space-y-2 mb-4">
-                    {phase.content.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                        <span className="text-emerald-600 mt-1">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <h4 className="font-semibold text-gray-900 mb-3">Milestones:</h4>
-                  <ul className="space-y-2">
-                    {phase.milestones.map((milestone, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                        <span className="text-green-600 mt-1">✓</span>
-                        <span>{milestone}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Action Buttons */}
-              <div className="flex gap-2">
-                <Button
-                  className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white"
-                  onClick={() => setExpandedPhase(expandedPhase === phase.id ? null : phase.id)}
-                >
-                  {expandedPhase === phase.id ? (
-                    <>
-                      <ChevronUp className="w-4 h-4 mr-2" />
-                      Cerrar Fase
-                    </>
-                  ) : (
-                    <>
-                      <ChevronDown className="w-4 h-4 mr-2" />
-                      Ver Fase
-                    </>
+                <div className="flex items-center gap-2">
+                  {completedPhases.includes(phase.id) && (
+                    <CheckCircle2 className="w-6 h-6 text-green-600" />
                   )}
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-emerald-500 text-emerald-600 hover:bg-emerald-50"
-                  onClick={() => toggleComplete(phase.id)}
-                >
-                  {completedPhases.includes(phase.id) ? "✓ Completado" : "Marcar"}
-                </Button>
+                  {expandedPhase === phase.id ? (
+                    <ChevronUp className="w-5 h-5 text-teal-600" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-teal-600" />
+                  )}
+                </div>
               </div>
-            </Card>
-          ))}
-        </div>
 
-        {/* Summary Section */}
-        <Card className="p-6 mt-8 border-2 border-blue-200 bg-blue-50">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Beneficios de este plan</h3>
-          <ul className="space-y-3">
-            <li className="flex items-start gap-3">
-              <span className="text-blue-600 text-lg">✓</span>
-              <span className="text-gray-700"><strong>Prevención proactiva:</strong> Reduce riesgo de enfermedades crónicas</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-blue-600 text-lg">✓</span>
-              <span className="text-gray-700"><strong>Longevidad:</strong> Vive más años con mejor calidad de vida</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-blue-600 text-lg">✓</span>
-              <span className="text-gray-700"><strong>Energía y vitalidad:</strong> Mantén tu energía durante décadas</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-blue-600 text-lg">✓</span>
-              <span className="text-gray-700"><strong>Independencia:</strong> Mantén tu autonomía y movilidad</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-blue-600 text-lg">✓</span>
-              <span className="text-gray-700"><strong>Paz mental:</strong> Sabe que estás cuidando tu salud futura</span>
-            </li>
-          </ul>
+              {/* Puntos Clave */}
+              <div className="mt-4 space-y-2">
+                {phase.keyPoints.map((point, idx) => (
+                  <div key={idx} className="flex items-start gap-2">
+                    <span className="text-teal-600 font-bold text-sm">•</span>
+                    <span className="text-sm text-gray-700">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Contenido Expandido */}
+            {expandedPhase === phase.id && (
+              <div className="border-t border-teal-200 px-6 py-6 bg-teal-50">
+                <div className="space-y-6">
+                  {/* Acción Recomendada */}
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-2">Acción inmediata:</h4>
+                    <p className="text-sm text-gray-700 bg-white p-4 rounded-lg border-l-4 border-teal-600">
+                      {phase.actionable}
+                    </p>
+                  </div>
+
+                  {/* Botones */}
+                  <div className="flex gap-3 pt-4 border-t border-teal-200">
+                    <Button
+                      onClick={() => toggleComplete(phase.id)}
+                      className={`flex-1 ${
+                        completedPhases.includes(phase.id)
+                          ? "bg-green-600 hover:bg-green-700"
+                          : "bg-teal-600 hover:bg-teal-700"
+                      }`}
+                    >
+                      <CheckCircle2 className="w-4 h-4 mr-2" />
+                      {completedPhases.includes(phase.id)
+                        ? "Completado"
+                        : "Marcar como completado"}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => handleDownload(phase.title)}
+                      className="flex-1"
+                    >
+                      <Download className="w-4 h-4 mr-2" />
+                      Descargar
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </Card>
+        ))}
+      </div>
+
+      {/* Consejo Final */}
+      <div className="container mx-auto px-4 mt-12">
+        <Card className="bg-gradient-to-r from-teal-600 to-teal-700 border-0 text-white">
+          <CardContent className="pt-6">
+            <p className="text-center text-lg font-semibold">
+              🌱 La menopausia es el inicio de una nueva fase. Invierte en tu salud ahora.
+            </p>
+          </CardContent>
         </Card>
       </div>
     </div>
