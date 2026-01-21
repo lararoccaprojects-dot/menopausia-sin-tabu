@@ -338,8 +338,32 @@
   - [ ] Instrucciones detalladas para cada ejercicio
   - [ ] Beneficios específicos
 
-- [ ] Funcionalidad de Descarga de Documentos
-  - [ ] Implementar generador de PDF
-  - [ ] Crear documentos descargables para cada módulo/herramienta
-  - [ ] Botón de descarga funcional en todas las herramientas premium
-  - [ ] Verificar que los archivos se descargan correctamente
+- [x] Mapa de Bienestar Emocional - MEJORADO
+  - [x] 12 ejercicios (3 por módulo)
+  - [x] Descarga funcional de archivos .txt
+  - [x] Instrucciones paso a paso claras
+
+- [ ] Manual de Intimidad Saludable - MEJORAR
+  - [ ] Agregar 2-3 ejercicios más por capítulo
+  - [ ] Implementar descarga funcional
+  - [ ] Mejorar instrucciones
+
+- [ ] Plan de Salud a Largo Plazo - MEJORAR
+  - [ ] Agregar 2-3 ejercicios más por fase
+  - [ ] Implementar descarga funcional
+  - [ ] Mejorar instrucciones
+
+- [ ] Kit de Autoestima Positiva - MEJORAR
+  - [ ] Agregar más afirmaciones y ejercicios
+  - [ ] Implementar descarga funcional
+  - [ ] Mejorar interfaz
+
+- [ ] Taller de Alimentación Consciente - MEJORAR
+  - [ ] Agregar más recetas por módulo
+  - [ ] Implementar descarga funcional
+  - [ ] Mejorar instrucciones
+
+- [ ] Compendio de Terapias Alternativas - MEJORAR
+  - [ ] Agregar más terapias
+  - [ ] Implementar descarga funcional
+  - [ ] Mejorar instrucciones

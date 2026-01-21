@@ -23,7 +23,38 @@ export default function Upsell2IntimacyManual() {
         "Sequedad vaginal tiene soluciones simples",
         "Tu sexualidad evoluciona, no desaparece"
       ],
-      actionable: "Haz una lista: ¿Qué cambios has notado? ¿Qué sigue siendo igual?"
+      exercises: [
+        {
+          name: "Mapeo de Cambios",
+          steps: [
+            "Haz una lista: ¿Qué cambios has notado en tu deseo?",
+            "Anota cambios físicos (sequedad, sensibilidad, energía)",
+            "Identifica qué sigue siendo igual (emociones, conexión)",
+            "Compara con hace 6 meses",
+            "Reconoce que esto es normal y temporal"
+          ]
+        },
+        {
+          name: "Exploración Corporal",
+          steps: [
+            "Dedica 20 minutos a explorar tu cuerpo sin presión",
+            "Nota qué sensaciones te agradan",
+            "Identifica zonas sensibles (cuello, pecho, muslos)",
+            "Sin objetivo de excitación, solo exploración",
+            "Toma notas sobre lo que descubriste"
+          ]
+        },
+        {
+          name: "Conversación Interna",
+          steps: [
+            "Escribe una carta a tu cuerpo",
+            "Agradécele por los cambios que está atravesando",
+            "Expresa cualquier frustración o miedo",
+            "Termina con aceptación y amor propio",
+            "Lee la carta en momentos de duda"
+          ]
+        }
+      ]
     },
     {
       id: 2,
@@ -35,7 +66,38 @@ export default function Upsell2IntimacyManual() {
         "Usa 'Yo siento' en lugar de 'Tú haces'",
         "Escucha sin defenderte"
       ],
-      actionable: "Escribe 3 cosas que necesitas comunicar. Practica frente al espejo."
+      exercises: [
+        {
+          name: "Práctica de Comunicación",
+          steps: [
+            "Escribe 3 cosas que necesitas comunicar",
+            "Practica frente al espejo con tono amable",
+            "Elige un momento tranquilo (no en la cama)",
+            "Usa frases como: 'Me siento...' y 'Necesito...'",
+            "Invita a tu pareja a compartir sus sentimientos también"
+          ]
+        },
+        {
+          name: "Escucha Activa",
+          steps: [
+            "Cuando tu pareja hable, escucha sin interrumpir",
+            "Haz preguntas para entender mejor",
+            "Repite lo que escuchaste para confirmar",
+            "Valida sus sentimientos aunque sean diferentes",
+            "Busquen soluciones juntos"
+          ]
+        },
+        {
+          name: "Ritual de Conexión",
+          steps: [
+            "Establece un momento semanal para hablar",
+            "Crea un espacio cómodo (té, velas, sin distracciones)",
+            "Comparte un sentimiento positivo y uno de desafío",
+            "Escuchen mutuamente sin juzgar",
+            "Terminen con un abrazo o gesto de cariño"
+          ]
+        }
+      ]
     },
     {
       id: 3,
@@ -47,7 +109,38 @@ export default function Upsell2IntimacyManual() {
         "Hidratantes vaginales para uso regular",
         "Masajes y estimulación para aumentar flujo"
       ],
-      actionable: "Prueba un lubricante natural esta semana. Nota los cambios."
+      exercises: [
+        {
+          name: "Prueba de Lubricantes",
+          steps: [
+            "Investiga 3 lubricantes naturales (coco, almendra, rosa mosqueta)",
+            "Prueba cada uno en pequeñas cantidades",
+            "Anota cuál se siente mejor y más cómodo",
+            "Busca marcas de calidad sin químicos",
+            "Establece cuál usarás regularmente"
+          ]
+        },
+        {
+          name: "Masaje Sensual",
+          steps: [
+            "Dedica 15 minutos a masajear tu cuerpo",
+            "Usa aceite natural (almendra, coco o rosa mosqueta)",
+            "Masajea cuello, hombros, brazos, muslos",
+            "Sé gentil y consciente de las sensaciones",
+            "Aumenta la circulación y el flujo sanguíneo"
+          ]
+        },
+        {
+          name: "Ejercicios de Kegel Mejorados",
+          steps: [
+            "Contrae los músculos pélvicos por 3 segundos",
+            "Relaja por 3 segundos",
+            "Repite 10 veces, 3 veces al día",
+            "Aumenta gradualmente a 5-10 segundos",
+            "Mejora sensibilidad y placer"
+          ]
+        }
+      ]
     },
     {
       id: 4,
@@ -59,7 +152,38 @@ export default function Upsell2IntimacyManual() {
         "Explora nuevas formas de conexión",
         "Prioriza el placer sobre el rendimiento"
       ],
-      actionable: "Planifica una noche especial. Enfócate en conexión, no en resultados."
+      exercises: [
+        {
+          name: "Noche de Conexión",
+          steps: [
+            "Planifica una noche especial sin presión de resultados",
+            "Crea ambiente: velas, música, luz tenue",
+            "Enfócate en besos, abrazos y caricias",
+            "Comunica qué te gusta en cada momento",
+            "Disfruta la conexión sin objetivos"
+          ]
+        },
+        {
+          name: "Exploración Mutua",
+          steps: [
+            "Acuerda con tu pareja explorar juntos",
+            "Tómense tiempo para descubrir nuevas sensaciones",
+            "Comuniquen qué les gusta y qué no",
+            "Sin presión de penetración",
+            "Enfócate en el placer mutuo"
+          ]
+        },
+        {
+          name: "Fantasía Compartida",
+          steps: [
+            "Escribe 3 fantasías que te gustaría explorar",
+            "Comparte con tu pareja en un momento tranquilo",
+            "Escucha sus fantasías también",
+            "Juntos decidan qué podrían probar",
+            "Creen nuevas experiencias juntos"
+          ]
+        }
+      ]
     }
   ];
 
@@ -77,7 +201,40 @@ export default function Upsell2IntimacyManual() {
   };
 
   const handleDownload = (title: string) => {
-    toast.success(`Descargando: ${title}`);
+    const chapter = chapters.find(c => c.title === title);
+    if (!chapter) return;
+
+    let content = `MANUAL DE INTIMIDAD SALUDABLE\n`;
+    content += `Capítulo: ${title}\n`;
+    content += `${'='.repeat(50)}\n\n`;
+    
+    content += `DESCRIPCIÓN:\n${chapter.description}\n\n`;
+    
+    content += `PUNTOS CLAVE:\n`;
+    chapter.keyPoints.forEach((point, idx) => {
+      content += `${idx + 1}. ${point}\n`;
+    });
+    content += `\n`;
+
+    content += `EJERCICIOS:\n`;
+    chapter.exercises.forEach((exercise, exIdx) => {
+      content += `\nEjercicio ${exIdx + 1}: ${exercise.name}\n`;
+      content += `${'-'.repeat(40)}\n`;
+      exercise.steps.forEach((step, stepIdx) => {
+        content += `${stepIdx + 1}. ${step}\n`;
+      });
+    });
+
+    content += `\n\nConsejo: Practica con paciencia y compasión. La intimidad es un viaje, no un destino.\n`;
+
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+    element.setAttribute('download', `${title.replace(/\s+/g, '_')}_Ejercicios.txt`);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    toast.success(`Descargado: ${title}`);
   };
 
   const progress = Math.round((completedChapters.length / chapters.length) * 100);
@@ -116,9 +273,9 @@ export default function Upsell2IntimacyManual() {
         <Card className="border-2 border-rose-200 bg-gradient-to-r from-rose-50 to-white mb-8">
           <CardContent className="pt-6">
             <div className="space-y-3">
-              <h3 className="text-lg font-bold text-gray-900">Tu intimidad importa</h3>
+              <h3 className="text-lg font-bold text-gray-900">¿Por qué este programa?</h3>
               <p className="text-gray-700 text-sm">
-                4 capítulos prácticos para navegar los cambios en tu vida sexual durante la menopausia. Incluye soluciones reales, conversaciones difíciles y formas de reavivar la pasión.
+                4 capítulos prácticos con 12 ejercicios diseñados para ayudarte a navegar los cambios en la intimidad durante la menopausia. Cada ejercicio es simple, toma 10-20 minutos y puedes hacerlo hoy mismo.
               </p>
             </div>
           </CardContent>
@@ -161,7 +318,7 @@ export default function Upsell2IntimacyManual() {
               </div>
 
               {/* Puntos Clave */}
-              <div className="mt-4 space-y-2">
+              <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
                 {chapter.keyPoints.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-2">
                     <span className="text-rose-600 font-bold text-sm">✓</span>
@@ -175,15 +332,28 @@ export default function Upsell2IntimacyManual() {
             {expandedChapter === chapter.id && (
               <div className="border-t border-rose-200 px-6 py-6 bg-rose-50">
                 <div className="space-y-6">
-                  {/* Acción Recomendada */}
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-2">Acción para esta semana:</h4>
-                    <p className="text-sm text-gray-700 bg-white p-4 rounded-lg border-l-4 border-rose-600">
-                      {chapter.actionable}
-                    </p>
+                  {/* Ejercicios */}
+                  <div className="space-y-6">
+                    {chapter.exercises.map((exercise, exIdx) => (
+                      <div key={exIdx}>
+                        <h4 className="font-bold text-gray-900 mb-3">
+                          Ejercicio {exIdx + 1}: {exercise.name}
+                        </h4>
+                        <div className="space-y-2">
+                          {exercise.steps.map((step, idx) => (
+                            <div key={idx} className="flex gap-3">
+                              <span className="font-bold text-rose-600 flex-shrink-0">
+                                {idx + 1}.
+                              </span>
+                              <p className="text-sm text-gray-700">{step}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
-                  {/* Botones */}
+                  {/* Acciones */}
                   <div className="flex gap-3 pt-4 border-t border-rose-200">
                     <Button
                       onClick={() => toggleComplete(chapter.id)}
@@ -219,7 +389,7 @@ export default function Upsell2IntimacyManual() {
         <Card className="bg-gradient-to-r from-rose-600 to-rose-700 border-0 text-white">
           <CardContent className="pt-6">
             <p className="text-center text-lg font-semibold">
-              💕 Recuerda: Tu intimidad es importante. Mereces placer y conexión.
+              💕 Consejo: La intimidad es conexión. Sé paciente contigo misma y con tu pareja.
             </p>
           </CardContent>
         </Card>
