@@ -1,0 +1,28 @@
+{
+  "query": "SELECT id, name, description, category FROM symptoms WHERE category IN ('emocional', 'sexual') ORDER BY category, id",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 7EfUGPcSEVAXdvU.aca197382e2e --database FZ4c5syLc7EjwewUhQ9pjV --execute SELECT id, name, description, category FROM symptoms WHERE category IN ('emocional', 'sexual') ORDER BY category, id",
+  "rows": [
+    {
+      "id": "7",
+      "name": "Ansiedad",
+      "description": "Sensación de preocupación, nerviosismo o inquietud persistente.",
+      "category": "emocional"
+    },
+    {
+      "id": "8",
+      "name": "Depresión",
+      "description": "Tristeza persistente, pérdida de interés en actividades, baja energía.",
+      "category": "emocional"
+    },
+    {
+      "id": "9",
+      "name": "Irritabilidad",
+      "description": "Tendencia a enojarse fácilmente, baja tolerancia a la frustración.",
+      "category": "emocional"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tdescription\tcategory\n7\tAnsiedad\tSensación de preocupación, nerviosismo o inquietud persistente.\temocional\n8\tDepresión\tTristeza persistente, pérdida de interés en actividades, baja energía.\temocional\n9\tIrritabilidad\tTendencia a enojarse fácilmente, baja tolerancia a la frustración.\temocional\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

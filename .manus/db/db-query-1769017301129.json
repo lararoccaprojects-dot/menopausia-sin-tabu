@@ -1,0 +1,25 @@
+{
+  "query": "SELECT id, name, category FROM symptoms WHERE name IN ('Cambios de Humor', 'Sequedad Vaginal', 'Cambios en la Libido')",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 7EfUGPcSEVAXdvU.aca197382e2e --database FZ4c5syLc7EjwewUhQ9pjV --execute SELECT id, name, category FROM symptoms WHERE name IN ('Cambios de Humor', 'Sequedad Vaginal', 'Cambios en la Libido')",
+  "rows": [
+    {
+      "id": "4",
+      "name": "Cambios de Humor",
+      "category": "emocional"
+    },
+    {
+      "id": "5",
+      "name": "Sequedad Vaginal",
+      "category": "sexual"
+    },
+    {
+      "id": "6",
+      "name": "Cambios en la Libido",
+      "category": "sexual"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tcategory\n4\tCambios de Humor\temocional\n5\tSequedad Vaginal\tsexual\n6\tCambios en la Libido\tsexual\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

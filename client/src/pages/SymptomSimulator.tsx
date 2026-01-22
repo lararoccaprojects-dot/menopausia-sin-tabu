@@ -4,7 +4,7 @@ import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { Loader2, Heart, AlertCircle, TrendingUp, CheckCircle2, Lightbulb, ArrowLeft } from "lucide-react";
+import { Loader2, Heart, AlertCircle, TrendingUp, CheckCircle2, Lightbulb, ArrowLeft, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { toast } from "sonner";
@@ -36,7 +36,8 @@ export default function SymptomSimulator() {
   const [selectedSymptoms, setSelectedSymptoms] = useState<Record<number, { severity: number; frequency: "diaria" | "varias_veces_semana" | "semanal" | "ocasional" }>>(
     {}
   );
-  const [showReport, setShowReport] = useState(false);
+  const [expandedSymptom, setExpandedSymptom] = useState<number | null>(null);
+  const [showRecommendations, setShowRecommendations] = useState(false);
 
   // Fetch all available symptoms
   const { data: allSymptoms, isLoading: symptomsLoading } = trpc.symptoms.getAll.useQuery();
@@ -51,6 +52,7 @@ export default function SymptomSimulator() {
     onSuccess: () => {
       toast.success("Síntoma agregado");
       refetchUserSymptoms();
+      setSelectedSymptoms({});
     },
     onError: () => {
       toast.error("Error al agregar síntoma");
@@ -61,6 +63,7 @@ export default function SymptomSimulator() {
     onSuccess: () => {
       toast.success("Síntoma actualizado");
       refetchUserSymptoms();
+      setSelectedSymptoms({});
     },
     onError: () => {
       toast.error("Error al actualizar síntoma");
@@ -96,16 +99,15 @@ export default function SymptomSimulator() {
     sexual: "bg-rose-100 text-rose-700",
   };
 
-  // Recomendaciones personalizadas según síntomas
+  // Recomendaciones personalizadas según síntomas guardados
   const getPersonalizedRecommendations = (): Recommendation[] => {
     const recommendations: Recommendation[] = [];
-    const selectedSymptomNames = Object.keys(selectedSymptoms).map(id => {
-      const symptom = allSymptoms?.find(s => s.id === parseInt(id));
-      return symptom?.name.toLowerCase() || '';
-    });
+    
+    // Usar síntomas guardados del usuario
+    const userSymptomNames = userSymptoms?.map(s => s.symptomName.toLowerCase()) || [];
 
     // Recomendaciones para sofocos
-    if (selectedSymptomNames.some(s => s.includes('sofoco') || s.includes('calor'))) {
+    if (userSymptomNames.some(s => s.includes('sofoco') || s.includes('calor'))) {
       recommendations.push({
         category: 'Sofocos',
         title: '🌡️ Manejo de Sofocos',
@@ -122,7 +124,7 @@ export default function SymptomSimulator() {
     }
 
     // Recomendaciones para cambios de humor
-    if (selectedSymptomNames.some(s => s.includes('humor') || s.includes('ánimo'))) {
+    if (userSymptomNames.some(s => s.includes('humor') || s.includes('ánimo'))) {
       recommendations.push({
         category: 'Emocional',
         title: '🧠 Salud Emocional',
@@ -139,7 +141,7 @@ export default function SymptomSimulator() {
     }
 
     // Recomendaciones para problemas de sueño
-    if (selectedSymptomNames.some(s => s.includes('sueño') || s.includes('insomnio'))) {
+    if (userSymptomNames.some(s => s.includes('sueño') || s.includes('insomnio'))) {
       recommendations.push({
         category: 'Sueño',
         title: '😴 Mejora del Sueño',
@@ -156,7 +158,7 @@ export default function SymptomSimulator() {
     }
 
     // Recomendaciones para sequedad vaginal
-    if (selectedSymptomNames.some(s => s.includes('sequedad') || s.includes('vaginal'))) {
+    if (userSymptomNames.some(s => s.includes('sequedad') || s.includes('vaginal'))) {
       recommendations.push({
         category: 'Intimidad',
         title: '💕 Salud Íntima',
@@ -173,7 +175,7 @@ export default function SymptomSimulator() {
     }
 
     // Recomendaciones para fatiga
-    if (selectedSymptomNames.some(s => s.includes('fatiga') || s.includes('cansancio'))) {
+    if (userSymptomNames.some(s => s.includes('fatiga') || s.includes('cansancio'))) {
       recommendations.push({
         category: 'Energía',
         title: '⚡ Aumento de Energía',
@@ -190,7 +192,7 @@ export default function SymptomSimulator() {
     }
 
     // Recomendaciones para cambios en libido
-    if (selectedSymptomNames.some(s => s.includes('libido') || s.includes('deseo') || s.includes('sexual'))) {
+    if (userSymptomNames.some(s => s.includes('libido') || s.includes('deseo') || s.includes('sexual'))) {
       recommendations.push({
         category: 'Libido',
         title: '💑 Revitaliza tu Vida Sexual',
@@ -208,7 +210,7 @@ export default function SymptomSimulator() {
     }
 
     // Recomendación general si no hay síntomas específicos
-    if (recommendations.length === 0 && Object.keys(selectedSymptoms).length > 0) {
+    if (recommendations.length === 0 && (userSymptoms?.length ?? 0) > 0) {
       recommendations.push({
         category: 'General',
         title: '✨ Bienestar General',
@@ -255,6 +257,10 @@ export default function SymptomSimulator() {
     deleteSymptomMutation.mutate({
       userSymptomId,
     });
+  };
+
+  const toggleSymptomExpand = (symptomId: number) => {
+    setExpandedSymptom(expandedSymptom === symptomId ? null : symptomId);
   };
 
   if (!isAuthenticated) {
@@ -348,38 +354,60 @@ export default function SymptomSimulator() {
             <Card>
               <CardHeader>
                 <CardTitle>{categoryLabels[selectedCategory]}</CardTitle>
-                <CardDescription>Selecciona los síntomas que experimentas</CardDescription>
+                <CardDescription>Haz clic en un síntoma para expandir y agregar detalles</CardDescription>
               </CardHeader>
               <CardContent>
                 {symptomsLoading ? (
                   <div className="flex justify-center py-8">
                     <Loader2 className="w-8 h-8 animate-spin text-pink-500" />
                   </div>
+                ) : filteredSymptoms.length === 0 ? (
+                  <div className="text-center py-8 text-gray-500">
+                    No hay síntomas en esta categoría
+                  </div>
                 ) : (
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     {filteredSymptoms.map((symptom) => {
                       const userSymptom = userSymptoms?.find((us) => us.symptomId === symptom.id);
-                      const isSelected = !!userSymptom || selectedSymptoms[symptom.id];
+                      const isExpanded = expandedSymptom === symptom.id;
                       const severity = selectedSymptoms[symptom.id]?.severity || userSymptom?.severity || 5;
                       const frequency = (selectedSymptoms[symptom.id]?.frequency || userSymptom?.frequency || "ocasional") as "diaria" | "varias_veces_semana" | "semanal" | "ocasional";
 
                       return (
-                        <div key={symptom.id} className="p-4 border-2 border-gray-200 rounded-lg hover:border-pink-300 transition">
-                          <div className="flex items-start justify-between mb-4">
-                            <div>
+                        <div key={symptom.id} className={`border-2 rounded-lg transition cursor-pointer ${isExpanded ? 'border-pink-400 bg-pink-50' : 'border-gray-200 hover:border-pink-300'}`}>
+                          <div 
+                            className="p-4 flex items-start justify-between"
+                            onClick={() => toggleSymptomExpand(symptom.id)}
+                          >
+                            <div className="flex-1">
                               <h4 className="font-semibold text-gray-900">{symptom.name}</h4>
                               {symptom.description && (
                                 <p className="text-sm text-gray-600 mt-1">{symptom.description}</p>
                               )}
+                              {userSymptom && (
+                                <div className="mt-2 flex gap-2">
+                                  <Badge className="bg-green-100 text-green-800">Registrado</Badge>
+                                  <Badge className="bg-blue-100 text-blue-800">Intensidad: {userSymptom.severity}/10</Badge>
+                                  <Badge className="bg-purple-100 text-purple-800">{userSymptom.frequency}</Badge>
+                                </div>
+                              )}
                             </div>
-                            {isSelected && <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />}
+                            <div className="flex items-center gap-2">
+                              {userSymptom && <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />}
+                              {isExpanded ? (
+                                <ChevronUp className="w-5 h-5 text-pink-500 flex-shrink-0" />
+                              ) : (
+                                <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                              )}
+                            </div>
                           </div>
 
-                          {isSelected && (
-                            <div className="space-y-4">
+                          {/* Contenido Expandido */}
+                          {isExpanded && (
+                            <div className="border-t border-pink-200 p-4 space-y-4 bg-white">
                               {/* Severity Slider */}
                               <div>
-                                <label className="text-sm font-medium text-gray-700">
+                                <label className="text-sm font-medium text-gray-700 block mb-2">
                                   Intensidad: {severity}/10
                                 </label>
                                 <Slider
@@ -402,7 +430,7 @@ export default function SymptomSimulator() {
 
                               {/* Frequency Selector */}
                               <div>
-                                <label className="text-sm font-medium text-gray-700 mb-2 block">
+                                <label className="text-sm font-medium text-gray-700 mb-3 block">
                                   Frecuencia
                                 </label>
                                 <div className="flex flex-wrap gap-2">
@@ -453,7 +481,7 @@ export default function SymptomSimulator() {
                                     className="flex-1 bg-pink-500 hover:bg-pink-600"
                                     onClick={() => handleAddSymptom(symptom.id)}
                                   >
-                                    Agregar
+                                    Agregar Síntoma
                                   </Button>
                                 )}
                               </div>
@@ -470,7 +498,18 @@ export default function SymptomSimulator() {
 
           {/* Sidebar - Recomendaciones Personalizadas */}
           <div className="space-y-6">
-            {recommendations.length > 0 && (
+            {/* Button to show/hide recommendations */}
+            {(userSymptoms?.length ?? 0) > 0 && (
+              <Button
+                onClick={() => setShowRecommendations(!showRecommendations)}
+                className="w-full bg-green-500 hover:bg-green-600 text-white"
+              >
+                <Lightbulb className="w-4 h-4 mr-2" />
+                {showRecommendations ? "Ocultar" : "Ver"} Recomendaciones ({recommendations.length})
+              </Button>
+            )}
+
+            {showRecommendations && recommendations.length > 0 && (
               <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-white">
                 <CardHeader>
                   <div className="flex items-center gap-2">
@@ -481,7 +520,10 @@ export default function SymptomSimulator() {
                 <CardContent className="space-y-4">
                   {recommendations.map((rec, idx) => (
                     <div key={idx} className="p-4 bg-white rounded-lg border border-green-200 space-y-3">
-                      <h4 className="font-bold text-gray-900">{rec.title}</h4>
+                      <h4 className="font-bold text-gray-900 flex items-center gap-2">
+                        <span>{rec.icon}</span>
+                        {rec.title}
+                      </h4>
                       <p className="text-sm text-gray-700">{rec.description}</p>
                       <ul className="space-y-2">
                         {rec.actions.map((action, actionIdx) => (
@@ -503,25 +545,39 @@ export default function SymptomSimulator() {
                 <CardHeader>
                   <CardTitle className="text-lg">Tu Resumen</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-4">
                   <div>
                     <p className="text-sm text-gray-600">Síntomas registrados</p>
-                    <p className="text-2xl font-bold text-pink-600">{userSymptoms.length}</p>
+                    <p className="text-3xl font-bold text-pink-600">{userSymptoms.length}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 mb-2">Síntomas por categoría</p>
-                    <div className="space-y-1">
+                    <p className="text-sm text-gray-600 mb-3 font-semibold">Síntomas por categoría</p>
+                    <div className="space-y-2">
                       {categories.map((cat) => {
                         const count = userSymptoms.filter(s => s.symptomCategory === cat).length;
                         return count > 0 ? (
-                          <div key={cat} className="flex justify-between text-sm">
-                            <span className="text-gray-700">{categoryLabels[cat]}</span>
+                          <div key={cat} className="flex justify-between items-center">
+                            <span className="text-sm text-gray-700">{categoryLabels[cat]}</span>
                             <Badge className={categoryColors[cat]}>{count}</Badge>
                           </div>
                         ) : null;
                       })}
                     </div>
                   </div>
+                  <div className="pt-4 border-t">
+                    <p className="text-xs text-gray-500">Intensidad promedio: {userSymptoms.length > 0 ? (userSymptoms.reduce((sum, s) => sum + s.severity, 0) / userSymptoms.length).toFixed(1) : 0}/10</p>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Empty State */}
+            {(!userSymptoms || userSymptoms.length === 0) && (
+              <Card className="border-2 border-dashed border-gray-300">
+                <CardContent className="pt-6 text-center">
+                  <Heart className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+                  <p className="text-gray-600 font-medium">Aún no has registrado síntomas</p>
+                  <p className="text-sm text-gray-500 mt-1">Selecciona síntomas para obtener recomendaciones personalizadas</p>
                 </CardContent>
               </Card>
             )}

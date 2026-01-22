@@ -7,9 +7,9 @@ const symptomsData = [
   { name: "Sofocos", category: "hormonal", description: "Sensación súbita de calor intenso en el cuerpo, especialmente en la cara, cuello y pecho." },
   { name: "Cambios en el Ciclo Menstrual", category: "hormonal", description: "Irregularidades en la frecuencia, duración o intensidad de la menstruación." },
   { name: "Sudores Nocturnos", category: "hormonal", description: "Transpiración excesiva durante la noche que empaña la ropa de cama." },
-  { name: "Cambios de Humor", category: "hormonal", description: "Variaciones emocionales, irritabilidad, tristeza o ansiedad sin causa aparente." },
-  { name: "Sequedad Vaginal", category: "hormonal", description: "Reducción de lubricación natural en la vagina." },
-  { name: "Cambios en la Libido", category: "hormonal", description: "Disminución del deseo sexual." },
+  { name: "Cambios de Humor", category: "emocional", description: "Variaciones emocionales, irritabilidad, tristeza o ansiedad sin causa aparente." },
+  { name: "Sequedad Vaginal", category: "sexual", description: "Reducción de lubricación natural en la vagina." },
+  { name: "Cambios en la Libido", category: "sexual", description: "Disminución del deseo sexual." },
   
   // Síntomas Emocionales
   { name: "Ansiedad", category: "emocional", description: "Sensación de preocupación, nerviosismo o inquietud persistente." },

@@ -1,0 +1,100 @@
+{
+  "query": "SELECT id, name, description, category FROM symptoms ORDER BY category, name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 7EfUGPcSEVAXdvU.aca197382e2e --database FZ4c5syLc7EjwewUhQ9pjV --execute SELECT id, name, description, category FROM symptoms ORDER BY category, name",
+  "rows": [
+    {
+      "id": "7",
+      "name": "Ansiedad",
+      "description": "Sensación de preocupación, nerviosismo o inquietud persistente.",
+      "category": "emocional"
+    },
+    {
+      "id": "8",
+      "name": "Depresión",
+      "description": "Tristeza persistente, pérdida de interés en actividades, baja energía.",
+      "category": "emocional"
+    },
+    {
+      "id": "9",
+      "name": "Irritabilidad",
+      "description": "Tendencia a enojarse fácilmente, baja tolerancia a la frustración.",
+      "category": "emocional"
+    },
+    {
+      "id": "14",
+      "name": "Cambios de Peso",
+      "description": "Aumento de peso, especialmente en abdomen.",
+      "category": "fisico"
+    },
+    {
+      "id": "12",
+      "name": "Dolor Articular",
+      "description": "Dolor en articulaciones, especialmente manos, rodillas, caderas.",
+      "category": "fisico"
+    },
+    {
+      "id": "11",
+      "name": "Dolores de Cabeza",
+      "description": "Dolores de cabeza frecuentes o migrañas.",
+      "category": "fisico"
+    },
+    {
+      "id": "10",
+      "name": "Fatiga",
+      "description": "Cansancio extremo que no mejora con descanso.",
+      "category": "fisico"
+    },
+    {
+      "id": "13",
+      "name": "Insomnio",
+      "description": "Dificultad para conciliar o mantener el sueño.",
+      "category": "fisico"
+    },
+    {
+      "id": "15",
+      "name": "Problemas de Memoria",
+      "description": "Dificultad para concentrarse, olvidos frecuentes (brain fog).",
+      "category": "fisico"
+    },
+    {
+      "id": "4",
+      "name": "Cambios de Humor",
+      "description": "Variaciones emocionales, irritabilidad, tristeza o ansiedad sin causa aparente.",
+      "category": "hormonal"
+    },
+    {
+      "id": "2",
+      "name": "Cambios en el Ciclo Menstrual",
+      "description": "Irregularidades en la frecuencia, duración o intensidad de la menstruación.",
+      "category": "hormonal"
+    },
+    {
+      "id": "6",
+      "name": "Cambios en la Libido",
+      "description": "Disminución del deseo sexual.",
+      "category": "hormonal"
+    },
+    {
+      "id": "5",
+      "name": "Sequedad Vaginal",
+      "description": "Reducción de lubricación natural en la vagina.",
+      "category": "hormonal"
+    },
+    {
+      "id": "1",
+      "name": "Sofocos",
+      "description": "Sensación súbita de calor intenso en el cuerpo, especialmente en la cara, cuello y pecho.",
+      "category": "hormonal"
+    },
+    {
+      "id": "3",
+      "name": "Sudores Nocturnos",
+      "description": "Transpiración excesiva durante la noche que empaña la ropa de cama.",
+      "category": "hormonal"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tdescription\tcategory\n7\tAnsiedad\tSensación de preocupación, nerviosismo o inquietud persistente.\temocional\n8\tDepresión\tTristeza persistente, pérdida de interés en actividades, baja energía.\temocional\n9\tIrritabilidad\tTendencia a enojarse fácilmente, baja tolerancia a la frustración.\temocional\n14\tCambios de Peso\tAumento de peso, especialmente en abdomen.\tfisico\n12\tDolor Articular\tDolor en articulaciones, especialmente manos, rodillas, caderas.\tfisico\n11\tDolores de Cabeza\tDolores de cabeza frecuentes o migrañas.\tfisico\n10\tFatiga\tCansancio extremo que no mejora con descanso.\tfisico\n13\tInsomnio\tDificultad para conciliar o mantener el sueño.\tfisico\n15\tProblemas de Memoria\tDificultad para concentrarse, olvidos frecuentes (brain fog).\tfisico\n4\tCambios de Humor\tVariaciones emocionales, irritabilidad, tristeza o ansiedad sin causa aparente.\thormonal\n2\tCambios en el Ciclo Menstrual\tIrregularidades en la frecuencia, duración o intensidad de la menstruación.\thormonal\n6\tCambios en la Libido\tDisminución del deseo sexual.\thormonal\n5\tSequedad Vaginal\tReducción de lubricación natural en la vagina.\thormonal\n1\tSofocos\tSensación súbita de calor intenso en el cuerpo, especialmente en la cara, cuello y pecho.\thormonal\n3\tSudores Nocturnos\tTranspiración excesiva durante la noche que empaña la ropa de cama.\thormonal\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

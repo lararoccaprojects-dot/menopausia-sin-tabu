@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE symptoms SET description = 'Variaciones emocionales, irritabilidad, tristeza o ansiedad sin causa aparente.' WHERE name = 'Cambios de Humor' AND category = 'emocional';\nUPDATE symptoms SET description = 'Reducción de lubricación natural en la vagina.' WHERE name = 'Sequedad Vaginal' AND category = 'sexual';\nUPDATE symptoms SET description = 'Disminución del deseo sexual.' WHERE name = 'Cambios en la Libido' AND category = 'sexual'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 7EfUGPcSEVAXdvU.aca197382e2e --database FZ4c5syLc7EjwewUhQ9pjV --execute UPDATE symptoms SET description = 'Variaciones emocionales, irritabilidad, tristeza o ansiedad sin causa aparente.' WHERE name = 'Cambios de Humor' AND category = 'emocional';\nUPDATE symptoms SET description = 'Reducción de lubricación natural en la vagina.' WHERE name = 'Sequedad Vaginal' AND category = 'sexual';\nUPDATE symptoms SET description = 'Disminución del deseo sexual.' WHERE name = 'Cambios en la Libido' AND category = 'sexual'",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 68
+}

@@ -1,0 +1,85 @@
+{
+  "query": "SELECT id, name, category FROM symptoms ORDER BY category, id LIMIT 30",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 7EfUGPcSEVAXdvU.aca197382e2e --database FZ4c5syLc7EjwewUhQ9pjV --execute SELECT id, name, category FROM symptoms ORDER BY category, id LIMIT 30",
+  "rows": [
+    {
+      "id": "7",
+      "name": "Ansiedad",
+      "category": "emocional"
+    },
+    {
+      "id": "8",
+      "name": "Depresión",
+      "category": "emocional"
+    },
+    {
+      "id": "9",
+      "name": "Irritabilidad",
+      "category": "emocional"
+    },
+    {
+      "id": "10",
+      "name": "Fatiga",
+      "category": "fisico"
+    },
+    {
+      "id": "11",
+      "name": "Dolores de Cabeza",
+      "category": "fisico"
+    },
+    {
+      "id": "12",
+      "name": "Dolor Articular",
+      "category": "fisico"
+    },
+    {
+      "id": "13",
+      "name": "Insomnio",
+      "category": "fisico"
+    },
+    {
+      "id": "14",
+      "name": "Cambios de Peso",
+      "category": "fisico"
+    },
+    {
+      "id": "15",
+      "name": "Problemas de Memoria",
+      "category": "fisico"
+    },
+    {
+      "id": "1",
+      "name": "Sofocos",
+      "category": "hormonal"
+    },
+    {
+      "id": "2",
+      "name": "Cambios en el Ciclo Menstrual",
+      "category": "hormonal"
+    },
+    {
+      "id": "3",
+      "name": "Sudores Nocturnos",
+      "category": "hormonal"
+    },
+    {
+      "id": "4",
+      "name": "Cambios de Humor",
+      "category": "hormonal"
+    },
+    {
+      "id": "5",
+      "name": "Sequedad Vaginal",
+      "category": "hormonal"
+    },
+    {
+      "id": "6",
+      "name": "Cambios en la Libido",
+      "category": "hormonal"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tcategory\n7\tAnsiedad\temocional\n8\tDepresión\temocional\n9\tIrritabilidad\temocional\n10\tFatiga\tfisico\n11\tDolores de Cabeza\tfisico\n12\tDolor Articular\tfisico\n13\tInsomnio\tfisico\n14\tCambios de Peso\tfisico\n15\tProblemas de Memoria\tfisico\n1\tSofocos\thormonal\n2\tCambios en el Ciclo Menstrual\thormonal\n3\tSudores Nocturnos\thormonal\n4\tCambios de Humor\thormonal\n5\tSequedad Vaginal\thormonal\n6\tCambios en la Libido\thormonal\n",
+  "stderr": "",
+  "execution_time_ms": 476
+}
