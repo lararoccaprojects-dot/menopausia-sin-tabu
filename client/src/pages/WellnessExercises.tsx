@@ -15,6 +15,7 @@ interface Exercise {
   steps: string[];
   benefits: string[];
   icon: string;
+  image: string;
 }
 
 export default function WellnessExercises() {
@@ -40,7 +41,8 @@ export default function WellnessExercises() {
         "Descansa y respira normalmente"
       ],
       benefits: ["Reduce sofocos", "Calma la ansiedad", "Mejora la oxigenación"],
-      icon: "🌬️"
+      icon: "🌬️",
+      image: "/exercises/breathing.jpg"
     },
     {
       id: 2,
@@ -57,7 +59,8 @@ export default function WellnessExercises() {
         "Respira profundamente durante toda la secuencia"
       ],
       benefits: ["Aumenta flexibilidad", "Reduce estrés", "Mejora el sueño"],
-      icon: "🧘"
+      icon: "🧘",
+      image: "/exercises/yoga-restorative.webp"
     },
     {
       id: 3,
@@ -74,7 +77,8 @@ export default function WellnessExercises() {
         "Estira el core durante 2 minutos"
       ],
       benefits: ["Fortalece abdominales", "Mejora postura", "Previene dolor de espalda"],
-      icon: "💪"
+      icon: "💪",
+      image: "/exercises/core.jpg"
     },
     {
       id: 4,
@@ -91,7 +95,8 @@ export default function WellnessExercises() {
         "Camina durante 30 minutos sin interrupciones"
       ],
       benefits: ["Mejora cardiovascular", "Reduce estrés", "Aumenta energía"],
-      icon: "🚶"
+      icon: "🚶",
+      image: "/exercises/walking.jpg"
     },
     {
       id: 5,
@@ -108,7 +113,8 @@ export default function WellnessExercises() {
         "Termina con estiramientos de 5 minutos"
       ],
       benefits: ["Fortalece músculos", "Mejora flexibilidad", "Aumenta densidad ósea"],
-      icon: "🤸"
+      icon: "🤸",
+      image: "/exercises/pilates.jpg"
     },
     {
       id: 6,
@@ -125,7 +131,8 @@ export default function WellnessExercises() {
         "Termina con respiración profunda"
       ],
       benefits: ["Aumenta flexibilidad", "Reduce tensión muscular", "Mejora circulación"],
-      icon: "🧗"
+      icon: "🧗",
+      image: "/exercises/stretching.jpg"
     },
     {
       id: 7,
@@ -142,7 +149,8 @@ export default function WellnessExercises() {
         "Practica 3 veces al día"
       ],
       benefits: ["Fortalece suelo pélvico", "Mejora control", "Aumenta sensibilidad"],
-      icon: "🎯"
+      icon: "🎯",
+      image: "/exercises/kegel.jpg"
     },
     {
       id: 8,
@@ -159,7 +167,8 @@ export default function WellnessExercises() {
         "Continúa durante 15 minutos"
       ],
       benefits: ["Reduce ansiedad", "Mejora concentración", "Aumenta bienestar"],
-      icon: "🧠"
+      icon: "🧠",
+      image: "/exercises/meditation.jpg"
     },
     {
       id: 9,
@@ -178,7 +187,8 @@ export default function WellnessExercises() {
         "Estiramiento completo de 5 minutos"
       ],
       benefits: ["Aumenta masa muscular", "Fortalece huesos", "Mejora metabolismo", "Aumenta confianza"],
-      icon: "🏋️"
+      icon: "🏋️",
+      image: "/exercises/strength.jpg"
     },
     {
       id: 10,
@@ -197,7 +207,8 @@ export default function WellnessExercises() {
         "Respiración profunda final"
       ],
       benefits: ["Quema calorías rápidamente", "Mejora cardiovascular", "Aumenta metabolismo", "Ahorra tiempo"],
-      icon: "⚡"
+      icon: "⚡",
+      image: "/exercises/hiit.jpg"
     },
     {
       id: 11,
@@ -216,7 +227,8 @@ export default function WellnessExercises() {
         "Meditación final de 5 minutos en postura de cadáver"
       ],
       benefits: ["Aumenta fuerza y flexibilidad", "Mejora equilibrio", "Desarrolla confianza", "Profunda relajación"],
-      icon: "🧘"
+      icon: "🧘",
+      image: "/exercises/yoga-advanced.jpg"
     }
   ];
 
@@ -268,202 +280,238 @@ export default function WellnessExercises() {
     content += `${'-'.repeat(60)}\n`;
     content += `- Realiza este ejercicio ${exercise.difficulty === 'beginner' ? '3-5 veces a la semana' : '2-3 veces a la semana'}\n`;
     content += `- Escucha a tu cuerpo y ajusta según sea necesario\n`;
-    content += `- Si sientes dolor, detente e intenta otra vez después\n`;
-    content += `- Mantén la consistencia para mejores resultados\n`;
+    content += `- Mantente hidratada durante el ejercicio\n`;
+    content += `- Si tienes dolor, detente inmediatamente\n`;
+    content += `- Consulta con tu médico antes de comenzar un nuevo programa de ejercicio\n`;
 
     const element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
-    element.setAttribute('download', `${title.replace(/\s+/g, '_')}_${new Date().getTime()}.txt`);
+    element.setAttribute('download', `${title.replace(/\s+/g, '_')}.txt`);
     element.style.display = 'none';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-    toast.success("Descargando: " + title);
+    toast.success("Ejercicio descargado");
   };
-
-  const progress = Math.round((completedExercises.length / exercises.length) * 100);
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case "beginner":
-        return "bg-green-100 text-green-800";
-      case "intermediate":
-        return "bg-yellow-100 text-yellow-800";
-      case "advanced":
-        return "bg-red-100 text-red-800";
+      case 'beginner':
+        return 'bg-green-100 text-green-800';
+      case 'intermediate':
+        return 'bg-yellow-100 text-yellow-800';
+      case 'advanced':
+        return 'bg-red-100 text-red-800';
       default:
-        return "bg-gray-100 text-gray-800";
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
   const getDifficultyLabel = (difficulty: string) => {
     switch (difficulty) {
-      case "beginner":
-        return "Principiante";
-      case "intermediate":
-        return "Intermedio";
-      case "advanced":
-        return "Avanzado";
+      case 'beginner':
+        return 'Principiante';
+      case 'intermediate':
+        return 'Intermedio';
+      case 'advanced':
+        return 'Avanzado';
       default:
         return difficulty;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white pb-12">
-      {/* Header */}
-      <div className="bg-white border-b border-blue-200 shadow-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <Dumbbell className="w-8 h-8 text-blue-600" />
-              <h1 className="text-3xl font-bold text-gray-900">Ejercicios de Bienestar</h1>
-            </div>
-            <Button
-              variant="ghost"
-              onClick={() => setLocation("/dashboard")}
-              className="flex items-center gap-2"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Volver
-            </Button>
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-green-50 py-12">
+      <div className="container mx-auto px-4 max-w-6xl">
+        {/* Header */}
+        <div className="mb-8 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Dumbbell className="w-8 h-8 text-pink-500" />
+            <h1 className="text-3xl font-bold text-gray-900">Ejercicios de Bienestar</h1>
           </div>
-          <div className="w-full bg-blue-100 rounded-full h-2">
-            <div
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-          <p className="text-sm text-gray-600 mt-2">{progress}% completado</p>
+          <Button
+            variant="ghost"
+            onClick={() => setLocation("/dashboard")}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Volver
+          </Button>
         </div>
-      </div>
 
-      {/* Valor Inicial */}
-      <div className="container mx-auto px-4 py-8">
-        <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-white mb-8">
+        {/* Descripción */}
+        <Card className="mb-8 border-2 border-pink-200 bg-gradient-to-r from-pink-50 to-white">
           <CardContent className="pt-6">
-            <div className="space-y-3">
-              <h3 className="text-lg font-bold text-gray-900">¿Por qué estos ejercicios?</h3>
-              <p className="text-gray-700 text-sm">
-                8 ejercicios diseñados específicamente para mujeres menopáusicas. Cada uno es descargable con instrucciones detalladas paso a paso, beneficios y consejos prácticos.
-              </p>
+            <p className="text-gray-700 leading-relaxed">
+              Descubre una colección de ejercicios especialmente diseñados para apoyar tu bienestar durante la menopausia. Desde técnicas de respiración hasta entrenamientos avanzados, cada ejercicio incluye instrucciones paso a paso, beneficios específicos y fotos de referencia.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* Filtro de Dificultad */}
+        <Card className="mb-8">
+          <CardContent className="pt-6">
+            <div className="flex flex-wrap gap-3">
+              {difficulties.map((diff) => (
+                <Button
+                  key={diff.value}
+                  variant={selectedDifficulty === diff.value ? "default" : "outline"}
+                  className={selectedDifficulty === diff.value ? "bg-pink-500 hover:bg-pink-600" : ""}
+                  onClick={() => setSelectedDifficulty(diff.value)}
+                >
+                  {diff.label}
+                </Button>
+              ))}
             </div>
           </CardContent>
         </Card>
-      </div>
 
-      {/* Filtros */}
-      <div className="container mx-auto px-4 mb-8">
-        <div className="flex flex-wrap gap-2">
-          {difficulties.map((diff) => (
-            <Button
-              key={diff.value}
-              onClick={() => setSelectedDifficulty(diff.value)}
-              variant={selectedDifficulty === diff.value ? "default" : "outline"}
-              className={selectedDifficulty === diff.value ? "bg-blue-600 hover:bg-blue-700" : ""}
-              size="sm"
-            >
-              {diff.label}
-            </Button>
-          ))}
-        </div>
-      </div>
+        {/* Ejercicios Grid */}
+        <div className="space-y-4">
+          {filteredExercises.map((exercise) => {
+            const isExpanded = expandedExercise === exercise.id;
+            const isCompleted = completedExercises.includes(exercise.id);
 
-      {/* Grid de Ejercicios */}
-      <div className="container mx-auto px-4 space-y-4">
-        {filteredExercises.map((exercise) => (
-          <Card
-            key={exercise.id}
-            className={`border-2 transition-all ${
-              completedExercises.includes(exercise.id)
-                ? "border-blue-400 bg-blue-50"
-                : "border-blue-200 hover:border-blue-400"
-            }`}
-          >
-            <div
-              className="p-6 cursor-pointer"
-              onClick={() => toggleExercise(exercise.id)}
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex items-start gap-4 flex-1">
-                  <span className="text-4xl">{exercise.icon}</span>
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="text-xl font-bold text-gray-900">{exercise.title}</h3>
-                      {completedExercises.includes(exercise.id) && (
-                        <CheckCircle2 className="w-6 h-6 text-blue-600 flex-shrink-0" />
+            return (
+              <Card
+                key={exercise.id}
+                className={`cursor-pointer transition-all ${
+                  isExpanded ? 'border-2 border-pink-400' : 'border border-gray-200 hover:border-pink-300'
+                } ${isCompleted ? 'bg-green-50' : ''}`}
+                onClick={() => toggleExercise(exercise.id)}
+              >
+                <CardContent className="p-0">
+                  {/* Header del Ejercicio */}
+                  <div className="p-6 flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-3xl">{exercise.icon}</span>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-gray-900">{exercise.title}</h3>
+                          <p className="text-sm text-gray-600 mt-1">{exercise.description}</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyColor(exercise.difficulty)}`}>
+                          {getDifficultyLabel(exercise.difficulty)}
+                        </span>
+                        <span className="flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">
+                          <Clock className="w-3 h-3" />
+                          {exercise.duration} min
+                        </span>
+                        {isCompleted && (
+                          <span className="flex items-center gap-1 px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
+                            <CheckCircle2 className="w-3 h-3" />
+                            Completado
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="ml-4 flex-shrink-0">
+                      {isExpanded ? (
+                        <ChevronUp className="w-6 h-6 text-pink-500" />
+                      ) : (
+                        <ChevronDown className="w-6 h-6 text-gray-400" />
                       )}
                     </div>
-                    <p className="text-sm text-gray-600 mb-3">{exercise.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyColor(exercise.difficulty)}`}>
-                        {getDifficultyLabel(exercise.difficulty)}
-                      </span>
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-800 flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {exercise.duration} min
-                      </span>
-                    </div>
                   </div>
+
+                  {/* Contenido Expandido */}
+                  {isExpanded && (
+                    <div className="border-t border-gray-200 p-6 space-y-6 bg-white">
+                      {/* Imagen del Ejercicio */}
+                      <div className="rounded-lg overflow-hidden">
+                        <img
+                          src={exercise.image}
+                          alt={exercise.title}
+                          className="w-full h-64 object-cover rounded-lg"
+                        />
+                      </div>
+
+                      {/* Pasos */}
+                      <div>
+                        <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                          <Zap className="w-4 h-4 text-yellow-500" />
+                          Instrucciones Paso a Paso
+                        </h4>
+                        <ol className="space-y-2">
+                          {exercise.steps.map((step, idx) => (
+                            <li key={idx} className="flex gap-3 text-sm text-gray-700">
+                              <span className="font-bold text-pink-500 flex-shrink-0">{idx + 1}.</span>
+                              <span>{step}</span>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+
+                      {/* Beneficios */}
+                      <div>
+                        <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                          <Flame className="w-4 h-4 text-orange-500" />
+                          Beneficios
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                          {exercise.benefits.map((benefit, idx) => (
+                            <div key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                              <span className="text-green-500 font-bold">✓</span>
+                              <span>{benefit}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Botones de Acción */}
+                      <div className="flex gap-3 pt-4 border-t">
+                        <Button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleComplete(exercise.id);
+                          }}
+                          className={`flex-1 ${
+                            isCompleted
+                              ? 'bg-green-500 hover:bg-green-600'
+                              : 'bg-pink-500 hover:bg-pink-600'
+                          }`}
+                        >
+                          <CheckCircle2 className="w-4 h-4 mr-2" />
+                          {isCompleted ? 'Marcar como Incompleto' : 'Marcar como Completado'}
+                        </Button>
+                        <Button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            downloadExercise(exercise.title, exercise);
+                          }}
+                          variant="outline"
+                          className="flex-1"
+                        >
+                          <Download className="w-4 h-4 mr-2" />
+                          Descargar
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+
+        {/* Resumen */}
+        {completedExercises.length > 0 && (
+          <Card className="mt-8 border-2 border-green-200 bg-gradient-to-r from-green-50 to-white">
+            <CardContent className="pt-6">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-6 h-6 text-green-600" />
+                <div>
+                  <p className="font-bold text-gray-900">¡Buen trabajo!</p>
+                  <p className="text-sm text-gray-600">
+                    Has completado {completedExercises.length} de {exercises.length} ejercicios
+                  </p>
                 </div>
-                {expandedExercise === exercise.id ? (
-                  <ChevronUp className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                )}
               </div>
-
-              {/* Contenido Expandido */}
-              {expandedExercise === exercise.id && (
-                <div className="border-t border-blue-200 mt-6 pt-6 space-y-6">
-                  {/* Pasos */}
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Instrucciones Paso a Paso:</h4>
-                    <ol className="space-y-2">
-                      {exercise.steps.map((step, idx) => (
-                        <li key={idx} className="flex gap-3">
-                          <span className="font-bold text-blue-600 flex-shrink-0">{idx + 1}.</span>
-                          <span className="text-gray-700">{step}</span>
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-
-                  {/* Beneficios */}
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Beneficios:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {exercise.benefits.map((benefit, idx) => (
-                        <span key={idx} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                          ✓ {benefit}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Botones de Acción */}
-                  <div className="flex gap-3 pt-4 border-t border-blue-200">
-                    <Button
-                      onClick={() => downloadExercise(exercise.title, exercise)}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 flex items-center justify-center gap-2"
-                    >
-                      <Download className="w-4 h-4" />
-                      Descargar Instrucciones
-                    </Button>
-                    <Button
-                      onClick={() => toggleComplete(exercise.id)}
-                      variant={completedExercises.includes(exercise.id) ? "default" : "outline"}
-                      className={completedExercises.includes(exercise.id) ? "bg-blue-600 hover:bg-blue-700" : ""}
-                    >
-                      <CheckCircle2 className="w-4 h-4 mr-2" />
-                      {completedExercises.includes(exercise.id) ? "Completado" : "Marcar como completado"}
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </div>
+            </CardContent>
           </Card>
-        ))}
+        )}
       </div>
     </div>
   );
