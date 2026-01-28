@@ -420,11 +420,11 @@ export default function WellnessExercises() {
                   {isExpanded && (
                     <div className="border-t border-gray-200 p-6 space-y-6 bg-white">
                       {/* Imagen del Ejercicio */}
-                      <div className="rounded-lg overflow-hidden">
+                      <div className="rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
                         <img
                           src={exercise.image}
                           alt={exercise.title}
-                          className="w-full h-64 object-cover rounded-lg"
+                          className="w-full h-auto max-h-96 object-contain rounded-lg"
                         />
                       </div>
 
